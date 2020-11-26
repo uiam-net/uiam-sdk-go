@@ -1,6 +1,7 @@
 package uiamsdk
 
 import (
+	"errors"
 	"time"
 )
 
@@ -59,6 +60,8 @@ type WechatAuth struct {
 type AuthProviderTypeEnum string
 
 const (
+	// AuthProviderTypeEnumMixin offer
+	AuthProviderTypeEnumMixin AuthProviderTypeEnum = "mixin"
 	// AuthProviderTypeEnumWechat wechat
 	AuthProviderTypeEnumWechat AuthProviderTypeEnum = "wechat"
 	// AuthProviderTypeEnumAlipay alipay
@@ -67,12 +70,28 @@ const (
 
 func (e AuthProviderTypeEnum) String() string {
 	switch e {
+	case AuthProviderTypeEnumMixin:
+		return "mixin"
 	case AuthProviderTypeEnumWechat:
 		return "wechat"
 	case AuthProviderTypeEnumAlipay:
 		return "alipay"
 	default:
 		return ""
+	}
+}
+
+// NewAuthProviderTypeEnum 构造函数
+func NewAuthProviderTypeEnum(provider string) (AuthProviderTypeEnum, error) {
+	switch provider {
+	case "mixin":
+		return AuthProviderTypeEnumMixin, nil
+	case "wechat":
+		return AuthProviderTypeEnumWechat, nil
+	case "alipay":
+		return AuthProviderTypeEnumAlipay, nil
+	default:
+		return "", errors.New("Parse Provider Type Error")
 	}
 }
 
