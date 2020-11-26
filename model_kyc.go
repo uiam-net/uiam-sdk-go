@@ -1,5 +1,195 @@
 package uiamsdk
 
+// =============== CountryEnum =============== //
+
+// CountryEnum 国家代码 枚举
+type CountryEnum string
+
+const (
+	// CountryEnumCN 中国
+	CountryEnumCN CountryEnum = "cn"
+)
+
+// NewCountryEnum NewCountryEnum
+func NewCountryEnum(enum string) CountryEnum {
+	switch enum {
+	case "cn":
+		return CountryEnumCN
+	default:
+		return ""
+	}
+}
+
+// =============== GenderEnum =============== //
+
+// GenderEnum 性别 枚举
+type GenderEnum string
+
+const (
+	// GenderEnumMale 男
+	GenderEnumMale GenderEnum = "male"
+	// GenderEnumFemale 女
+	GenderEnumFemale GenderEnum = "female"
+)
+
+func (e GenderEnum) String() string {
+	switch e {
+	case GenderEnumMale:
+		return "male"
+	case GenderEnumFemale:
+		return "female"
+	default:
+		return ""
+	}
+}
+
+//// Value Value
+//func (e GenderEnum) Value() (sqldriver.Value, error) {
+//	return GenderEnum.String, nil
+//}
+
+// NewGenderEnum NewGenderEnum
+func NewGenderEnum(enum string) GenderEnum {
+	switch enum {
+	case "male", "男":
+		return GenderEnumMale
+	case "female", "女":
+		return GenderEnumFemale
+	default:
+		return ""
+	}
+}
+
+// =============== IDTypeEnum =============== //
+
+// IDTypeEnum 证件类型 枚举
+type IDTypeEnum string
+
+const (
+	// IDTypeEnumIDCard 身份证
+	IDTypeEnumIDCard IDTypeEnum = "idcard"
+	// IDTypeEnumDriverLicense 驾照
+	IDTypeEnumDriverLicense IDTypeEnum = "driverlicense"
+	// IDTypeEnumPassport 护照
+	IDTypeEnumPassport IDTypeEnum = "passport"
+	// IDTypeEnumPermanentResident 户口本
+	IDTypeEnumPermanentResident IDTypeEnum = "permanentresident"
+	// IDTypeEnumForeign 外国人永久居留证
+	IDTypeEnumForeign IDTypeEnum = "foreign"
+	// IDTypeEnumArmymanCard 军人证
+	IDTypeEnumArmymanCard IDTypeEnum = "armymancard"
+	// IDTypeEnumPoliceCard 武警证
+	IDTypeEnumPoliceCard IDTypeEnum = "policecard"
+	// IDTypeEnumCachet 公章
+	IDTypeEnumCachet IDTypeEnum = "cachet"
+	// IDTypeEnumBusinessLicense 工商营业执照
+	IDTypeEnumBusinessLicense IDTypeEnum = "businesslicense"
+	// IDTypeEnumCorporationID 法人代码证
+	IDTypeEnumCorporationID IDTypeEnum = "corporationid"
+	// IDTypeEnumStudentCard 学生证
+	IDTypeEnumStudentCard IDTypeEnum = "studentcard"
+	// IDTypeEnumSoldierCard 士兵证
+	IDTypeEnumSoldierCard IDTypeEnum = "soldiercard"
+	// IDTypeEnumGAJMLW 港澳居民来往内地通行证
+	IDTypeEnumGAJMLW IDTypeEnum = "gajmlw"
+	// IDTypeEnumTWJMLW 台湾居民来往大陆通行证
+	IDTypeEnumTWJMLW IDTypeEnum = "twjmlw"
+)
+
+// NewIDTypeEnum NewCountryEnum
+func NewIDTypeEnum(enum string) IDTypeEnum {
+	switch enum {
+	case "idcard":
+		return IDTypeEnumIDCard
+	case "driverlicense":
+		return IDTypeEnumDriverLicense
+	case "passport":
+		return IDTypeEnumPassport
+	case "permanentresident":
+		return IDTypeEnumPermanentResident
+	case "foreign":
+		return IDTypeEnumForeign
+	case "armymancard":
+		return IDTypeEnumArmymanCard
+	case "policecard":
+		return IDTypeEnumPoliceCard
+	case "cachet":
+		return IDTypeEnumCachet
+	case "businesslicense":
+		return IDTypeEnumBusinessLicense
+	case "corporationid":
+		return IDTypeEnumCorporationID
+	case "studentcard":
+		return IDTypeEnumStudentCard
+	case "soldiercard":
+		return IDTypeEnumSoldierCard
+	case "gajmlw":
+		return IDTypeEnumGAJMLW
+	case "twjmlw":
+		return IDTypeEnumTWJMLW
+	default:
+		return ""
+	}
+}
+
+// =============== KycLevelEnum =============== //
+
+// KycLevelEnum KycLevel
+type KycLevelEnum int
+
+const (
+	// KycLevelEnumInit 从未开始做过
+	KycLevelEnumInit KycLevelEnum = 0
+	// KycLevelEnumInitL1 尝试做 L1，进行中/失败
+	KycLevelEnumInitL1 KycLevelEnum = 1
+	// KycLevelEnumInitL2 尝试做 L2，进行中/失败
+	KycLevelEnumInitL2 KycLevelEnum = 2
+	// KycLevelEnumInitL3 尝试做 L3，进行中/失败
+	KycLevelEnumInitL3 KycLevelEnum = 3
+	// KycLevelEnumID L2 已通过，[身份证号码]
+	KycLevelEnumID KycLevelEnum = 11
+	// KycLevelEnumIDL2 L1 已通过，尝试做 L2，进行中/失败
+	KycLevelEnumIDL2 KycLevelEnum = 12
+	// KycLevelEnumIDL3 L1 已通过，尝试做 L3，进行中/失败
+	KycLevelEnumIDL3 KycLevelEnum = 13
+	// KycLevelEnumMac L2 已通过，[Machine Aided Cognition]
+	KycLevelEnumMac KycLevelEnum = 22
+	// KycLevelEnumMacL3 L2 已通过，尝试做 L3，进行中/失败
+	KycLevelEnumMacL3 KycLevelEnum = 23
+	// KycLevelEnumHuman L3 已通过，[活体]
+	KycLevelEnumHuman KycLevelEnum = 33
+	// KycLevelEnumUnkonwn KycLevelEnumUnkonwn
+	KycLevelEnumUnkonwn KycLevelEnum = -1
+)
+
+// NewKycLevelEnum NewKycLevelEnum
+func NewKycLevelEnum(enum int) KycLevelEnum {
+	switch enum {
+	case 0:
+		return KycLevelEnumInit
+	case 1:
+		return KycLevelEnumInitL1
+	case 2:
+		return KycLevelEnumInitL2
+	case 3:
+		return KycLevelEnumInitL3
+	case 11:
+		return KycLevelEnumID
+	case 12:
+		return KycLevelEnumIDL2
+	case 13:
+		return KycLevelEnumIDL3
+	case 22:
+		return KycLevelEnumMac
+	case 23:
+		return KycLevelEnumMacL3
+	case 33:
+		return KycLevelEnumHuman
+	default:
+		return KycLevelEnumUnkonwn
+	}
+}
+
 // FaceidKycResult FaceidKycResult
 var FaceidKycResult = map[string]string{
 	// 活体成功

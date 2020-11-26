@@ -95,6 +95,41 @@ func NewAuthProviderTypeEnum(provider string) (AuthProviderTypeEnum, error) {
 	}
 }
 
+// ==================== Credential ================== //
+// ==================== Credential ================== //
+
+// MixinCredential MixinCredential
+type MixinCredential struct {
+	Type           MixinCredentialTypeEnum `json:"type"`
+	EdPrivKey      string                  `json:"ed_priv_key"`       // edkey
+	EdServerPubKey string                  `json:"ed_server_pub_key"` // edkey
+	ClientID       string                  `json:"client_id"`         // edkey
+	AuthID         string                  `json:"auth_id"`           // edkey
+	Scope          string                  `json:"scope"`             // token & edkey
+	AccessToken    string                  `json:"access_token"`      // token
+}
+
+// MixinCredentialTypeEnum 枚举
+type MixinCredentialTypeEnum string
+
+const (
+	// MixinCredentialTypeEnumEdkey edkey
+	MixinCredentialTypeEnumEdkey MixinCredentialTypeEnum = "edkey"
+	// MixinCredentialTypeEnumToken token
+	MixinCredentialTypeEnumToken MixinCredentialTypeEnum = "token"
+)
+
+func (e MixinCredentialTypeEnum) String() string {
+	switch e {
+	case MixinCredentialTypeEnumEdkey:
+		return "edkey"
+	case MixinCredentialTypeEnumToken:
+		return "token"
+	default:
+		return ""
+	}
+}
+
 // AuthTypeEnum 枚举
 type AuthTypeEnum string
 
@@ -123,6 +158,9 @@ func (e AuthTypeEnum) String() string {
 		return ""
 	}
 }
+
+// ========================= AuthSchemeEnum ========================= //
+// ========================= AuthSchemeEnum ========================= //
 
 // AuthSchemeEnum 枚举
 type AuthSchemeEnum string
