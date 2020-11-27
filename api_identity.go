@@ -28,7 +28,7 @@ func NewUserRequestJwt(token, serverURL string) *IdentityRequest {
 // ============ api ============= //
 
 // GetCurrentIdentity GetUser
-func (r IdentityRequest) GetCurrentIdentity(ctx context.Context, profile bool) (*User, *AppError) {
+func (r IdentityRequest) GetCurrentIdentity(ctx context.Context, profile bool) (*User, error) {
 	var res User
 
 	var expand = make([]string, 0)

@@ -4,7 +4,7 @@ import "time"
 
 // User User
 type User struct {
-	UserID      uint64      `mapstructure:"id" json:"id"`
+	UserID      string      `mapstructure:"id" json:"id"`
 	Name        string      `mapstructure:"name" json:"name"`
 	PhoneCode   string      `mapstructure:"phone_code" json:"phone_code"`
 	PhoneNumber string      `mapstructure:"phone_number" json:"phone_number"`
@@ -19,7 +19,7 @@ type User struct {
 
 // Profile profile
 type Profile struct {
-	UserID      uint64    `json:"user_id"`
+	UserID      string    `json:"user_id"`
 	Name        string    `json:"name,omitempty"`
 	KycLevel    int       `json:"kyc_level,omitempty"`
 	KycStatus   string    `json:"kyc_status,omitempty"`

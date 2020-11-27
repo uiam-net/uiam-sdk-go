@@ -11,7 +11,7 @@ import (
 // ============ api ============= //
 
 // GetAllUsers GetAllUsers
-func (ir IdentityRequest) GetAllUsers(ctx context.Context) ([]*User, *AppError) {
+func (ir IdentityRequest) GetAllUsers(ctx context.Context) ([]*User, error) {
 	var users []*User
 
 	if err := Execute(ir.getRequest(ctx), "GET", fmt.Sprintf("%s/v1/identities", ir.ServerURL), nil, &users); err != nil {
@@ -22,7 +22,7 @@ func (ir IdentityRequest) GetAllUsers(ctx context.Context) ([]*User, *AppError) 
 }
 
 // GetUser GetUser
-func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bool) (*User, *AppError) {
+func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bool) (*User, error) {
 	var resp User
 
 	var expand = make([]string, 0)
@@ -40,7 +40,7 @@ func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bo
 }
 
 // GetUserByPhone GetUser
-func (ir IdentityRequest) GetUserByPhone(ctx context.Context, phoneCode, phoneNumber string) (*User, *AppError) {
+func (ir IdentityRequest) GetUserByPhone(ctx context.Context, phoneCode, phoneNumber string) (*User, error) {
 	var resp BasePageResponse
 
 	url := fmt.Sprintf("%s/v1/identities?phone_code=%s&phone_number=%s&limit=1", ir.ServerURL, phoneCode, phoneNumber)
@@ -67,7 +67,7 @@ func (ir IdentityRequest) GetUserByPhone(ctx context.Context, phoneCode, phoneNu
 }
 
 // VerifyUserPassword VerifyUserPassword
-func (ir IdentityRequest) VerifyUserPassword(ctx context.Context, identityID string, password string) (*User, *AppError) {
+func (ir IdentityRequest) VerifyUserPassword(ctx context.Context, identityID string, password string) (*User, error) {
 	var resp User
 
 	url := fmt.Sprintf("%s/v1/identities/%v/password/verify", ir.ServerURL, identityID)
@@ -80,7 +80,7 @@ func (ir IdentityRequest) VerifyUserPassword(ctx context.Context, identityID str
 }
 
 // CreateUser CreateUser
-func (ir IdentityRequest) CreateUser(ctx context.Context, req *CreateUserReq) (*User, *AppError) {
+func (ir IdentityRequest) CreateUser(ctx context.Context, req *CreateUserReq) (*User, error) {
 	var user User
 
 	if err := Execute(ir.getRequest(ctx), "POST", fmt.Sprintf("%s%s", ir.ServerURL, "/v1/identities"), req, &user); err != nil {
@@ -91,7 +91,7 @@ func (ir IdentityRequest) CreateUser(ctx context.Context, req *CreateUserReq) (*
 }
 
 // ChangePassword ChangePassword
-func (ir IdentityRequest) ChangePassword(ctx context.Context, req *UserModifyReq) (*User, *AppError) {
+func (ir IdentityRequest) ChangePassword(ctx context.Context, req *UserModifyReq) (*User, error) {
 	var user User
 
 	url := fmt.Sprintf("%s/v1/identities/%v/password", ir.ServerURL, req.UserID)
@@ -104,7 +104,7 @@ func (ir IdentityRequest) ChangePassword(ctx context.Context, req *UserModifyReq
 }
 
 // ChangePhone ChangePhone
-func (ir IdentityRequest) ChangePhone(ctx context.Context, req *UserModifyReq) (*User, *AppError) {
+func (ir IdentityRequest) ChangePhone(ctx context.Context, req *UserModifyReq) (*User, error) {
 	var user User
 
 	url := fmt.Sprintf("%s/v1/identities/%d/phone", ir.ServerURL, req.UserID)
