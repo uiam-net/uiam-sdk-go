@@ -67,10 +67,10 @@ func (ir IdentityRequest) GetUserByPhone(ctx context.Context, phoneCode, phoneNu
 }
 
 // VerifyUserPassword VerifyUserPassword
-func (ir IdentityRequest) VerifyUserPassword(ctx context.Context, userID uint64, password string) (*User, *AppError) {
+func (ir IdentityRequest) VerifyUserPassword(ctx context.Context, identityID string, password string) (*User, *AppError) {
 	var resp User
 
-	url := fmt.Sprintf("%s/v1/identities/%v/password/verify", ir.ServerURL, userID)
+	url := fmt.Sprintf("%s/v1/identities/%v/password/verify", ir.ServerURL, identityID)
 
 	if err := Execute(ir.getRequest(ctx), "POST", url, map[string]string{"password": password}, &resp); err != nil {
 		return nil, err
