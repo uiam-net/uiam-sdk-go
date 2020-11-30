@@ -4,7 +4,7 @@ import "time"
 
 // CreateUserReq CreateUserReq
 type CreateUserReq struct {
-	Name        string `json:"name"`
+	Name        string `json:"username"`
 	Type        string `json:"type"`
 	PhoneCode   string `json:"phone_code"`
 	PhoneNumber string `json:"phone_number"`
