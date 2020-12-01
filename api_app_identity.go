@@ -12,7 +12,7 @@ import (
 
 // GetAllUsers GetAllUsers
 func (ir IdentityRequest) GetAllUsers(ctx context.Context) ([]*User, error) {
-	var users []*User
+	users := make([]*User, 0)
 
 	if err := Execute(ir.getRequest(ctx), "GET", fmt.Sprintf("%s/v1/identities", ir.ServerURL), nil, &users); err != nil {
 		return nil, err
