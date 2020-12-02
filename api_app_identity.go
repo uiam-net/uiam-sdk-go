@@ -12,13 +12,15 @@ import (
 
 // GetAllUsers GetAllUsers
 func (ir IdentityRequest) GetAllUsers(ctx context.Context) ([]*User, error) {
-	users := make([]*User, 0)
+	var resp struct{
+		Data []*User `json:"data"`
+	}
 
-	if err := Execute(ir.getRequest(ctx), "GET", fmt.Sprintf("%s/v1/identities", ir.ServerURL), nil, &users); err != nil {
+	if err := Execute(ir.getRequest(ctx), "GET", fmt.Sprintf("%s/v1/identities", ir.ServerURL), nil, &resp); err != nil {
 		return nil, err
 	}
 
-	return users, nil
+	return resp.Data, nil
 }
 
 // GetUser GetUser
