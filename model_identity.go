@@ -4,8 +4,9 @@ import "time"
 
 // User User
 type User struct {
-	UserID      string      `mapstructure:"uuid" json:"uuid"`
-	Name        string      `mapstructure:"name" json:"name"`
+	ID          uint64      `mapstructure:"id" json:"id"`
+	UUID        string      `mapstructure:"uuid" json:"uuid"`
+	Name        string      `mapstructure:"name" json:"name,omitempty"`
 	PhoneCode   string      `mapstructure:"phone_code" json:"phone_code"`
 	PhoneNumber string      `mapstructure:"phone_number" json:"phone_number"`
 	Email       string      `mapstructure:"email" json:"email"`
@@ -15,6 +16,7 @@ type User struct {
 	Profile     *Profile    `mapstructure:"profile" json:"profile,omitempty"`
 	Status      string      `mapstructure:"status" json:"status"`
 	CreatedAt   time.Time   `mapstructure:"created_at" json:"created_at"`
+	AvatarUrl   string      `mapstructure:"avatar_url" json:"avatar_url"`
 }
 
 // Profile profile

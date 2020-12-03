@@ -12,7 +12,7 @@ import (
 
 // GetAllUsers GetAllUsers
 func (ir IdentityRequest) GetAllUsers(ctx context.Context) ([]*User, error) {
-	var resp struct{
+	var resp struct {
 		Data []*User `json:"data"`
 	}
 
@@ -37,7 +37,6 @@ func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bo
 	if err := Execute(ir.getRequest(ctx), "GET", url, nil, &resp); err != nil {
 		return nil, err
 	}
-
 	return &resp, nil
 }
 
