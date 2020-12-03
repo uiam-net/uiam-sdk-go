@@ -4,7 +4,7 @@ import "time"
 
 // User User
 type User struct {
-	ID          uint64      `mapstructure:"id" json:"id"`
+	ID          uint64      `mapstructure:"id" json:"id,omitempty"`
 	UUID        string      `mapstructure:"uuid" json:"uuid"`
 	Name        string      `mapstructure:"name" json:"name,omitempty"`
 	PhoneCode   string      `mapstructure:"phone_code" json:"phone_code"`
