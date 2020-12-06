@@ -11,16 +11,14 @@ import (
 // ============ api ============= //
 
 // GetAllUsers GetAllUsers
-func (ir IdentityRequest) GetAllUsers(ctx context.Context) ([]*User, error) {
-	var resp struct {
-		Data []*User `json:"data"`
-	}
+func (ir IdentityRequest) GetAllUsers(ctx context.Context) (*BasePageResponse, error) {
+	var resp BasePageResponse
 
 	if err := Execute(ir.getRequest(ctx), "GET", fmt.Sprintf("%s/v1/identities", ir.ServerURL), nil, &resp); err != nil {
 		return nil, err
 	}
 
-	return resp.Data, nil
+	return &resp, nil
 }
 
 // GetUser GetUser
