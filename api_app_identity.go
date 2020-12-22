@@ -42,7 +42,7 @@ func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bo
 func (ir IdentityRequest) GetUsersByIdentityIDs(ctx context.Context, identityIDs []string) ([]*User, error) {
 	var users []*User
 
-	if err := Execute(ir.getRequest(ctx), "GET", fmt.Sprintf("%s/v1/users?id=%s", ir.ServerURL, strings.Join(identityIDs, ",")), nil, &users); err != nil {
+	if err := Execute(ir.getRequest(ctx), "GET", fmt.Sprintf("%s/v1/identities?id=%s", ir.ServerURL, strings.Join(identityIDs, ",")), nil, &users); err != nil {
 		return nil, err
 	}
 
