@@ -38,6 +38,18 @@ func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bo
 	return &resp, nil
 }
 
+// GetUser GetUser
+func (ir IdentityRequest) UpdateUser(ctx context.Context, req *UpdateRequest) (*User, error) {
+	var resp User
+
+	url := fmt.Sprintf("%s/v1/identities/%s", ir.ServerURL, req.UserID, req)
+
+	if err := Execute(ir.getRequest(ctx), "PATCH", url, req, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // GetAllUsers GetAllUsers
 func (ir IdentityRequest) GetUsersByIdentityIDs(ctx context.Context, identityIDs []string) ([]*User, error) {
 	var users []*User

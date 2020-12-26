@@ -4,14 +4,22 @@ import "time"
 
 // CreateUserReq CreateUserReq
 type CreateUserReq struct {
-	Name        string `json:"username"`
-	Type        string `json:"type"`
-	PhoneCode   string `json:"phone_code"`
-	PhoneNumber string `json:"phone_number"`
-	Email       string `json:"email"`
-	Password    string `json:"password"`
-	AvatarURL   string `json:"avatar_url"`
-	Description string `json:"description"`
+	Name        string    `json:"username"`
+	Type        string    `json:"type"`
+	PhoneCode   string    `json:"phone_code"`
+	PhoneNumber string    `json:"phone_number"`
+	Email       string    `json:"email"`
+	Password    string    `json:"password"`
+	AvatarURL   string    `json:"avatar_url"`
+	Description string    `json:"description"`
+	Attributes  Attribute `json:"attributes"`
+}
+
+// UpdateRequest UpdateRequest
+type UpdateRequest struct {
+	UserID string    `json:"user_id"`
+	Name       string    `json:"username" `
+	Attributes Attribute `json:"attributes"`
 }
 
 // UserModifyReq UserModifyReq
