@@ -42,7 +42,7 @@ func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bo
 func (ir IdentityRequest) UpdateUser(ctx context.Context, req *UpdateRequest) (*User, error) {
 	var resp User
 
-	url := fmt.Sprintf("%s/v1/identities/%s", ir.ServerURL, req.UserID, req)
+	url := fmt.Sprintf("%s/v1/identities/%s", ir.ServerURL, req.UserID)
 
 	if err := Execute(ir.getRequest(ctx), "PATCH", url, req, &resp); err != nil {
 		return nil, err
