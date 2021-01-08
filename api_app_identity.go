@@ -39,7 +39,7 @@ func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bo
 }
 
 // UpdateUser GetUser
-func (ir IdentityRequest) UpdateUser(ctx context.Context, req *UpdateRequest) (*User, error) {
+func (ir IdentityRequest) UpdateUser(ctx context.Context, req *UpdateBasicUpdateRequest) (*User, error) {
 	var resp User
 
 	url := fmt.Sprintf("%s/v1/identities/%s", ir.ServerURL, req.UserID)
@@ -113,7 +113,7 @@ func (ir IdentityRequest) CreateUser(ctx context.Context, req *CreateUserReq) (*
 }
 
 // ChangePassword ChangePassword
-func (ir IdentityRequest) ChangePassword(ctx context.Context, req *UserModifyReq) (*User, error) {
+func (ir IdentityRequest) ChangePassword(ctx context.Context, req *UserFullUpdateRequest) (*User, error) {
 	var user User
 
 	url := fmt.Sprintf("%s/v1/identities/%v/password", ir.ServerURL, req.UserID)
@@ -126,7 +126,7 @@ func (ir IdentityRequest) ChangePassword(ctx context.Context, req *UserModifyReq
 }
 
 // ChangePhone ChangePhone
-func (ir IdentityRequest) ChangePhone(ctx context.Context, req *UserModifyReq) (*User, error) {
+func (ir IdentityRequest) ChangePhone(ctx context.Context, req *UserFullUpdateRequest) (*User, error) {
 	var user User
 
 	url := fmt.Sprintf("%s/v1/identities/%d/phone", ir.ServerURL, req.UserID)
