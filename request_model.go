@@ -4,7 +4,7 @@ import "time"
 
 // CreateUserReq CreateUserReq
 type CreateUserReq struct {
-	Name        string    `json:"username"`
+	Username    string    `json:"username"`
 	Type        string    `json:"type"`
 	PhoneCode   string    `json:"phone_code"`
 	PhoneNumber string    `json:"phone_number"`
@@ -15,24 +15,27 @@ type CreateUserReq struct {
 	Attributes  Attribute `json:"attributes"`
 }
 
-// UpdateRequest UpdateRequest
-type UpdateRequest struct {
-	UserID string    `json:"user_id"`
-	Name       string    `json:"username" `
-	Attributes Attribute `json:"attributes"`
+// UpdateBasicUpdateRequest UpdateRequest
+type UpdateBasicUpdateRequest struct {
+	UserID      string    `json:"user_id"`
+	Username    string    `json:"username"`
+	Description string    `json:"description"`
+	AvatarURL   string    `json:"avatar_url"`
+	Attributes  Attribute `json:"attributes"`
 }
 
-// UserModifyReq UserModifyReq
-type UserModifyReq struct {
-	UserID      uint64 `json:"user_id"`
-	UserName    string `json:"username"`
-	Type        string `json:"type"`
-	PhoneCode   string `json:"phone_code"`
-	PhoneNumber string `json:"phone_number"`
-	Email       string `json:"email"`
-	Password    string `json:"password"`
-	AvatarURL   string `json:"avatar_url"`
-	Description string `json:"description"`
+// UserFullUpdateRequest UserModifyReq
+type UserFullUpdateRequest struct {
+	UserID      uint64    `json:"user_id"`
+	Username    string    `json:"username"`
+	Type        string    `json:"type"`
+	PhoneCode   string    `json:"phone_code"`
+	PhoneNumber string    `json:"phone_number"`
+	Email       string    `json:"email"`
+	Password    string    `json:"password"`
+	AvatarURL   string    `json:"avatar_url"`
+	Description string    `json:"description"`
+	Attributes  Attribute `json:"attributes"`
 }
 
 // LoginRequest LoginRequest
@@ -95,8 +98,8 @@ type PhoneCodeVerifyRequest struct {
 type AuthBindingRequest struct {
 	UserID      uint64               `json:"user_id"`
 	Provider    AuthProviderTypeEnum `json:"provider"`
-	OauthID     string               `json:"oauth_id" `
-	UnionID     string               `json:"union_id" `
+	OauthID     string               `json:"oauth_id"`
+	UnionID     string               `json:"union_id"`
 	Credential  string               `json:"credential"`
 	AppUserName string               `json:"app_user_name"`
 	AppUserID   string               `json:"app_user_id"`

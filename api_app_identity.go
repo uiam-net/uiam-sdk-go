@@ -38,7 +38,7 @@ func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bo
 	return &resp, nil
 }
 
-// GetUser GetUser
+// UpdateUser GetUser
 func (ir IdentityRequest) UpdateUser(ctx context.Context, req *UpdateRequest) (*User, error) {
 	var resp User
 
@@ -50,7 +50,7 @@ func (ir IdentityRequest) UpdateUser(ctx context.Context, req *UpdateRequest) (*
 	return &resp, nil
 }
 
-// GetAllUsers GetAllUsers
+// GetUsersByIdentityIDs GetAllUsers
 func (ir IdentityRequest) GetUsersByIdentityIDs(ctx context.Context, identityIDs []string) ([]*User, error) {
 	var users []*User
 

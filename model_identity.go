@@ -15,7 +15,7 @@ type User struct {
 	Profile     *Profile    `mapstructure:"profile" json:"profile,omitempty"`
 	Status      string      `mapstructure:"status" json:"status"`
 	CreatedAt   time.Time   `mapstructure:"created_at" json:"created_at"`
-	AvatarUrl   string      `mapstructure:"avatar_url" json:"avatar_url"`
+	AvatarURL   string      `mapstructure:"avatar_url" json:"avatar_url"`
 }
 
 // Profile profile
