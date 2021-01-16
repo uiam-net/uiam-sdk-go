@@ -1,6 +1,8 @@
 package uiamsdk
 
-import "time"
+import (
+	"time"
+)
 
 // CreateUserReq CreateUserReq
 type CreateUserReq struct {
@@ -36,6 +38,12 @@ type UserFullUpdateRequest struct {
 	AvatarURL   string    `json:"avatar_url"`
 	Description string    `json:"description"`
 	Attributes  Attribute `json:"attributes"`
+}
+
+// UserResetPasswordRequest UpdateRequest
+type UserResetPasswordRequest struct {
+	UserID   string `json:"user_id"`
+	Password string `json:"password"`
 }
 
 // LoginRequest LoginRequest

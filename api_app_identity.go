@@ -113,7 +113,7 @@ func (ir IdentityRequest) CreateUser(ctx context.Context, req *CreateUserReq) (*
 }
 
 // ChangePassword ChangePassword
-func (ir IdentityRequest) ChangePassword(ctx context.Context, req *UserFullUpdateRequest) (*User, error) {
+func (ir IdentityRequest) ChangePassword(ctx context.Context, req *UserResetPasswordRequest) (*User, error) {
 	var user User
 
 	url := fmt.Sprintf("%s/v1/identities/%v/password", ir.ServerURL, req.UserID)
