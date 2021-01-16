@@ -43,6 +43,7 @@ type UserFullUpdateRequest struct {
 // UserResetPasswordRequest UpdateRequest
 type UserResetPasswordRequest struct {
 	UserID   string `json:"user_id"`
+	RealmID  string `json:"realm_id"`
 	Password string `json:"password"`
 }
 
