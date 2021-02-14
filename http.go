@@ -45,7 +45,7 @@ func Execute(request *resty.Request, method, url string, body interface{}, resp 
 		return err
 	}
 
-	//检查requestid
+	// 检查 requestid
 	sourceReqID := request.Header.Get(RequestIDKey)
 	returnReqID := r.Header().Get(RequestIDKey)
 
