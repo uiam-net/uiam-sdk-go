@@ -9,7 +9,7 @@ import (
 
 	gin "github.com/gin-gonic/gin"
 	resty "github.com/go-resty/resty/v2"
-	goutil "github.com/lanvige/goutils"
+	goutils "github.com/uiam-net/goutils"
 )
 
 // RequestIDKey RequestIDKey
@@ -96,7 +96,7 @@ func GenRequestID(ctx context.Context) string {
 	}
 
 	if requestID == "" {
-		requestID = goutil.UUIDV4StringGen()
+		requestID = goutils.UUIDV4StringGen()
 	}
 
 	return requestID
