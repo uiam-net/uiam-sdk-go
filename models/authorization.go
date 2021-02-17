@@ -13,9 +13,9 @@ type Authorization struct {
 	Provider    AuthProviderTypeEnum `json:"provider" gorm:"COLUMN:provider;NOT NULL;TYPE:VARCHAR(36)"`
 	OauthID     string               `json:"oauth_id" gorm:"COLUMN:oauth_id;NOT NULL;TYPE:VARCHAR(128)"`
 	UnionID     string               `json:"union_id" gorm:"COLUMN:union_id;NOT NULL;TYPE:VARCHAR(128)"`
-	AppUserID   string               `json:"app_user_id" gorm:"COLUMN:app_user_id;NOT NULL;TYPE:VARCHAR(36)"`
-	AppUserName string               `json:"app_user_name" gorm:"COLUMN:app_user_name;NOT NULL;TYPE:VARCHAR(36)"`
-	Credential  string               `json:"credential" gorm:"COLUMN:credential;NOT NULL VARCHAR(1024)"`
+	AppUserID   string               `json:"app_user_id" gorm:"COLUMN:app_user_id;TYPE:VARCHAR(36)"`
+	AppUserName string               `json:"app_user_name" gorm:"COLUMN:app_user_name;TYPE:VARCHAR(36)"`
+	Credential  Attribute            `json:"credential" gorm:"COLUMN:credential;TYPE:json"`
 	CreatedAt   time.Time            `json:"created_at" gorm:"COLUMN:created_at;NOT NULL"`
 	UpdatedAt   time.Time            `json:"updated_at" gorm:"COLUMN:updated_at;NOT NULL"`
 }
@@ -23,17 +23,6 @@ type Authorization struct {
 // TableName TableName
 func (Authorization) TableName() string {
 	return "authorizations"
-}
-
-// AuthorizationList AuthorizationList
-type AuthorizationList struct {
-	Data       []*Authorization `json:"data"`
-	Pagination Pagination       `json:"pagination"`
-}
-
-// AuthObject Auths
-type AuthObject struct {
-	WechatAuth *WechatAuth `json:"wechat,omitempty"`
 }
 
 // ================ Wechat ================== //
@@ -47,8 +36,8 @@ type WechatCredential struct {
 	SessionKey   string `json:"session_key,omitempty"` // Weapp 加密数据用
 }
 
-// WechatAuth WechatAuth
-type WechatAuth struct {
+// WechatAuth1 WechatAuth
+type WechatAuth1 struct {
 	IdentityID string            `json:"identity_id"`
 	RealmID    string            `json:"realm_id"`
 	Provider   string            `json:"provider"`

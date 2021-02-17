@@ -33,9 +33,19 @@ type IdentityCreateRequest struct {
 	Attributes   uiammodels.Attribute        `json:"attributes"`
 }
 
+// IdentityChangePhoneRequest IdentityRequest
+type IdentityChangePhoneRequest struct {
+	BaseRequest
+
+	PhoneCode   string `json:"phone_code" binding:"required,min=1"`
+	PhoneNumber string `json:"phone_number" binding:"required,min=1"`
+	Email       string `json:"email"`
+}
+
 // IdentityUpdateRequest IdentityUpdateRequest
 type IdentityUpdateRequest struct {
 	BaseRequest
+
 	IdentityName string                      `json:"username" `
 	Type         uiammodels.IdentityTypeEnum `json:"type"`
 	PhoneCode    string                      `json:"phone_code"`
@@ -47,42 +57,35 @@ type IdentityUpdateRequest struct {
 	Attributes   uiammodels.Attribute        `json:"attributes"`
 }
 
-// IdentityMixinCreateRequest IdentityRequest
-type IdentityMixinCreateRequest struct {
+// =================== Auth =================== //
+
+// AuthMixinCreateRequest AuthMixinCreateRequest
+type AuthMixinCreateRequest struct {
 	BaseRequest
 
-	IdentityName string `json:"username"`
-	PhoneCode    string `json:"phone_code" binding:"required,min=1"`
-	PhoneNumber  string `json:"phone_number" binding:"required,min=4"`
-	Email        string `json:"email"`
-	AvatarURL    string `json:"avatar_url"`
-	Description  string `json:"description"`
-	MixinID      string `json:"mixin_id" binding:"required,min=1"`
-	MixinName    string `json:"mixin_name"`
-	OauthID      string `json:"oauth_id" binding:"required,min=4"`
-	Credential   string `json:"credential"`
+	IdentityName string               `json:"username"`
+	PhoneCode    string               `json:"phone_code" binding:"required,min=1"`
+	PhoneNumber  string               `json:"phone_number" binding:"required,min=4"`
+	Email        string               `json:"email"`
+	AvatarURL    string               `json:"avatar_url"`
+	Description  string               `json:"description"`
+	MixinID      string               `json:"mixin_id" binding:"required,min=1"`
+	MixinName    string               `json:"mixin_name"`
+	OauthID      string               `json:"oauth_id" binding:"required,min=4"`
+	Credential   uiammodels.Attribute `json:"credential"`
 }
 
-// IdentityWechatCreateRequest IdentityRequest
-type IdentityWechatCreateRequest struct {
+// AuthWechatCreateRequest IdentityRequest
+type AuthWechatCreateRequest struct {
 	BaseRequest
 
-	IdentityName string `json:"username"`
-	PhoneCode    string `json:"phone_code"`
-	PhoneNumber  string `json:"phone_number"`
-	Email        string `json:"email"`
-	AvatarURL    string `json:"avatar_url"`
-	Description  string `json:"description"`
-	OauthID      string `json:"oauth_id" binding:"required,min=4"`
-	UnionID      string `json:"union_id"`
-	Credential   string `json:"credential"`
-}
-
-// IdentityChangePhoneRequest IdentityRequest
-type IdentityChangePhoneRequest struct {
-	BaseRequest
-
-	PhoneCode   string `json:"phone_code" binding:"required,min=1"`
-	PhoneNumber string `json:"phone_number" binding:"required,min=1"`
-	Email       string `json:"email"`
+	IdentityName string               `json:"username"`
+	PhoneCode    string               `json:"phone_code"`
+	PhoneNumber  string               `json:"phone_number"`
+	Email        string               `json:"email"`
+	AvatarURL    string               `json:"avatar_url"`
+	Description  string               `json:"description"`
+	OauthID      string               `json:"oauth_id" binding:"required,min=4"`
+	UnionID      string               `json:"union_id"`
+	Credential   uiammodels.Attribute `json:"credential"`
 }

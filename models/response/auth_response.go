@@ -1,7 +1,6 @@
 package response
 
 import (
-	"encoding/json"
 	"time"
 
 	uiammodels "github.com/uiam-net/uiam-sdk-go/models"
@@ -32,7 +31,7 @@ type AuthorizationResponse struct {
 	UnionID     string                          `json:"union_id"`
 	AppUserID   string                          `json:"app_user_id"`
 	AppUserName string                          `json:"app_user_name"`
-	Credential  string                          `json:"credential"`
+	Credential  uiammodels.Attribute            `json:"credential"`
 	CreatedAt   time.Time                       `json:"created_at"`
 	UpdatedAt   time.Time                       `json:"updated_at"`
 }
@@ -86,23 +85,23 @@ func NewMixinAuthCredentialResp(auth *uiammodels.Authorization) *MixinAuthCreden
 	// Deserialization Credential
 	mixinCredential := new(MixinCredentialResp)
 
-	if auth.Credential != "" {
-		var mapCredential map[string]interface{}
+	// if auth.Credential != "" {
+	// 	var mapCredential map[string]interface{}
 
-		if err := json.Unmarshal([]byte(auth.Credential), &mapCredential); err == nil {
-			switch mapCredential["type"] {
-			case uiammodels.MixinCredentialTypeEnumEdkey.String():
-				json.Unmarshal([]byte(auth.Credential), mixinCredential)
-				mixinCredential.Type = uiammodels.MixinCredentialTypeEnumEdkey
-			case uiammodels.MixinCredentialTypeEnumToken.String():
-				json.Unmarshal([]byte(auth.Credential), mixinCredential)
-				mixinCredential.Type = uiammodels.MixinCredentialTypeEnumToken
-			default:
-				json.Unmarshal([]byte(auth.Credential), mixinCredential)
-				mixinCredential.Type = uiammodels.MixinCredentialTypeEnumToken
-			}
-		}
-	}
+	// 	if err := json.Unmarshal([]byte(auth.Credential), &mapCredential); err == nil {
+	// 		switch mapCredential["type"] {
+	// 		case uiammodels.MixinCredentialTypeEnumEdkey.String():
+	// 			json.Unmarshal([]byte(auth.Credential), mixinCredential)
+	// 			mixinCredential.Type = uiammodels.MixinCredentialTypeEnumEdkey
+	// 		case uiammodels.MixinCredentialTypeEnumToken.String():
+	// 			json.Unmarshal([]byte(auth.Credential), mixinCredential)
+	// 			mixinCredential.Type = uiammodels.MixinCredentialTypeEnumToken
+	// 		default:
+	// 			json.Unmarshal([]byte(auth.Credential), mixinCredential)
+	// 			mixinCredential.Type = uiammodels.MixinCredentialTypeEnumToken
+	// 		}
+	// 	}
+	// }
 
 	mixinAuth := new(MixinAuthCredentialResponse)
 	mixinAuth.IdentityID = auth.IdentityID

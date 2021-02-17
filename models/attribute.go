@@ -25,5 +25,6 @@ func (attr Attribute) Value() (driver.Value, error) {
 // Scan Scan
 func (attr *Attribute) Scan(v interface{}) error {
 	str := string(v.([]byte))
+
 	return json.Unmarshal([]byte(str), &attr)
 }

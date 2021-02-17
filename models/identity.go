@@ -16,8 +16,6 @@ type Identity struct {
 	AvatarURL      string             `mapstructure:"avatar_url" json:"avatar_url" gorm:"COLUMN:avatar_url;TYPE:VARCHAR(1024)"`
 	Description    string             `mapstructure:"description" json:"description"  gorm:"COLUMN:description;NOT NULL;TYPE:VARCHAR(255)"`
 	Remark         string             `mapstructure:"remark" json:"remark" gorm:"COLUMN:remark;NOT NULL;TYPE:VARCHAR(255)"`
-	Auths          *AuthObject        `mapstructure:"authorizations" json:"authorizations,omitempty"`
-	Profile        *Profile           `mapstructure:"profile" json:"profile,omitempty"`
 	MfaCredential  string             `mapstructure:"mfa_credential" json:"mfa_credential" gorm:"COLUMN:mfa_credential;TYPE:VARCHAR(255)"`
 	Attributes     Attribute          `mapstructure:"attributes" json:"attributes" gorm:"COLUMN:attributes;TYPE:json"`
 	Status         IdentityStatusEnum `mapstructure:"status" json:"status" gorm:"COLUMN:status;NOT NULL;TYPE:VARCHAR(18)"`
