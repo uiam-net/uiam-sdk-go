@@ -10,6 +10,8 @@ import (
 	gin "github.com/gin-gonic/gin"
 	resty "github.com/go-resty/resty/v2"
 	goutils "github.com/uiam-net/goutils"
+	uiammodels "github.com/uiam-net/uiam-sdk-go/models"
+	uiamerr "github.com/uiam-net/uiam-sdk-go/utils/error"
 )
 
 // RequestIDKey RequestIDKey
@@ -50,7 +52,7 @@ func Execute(request *resty.Request, method, url string, body interface{}, resp 
 	returnReqID := r.Header().Get(RequestIDKey)
 
 	if sourceReqID == "" || returnReqID == "" || sourceReqID != returnReqID {
-		return NewAppError("RequestID Not Match")
+		return uiammodels.NewAppError("RequestID Not Match")
 	}
 
 	return ParseResponse(r, resp)
@@ -66,7 +68,7 @@ func ParseResponse(r *resty.Response, obj interface{}) error {
 	}
 
 	if r.IsError() {
-		var appErr AppError
+		var appErr uiamerr.AppError
 		if err := json.Unmarshal([]byte(r.Body()), obj); err != nil {
 			return err
 		}

@@ -7,16 +7,22 @@ import (
 
 // Authorization Authorization
 type Authorization struct {
-	ID         uint64               `json:"id"`
-	IdentityID string               `json:"identity_id"`
-	RealmID    string               `json:"realm_id"`
-	Provider   AuthProviderTypeEnum `json:"provider"`
-	OauthID    string               `json:"oauth_id"`
-	UnionID    string               `json:"union_id"`
-	AppUserID  string               `json:"app_user_id"`
-	Credential string               `json:"credential"`
-	CreatedAt  time.Time            `json:"created_at"`
-	UpdatedAt  time.Time            `json:"updated_at"`
+	ID          uint64               `json:"id" gorm:"PRIMARY_KEY;NOT NULL"`
+	IdentityID  string               `json:"identity_id" gorm:"COLUMN:identity_id;NOT NULL;TYPE:BIGINT()"`
+	RealmID     string               `json:"realm_id" gorm:"COLUMN:realm_id;NOT NULL;TYPE:VARCHAR(36)"`
+	Provider    AuthProviderTypeEnum `json:"provider" gorm:"COLUMN:provider;NOT NULL;TYPE:VARCHAR(36)"`
+	OauthID     string               `json:"oauth_id" gorm:"COLUMN:oauth_id;NOT NULL;TYPE:VARCHAR(128)"`
+	UnionID     string               `json:"union_id" gorm:"COLUMN:union_id;NOT NULL;TYPE:VARCHAR(128)"`
+	AppUserID   string               `json:"app_user_id" gorm:"COLUMN:app_user_id;NOT NULL;TYPE:VARCHAR(36)"`
+	AppUserName string               `json:"app_user_name" gorm:"COLUMN:app_user_name;NOT NULL;TYPE:VARCHAR(36)"`
+	Credential  string               `json:"credential" gorm:"COLUMN:credential;NOT NULL VARCHAR(1024)"`
+	CreatedAt   time.Time            `json:"created_at" gorm:"COLUMN:created_at;NOT NULL"`
+	UpdatedAt   time.Time            `json:"updated_at" gorm:"COLUMN:updated_at;NOT NULL"`
+}
+
+// TableName TableName
+func (Authorization) TableName() string {
+	return "authorizations"
 }
 
 // AuthorizationList AuthorizationList
