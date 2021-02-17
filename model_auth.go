@@ -38,6 +38,7 @@ type WechatCredential struct {
 	Scope        string `json:"scope"`
 	ExpiresIn    int    `json:"expires_in,omitempty"`
 	RefreshToken string `json:"refresh_token,omitempty"`
+	SessionKey   string `json:"session_key,omitempty"` // Weapp 加密数据用
 }
 
 // WechatAuth WechatAuth
