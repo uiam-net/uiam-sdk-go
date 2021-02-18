@@ -43,10 +43,10 @@ func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bo
 }
 
 // UpdateUser GetUser
-func (ir IdentityRequest) UpdateUser(ctx context.Context, req *uiamreq.UpdateBasicUpdateRequest) (*uiammodels.Identity, error) {
+func (ir IdentityRequest) UpdateUser(ctx context.Context, req *uiamreq.IdentityUpsertRequest) (*uiammodels.Identity, error) {
 	var resp uiammodels.Identity
 
-	url := fmt.Sprintf("%s/v1/identities/%s", ir.ServerURL, req.UserID)
+	url := fmt.Sprintf("%s/v1/identities/%s", ir.ServerURL, req.IdentityUUID)
 
 	if err := Execute(ir.getRequest(ctx), "PATCH", url, req, &resp); err != nil {
 		return nil, err
@@ -106,7 +106,7 @@ func (ir IdentityRequest) VerifyUserPassword(ctx context.Context, identityID str
 }
 
 // CreateUser CreateUser
-func (ir IdentityRequest) CreateUser(ctx context.Context, req *uiamreq.CreateUserReq) (*uiammodels.Identity, error) {
+func (ir IdentityRequest) CreateUser(ctx context.Context, req *uiamreq.IdentityUpsertRequest) (*uiammodels.Identity, error) {
 	var user uiammodels.Identity
 
 	if err := Execute(ir.getRequest(ctx), "POST", fmt.Sprintf("%s%s", ir.ServerURL, "/v1/identities"), req, &user); err != nil {
@@ -130,10 +130,10 @@ func (ir IdentityRequest) ChangePassword(ctx context.Context, req *uiamreq.UserR
 }
 
 // ChangePhone ChangePhone
-func (ir IdentityRequest) ChangePhone(ctx context.Context, req *uiamreq.UserFullUpdateRequest) (*uiammodels.Identity, error) {
+func (ir IdentityRequest) ChangePhone(ctx context.Context, req *uiamreq.IdentityUpsertRequest) (*uiammodels.Identity, error) {
 	var user uiammodels.Identity
 
-	url := fmt.Sprintf("%s/v1/identities/%d/phone", ir.ServerURL, req.UserID)
+	url := fmt.Sprintf("%s/v1/identities/%v/phone", ir.ServerURL, req.IdentityUUID)
 
 	if err := Execute(ir.getRequest(ctx), "PUT", url, req, &user); err != nil {
 		return nil, err

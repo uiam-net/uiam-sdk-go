@@ -18,10 +18,11 @@ type IdentityListRequest struct {
 	Expand        string                          `form:"expand"`
 }
 
-// IdentityCreateRequest IdentityRequest
-type IdentityCreateRequest struct {
+// IdentityUpsertRequest IdentityUpsertRequest
+type IdentityUpsertRequest struct {
 	BaseRequest
 
+	IdentityUUID string                      `json:"uuid"`
 	IdentityName string                      `json:"username" binding:"required,min=1"`
 	Type         uiammodels.IdentityTypeEnum `json:"type" binding:"required,min=1"`
 	PhoneCode    string                      `json:"phone_code" binding:"required,min=1"`
@@ -33,6 +34,17 @@ type IdentityCreateRequest struct {
 	Attributes   uiammodels.Attribute        `json:"attributes"`
 }
 
+// IdentityUpdateBasicRequest UpdateRequest
+type IdentityUpdateBasicRequest struct {
+	IdentityUUID string               `json:"user_id"`
+	Username     string               `json:"username"`
+	Description  string               `json:"description"`
+	AvatarURL    string               `json:"avatar_url"`
+	Attributes   uiammodels.Attribute `json:"attributes"`
+}
+
+// ================ Update ================= //
+
 // IdentityChangePhoneRequest IdentityRequest
 type IdentityChangePhoneRequest struct {
 	BaseRequest
@@ -42,17 +54,9 @@ type IdentityChangePhoneRequest struct {
 	Email       string `json:"email"`
 }
 
-// IdentityUpdateRequest IdentityUpdateRequest
-type IdentityUpdateRequest struct {
-	BaseRequest
-
-	IdentityName string                      `json:"username" `
-	Type         uiammodels.IdentityTypeEnum `json:"type"`
-	PhoneCode    string                      `json:"phone_code"`
-	PhoneNumber  string                      `json:"phone_number"`
-	Email        string                      `json:"email"`
-	Password     string                      `json:"password"`
-	AvatarURL    string                      `json:"avatar_url"`
-	Description  string                      `json:"description"`
-	Attributes   uiammodels.Attribute        `json:"attributes"`
+// UserResetPasswordRequest UpdateRequest
+type UserResetPasswordRequest struct {
+	UserID   string `json:"user_id"`
+	RealmID  string `json:"realm_id"`
+	Password string `json:"password"`
 }

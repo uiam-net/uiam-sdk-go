@@ -3,7 +3,7 @@ package uiamsdk
 // BaseRequest BaseRequest
 type BaseRequest struct {
 	RealmID    string `json:"realm_id"`
-	IdentityID string `json:"Identity_id"`
+	IdentityID string `json:"identity_id"`
 	// Authorization string `json:"authorization"`
 }
 

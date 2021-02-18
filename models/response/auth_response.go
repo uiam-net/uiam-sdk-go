@@ -23,7 +23,6 @@ type AuthVerifyResponse struct {
 
 // AuthorizationResponse AuthorizationResponse
 type AuthorizationResponse struct {
-	ID          uint64                          `json:"id"`
 	IdentityID  string                          `json:"identity_id"`
 	RealmID     string                          `json:"realm_id"`
 	Provider    uiammodels.AuthProviderTypeEnum `json:"provider"`

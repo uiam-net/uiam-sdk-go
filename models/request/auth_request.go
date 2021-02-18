@@ -35,3 +35,36 @@ type AuthCreateRequest struct {
 	AppUserName string                          `json:"app_user_name"`
 	Credential  uiammodels.Attribute            `json:"credential"`
 }
+
+// ============= AuthRequest ============= //
+
+// AuthBindingRequest  auth 绑定
+type AuthBindingRequest struct {
+	BaseRequest
+
+	UserID      uint64                          `json:"user_id"`
+	Provider    uiammodels.AuthProviderTypeEnum `json:"provider"`
+	OauthID     string                          `json:"oauth_id"`
+	UnionID     string                          `json:"union_id"`
+	AppUserName string                          `json:"app_user_name"`
+	AppUserID   string                          `json:"app_user_id"`
+	Credential  uiammodels.Attribute            `json:"credential"`
+}
+
+// AuthVerifyRequest AuthVerifyRequest
+type AuthVerifyRequest struct {
+	BaseRequest
+
+	Scheme      uiammodels.AuthSchemeEnum `json:"scheme"` // 如果没有 Scheme，就按 Raw 解析
+	Credentials string                    `json:"credentials"`
+	RawAuth     string                    `json:"raw_auth"`
+}
+
+// AuthListRequest 用户表求
+type AuthListRequest struct {
+	BaseRequest
+
+	Offset   int                             `form:"offset" binding:"gte=0"`
+	Limit    int                             `form:"limit" binding:"required,gte=1,lte=500"`
+	Provider uiammodels.AuthProviderTypeEnum `form:"provider"`
+}
