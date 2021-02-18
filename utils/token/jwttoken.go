@@ -10,7 +10,7 @@ import (
 )
 
 // GenJWTHSToken GenJWTHSToken
-func GenJWTHSToken(identityID, realmID string, sccret string, duration time.Duration) (string, error) {
+func GenJWTHSToken(identityID, realmID, sessionID string, sccret string, duration time.Duration) (string, error) {
 	myJWTClaims := uiammodels.AppJWTPayload{
 		StandardClaims: jwtgo.StandardClaims{
 			Audience:  identityID,
@@ -19,6 +19,8 @@ func GenJWTHSToken(identityID, realmID string, sccret string, duration time.Dura
 			ExpiresAt: time.Now().Add(duration).Unix(),
 		},
 	}
+
+	myJWTClaims.SessionID = sessionID
 
 	code, err := goutilsauth.GenerateHS256Token(sccret, &myJWTClaims)
 
