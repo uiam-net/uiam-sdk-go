@@ -11,17 +11,17 @@ import (
 // ============ api ============= //
 // ============ api ============= //
 
-// GetAuths GetAuths
-func (ir IdentityRequest) GetAuths(ctx context.Context, provider string, offset, limit int) (*uiammodels.AuthorizationList, error) {
-	var auths uiammodels.AuthorizationList
-	var url = fmt.Sprintf("%s/v1/auths?provider=%s&limit=%v&offset=%v", ir.ServerURL, provider, limit, offset)
+// // GetAuths GetAuths
+// func (ir IdentityRequest) GetAuths(ctx context.Context, provider string, offset, limit int) (*uiammodels.AuthorizationList, error) {
+// 	var auths uiammodels.AuthorizationList
+// 	var url = fmt.Sprintf("%s/v1/auths?provider=%s&limit=%v&offset=%v", ir.ServerURL, provider, limit, offset)
 
-	if err := Execute(ir.getRequest(ctx), "GET", url, nil, &auths); err != nil {
-		return nil, err
-	}
+// 	if err := Execute(ir.getRequest(ctx), "GET", url, nil, &auths); err != nil {
+// 		return nil, err
+// 	}
 
-	return &auths, nil
-}
+// 	return &auths, nil
+// }
 
 // GenToken GenToken
 func (ir IdentityRequest) GenToken(ctx context.Context, req *uiamreq.TokenCreateRequest) (*uiammodels.Token, error) {
