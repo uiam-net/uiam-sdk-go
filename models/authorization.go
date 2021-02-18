@@ -25,30 +25,6 @@ func (Authorization) TableName() string {
 	return "authorizations"
 }
 
-// ================ Wechat ================== //
-
-// WechatCredential WechatCredential
-type WechatCredential struct {
-	AccessToken  string `json:"access_token"`
-	Scope        string `json:"scope"`
-	ExpiresIn    int    `json:"expires_in,omitempty"`
-	RefreshToken string `json:"refresh_token,omitempty"`
-	SessionKey   string `json:"session_key,omitempty"` // Weapp 加密数据用
-}
-
-// WechatAuth1 WechatAuth
-type WechatAuth1 struct {
-	IdentityID string            `json:"identity_id"`
-	RealmID    string            `json:"realm_id"`
-	Provider   string            `json:"provider"`
-	OauthID    string            `json:"oauth_id"`
-	UnionID    string            `json:"union_id"`
-	UserName   string            `json:"user_name"`
-	Credential *WechatCredential `json:"credential"`
-	CreatedAt  time.Time         `json:"created_at"`
-	UpdatedAt  time.Time         `json:"updated_at"`
-}
-
 // ================ 枚举 ================== //
 // ================ 枚举 ================== //
 
@@ -91,40 +67,7 @@ func NewAuthProviderTypeEnum(provider string) (AuthProviderTypeEnum, error) {
 	}
 }
 
-// ==================== Credential ================== //
-// ==================== Credential ================== //
-
-// MixinCredential MixinCredential
-type MixinCredential struct {
-	Type           MixinCredentialTypeEnum `json:"type"`
-	EdPrivKey      string                  `json:"ed_priv_key"`       // edkey
-	EdServerPubKey string                  `json:"ed_server_pub_key"` // edkey
-	ClientID       string                  `json:"client_id"`         // edkey
-	AuthID         string                  `json:"auth_id"`           // edkey
-	Scope          string                  `json:"scope"`             // token & edkey
-	AccessToken    string                  `json:"access_token"`      // token
-}
-
-// MixinCredentialTypeEnum 枚举
-type MixinCredentialTypeEnum string
-
-const (
-	// MixinCredentialTypeEnumEdkey edkey
-	MixinCredentialTypeEnumEdkey MixinCredentialTypeEnum = "edkey"
-	// MixinCredentialTypeEnumToken token
-	MixinCredentialTypeEnumToken MixinCredentialTypeEnum = "token"
-)
-
-func (e MixinCredentialTypeEnum) String() string {
-	switch e {
-	case MixinCredentialTypeEnumEdkey:
-		return "edkey"
-	case MixinCredentialTypeEnumToken:
-		return "token"
-	default:
-		return ""
-	}
-}
+// ========================= AuthTypeEnum ========================= //
 
 // AuthTypeEnum 枚举
 type AuthTypeEnum string
@@ -156,7 +99,6 @@ func (e AuthTypeEnum) String() string {
 }
 
 // ========================= AuthSchemeEnum ========================= //
-// ========================= AuthSchemeEnum ========================= //
 
 // AuthSchemeEnum 枚举
 type AuthSchemeEnum string
@@ -186,6 +128,67 @@ func (e AuthSchemeEnum) String() string {
 		return "jwtrs"
 	case AuthSchemeEnumJWTES:
 		return "jwtes"
+	default:
+		return ""
+	}
+}
+
+// ==================== Credential ================== //
+// ==================== Credential ================== //
+
+// ================ Wechat ================== //
+
+// WechatCredential WechatCredential
+type WechatCredential struct {
+	AccessToken  string `json:"access_token"`
+	Scope        string `json:"scope"`
+	ExpiresIn    int    `json:"expires_in,omitempty"`
+	RefreshToken string `json:"refresh_token,omitempty"`
+	SessionKey   string `json:"session_key,omitempty"` // Weapp 加密数据用
+}
+
+// WechatAuth WechatAuth
+type WechatAuth struct {
+	IdentityID string            `json:"identity_id"`
+	RealmID    string            `json:"realm_id"`
+	Provider   string            `json:"provider"`
+	OauthID    string            `json:"oauth_id"`
+	UnionID    string            `json:"union_id"`
+	UserName   string            `json:"user_name"`
+	Credential *WechatCredential `json:"credential"`
+	CreatedAt  time.Time         `json:"created_at"`
+	UpdatedAt  time.Time         `json:"updated_at"`
+}
+
+// ================ Mixin ================== //
+
+// MixinCredential MixinCredential
+type MixinCredential struct {
+	Type           MixinCredentialTypeEnum `json:"type"`
+	EdPrivKey      string                  `json:"ed_priv_key"`       // edkey
+	EdServerPubKey string                  `json:"ed_server_pub_key"` // edkey
+	ClientID       string                  `json:"client_id"`         // edkey
+	AuthID         string                  `json:"auth_id"`           // edkey
+	Scope          string                  `json:"scope"`             // token & edkey
+	AccessToken    string                  `json:"access_token"`      // token
+}
+
+// MixinCredentialTypeEnum 枚举
+type MixinCredentialTypeEnum string
+
+const (
+	// MixinCredentialTypeEnumEdkey edkey
+	MixinCredentialTypeEnumEdkey MixinCredentialTypeEnum = "edkey"
+	// MixinCredentialTypeEnumToken token
+	MixinCredentialTypeEnumToken MixinCredentialTypeEnum = "token"
+)
+
+func (e MixinCredentialTypeEnum) String() string {
+	switch e {
+	case MixinCredentialTypeEnumEdkey:
+		return "edkey"
+	case MixinCredentialTypeEnumToken:
+		return "token"
 	default:
 		return ""
 	}
