@@ -79,10 +79,13 @@ func (ir IdentityRequest) RegAuthAndID(ctx context.Context, req *uiamreq.AuthIDC
 }
 
 // UpdateAuthByID UpdateAuthByID
-func (ir IdentityRequest) UpdateAuthByID(ctx context.Context, req *uiamreq.AuthIDCreateRequest) (*uiamresp.AuthorizationResponse, error) {
+func (ir IdentityRequest) UpdateAuthByID(ctx context.Context, req *uiamreq.AuthUpdateRequest) (*uiamresp.AuthorizationResponse, error) {
 	var auth uiamresp.AuthorizationResponse
 
 	var url = fmt.Sprintf("%s/v1/identities/%s/auths/%s", ir.ServerURL, req.IdentityID, req.Provider)
+
+	// fmt.Printf("#INFO = IDAuthorizationupdate: %v", req.AppUserName)
+	// fmt.Printf("#INFO = IDAuthorizationupdate: %v", req.UnionID)
 
 	if err := Execute(ir.getRequest(ctx), "PATCH", url, req, &auth); err != nil {
 		return nil, err

@@ -43,7 +43,7 @@ func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bo
 }
 
 // UpdateUser GetUser
-func (ir IdentityRequest) UpdateUser(ctx context.Context, req *uiamreq.IdentityUpsertRequest) (*uiammodels.Identity, error) {
+func (ir IdentityRequest) UpdateUser(ctx context.Context, req *uiamreq.IdentityUpdateRequest) (*uiammodels.Identity, error) {
 	var resp uiammodels.Identity
 
 	url := fmt.Sprintf("%s/v1/identities/%s", ir.ServerURL, req.IdentityUUID)

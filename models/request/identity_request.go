@@ -31,7 +31,25 @@ type IdentityUpsertRequest struct {
 	Password     string                      `json:"password"`
 	AvatarURL    string                      `json:"avatar_url"`
 	Description  string                      `json:"description"`
+	Remark       string                      `json:"remark"`
 	Attributes   uiammodels.Attribute        `json:"attributes"`
+}
+
+// IdentityUpdateRequest IdentityUpdateRequest
+type IdentityUpdateRequest struct {
+	BaseRequest
+
+	IdentityUUID string                        `json:"uuid"`
+	IdentityName string                        `json:"username"`
+	PhoneCode    string                        `json:"phone_code"`
+	PhoneNumber  string                        `json:"phone_number"`
+	Email        string                        `json:"email"`
+	Password     string                        `json:"password"`
+	AvatarURL    string                        `json:"avatar_url"`
+	Description  string                        `json:"description"`
+	Remark       string                        `json:"remark"`
+	Attributes   uiammodels.Attribute          `json:"attributes"`
+	Status       uiammodels.IdentityStatusEnum `json:"status"`
 }
 
 // IdentityUpdateBasicRequest UpdateRequest
