@@ -36,6 +36,18 @@ type AuthCreateRequest struct {
 	Credential  uiammodels.Attribute            `json:"credential"`
 }
 
+// AuthUpdateRequest AuthUpdateRequest
+type AuthUpdateRequest struct {
+	BaseRequest
+
+	Provider    uiammodels.AuthProviderTypeEnum `json:"provider"`
+	OauthID     string                          `json:"oauth_id"`
+	UnionID     string                          `json:"union_id"`
+	AppUserID   string                          `json:"app_user_id"`
+	AppUserName string                          `json:"app_user_name"`
+	Credential  uiammodels.Attribute            `json:"credential"`
+}
+
 // ============= AuthRequest ============= //
 
 // AuthBindingRequest  auth 绑定
