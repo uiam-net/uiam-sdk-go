@@ -3,27 +3,27 @@ package response
 import (
 	"time"
 
-	uiammodels "github.com/uiam-net/uiam-sdk-go/models"
+	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
 // IdentityAuthsResponse Identity
 type IdentityAuthsResponse struct {
-	IdentityID   string                        `json:"uuid"`
-	IdentityName string                        `json:"name"`
-	PhoneCode    string                        `json:"phone_code"`
-	PhoneNumber  string                        `json:"phone_number"`
-	Email        string                        `json:"email"`
-	AvatarURL    string                        `json:"avatar_url"`
-	Description  string                        `json:"description"`
-	Auths        *AuthsResponse                `json:"authorizations,omitempty"`
-	Profile      *ProfileResponse              `json:"profile,omitempty"`
-	Attributes   uiammodels.Attribute          `json:"attributes"`
-	Status       uiammodels.IdentityStatusEnum `json:"status"`
-	CreatedAt    time.Time                     `json:"created_at"`
+	IdentityID   string                       `json:"uuid"`
+	IdentityName string                       `json:"name"`
+	PhoneCode    string                       `json:"phone_code"`
+	PhoneNumber  string                       `json:"phone_number"`
+	Email        string                       `json:"email"`
+	AvatarURL    string                       `json:"avatar_url"`
+	Description  string                       `json:"description"`
+	Auths        *AuthsResponse               `json:"authorizations,omitempty"`
+	Profile      *ProfileResponse             `json:"profile,omitempty"`
+	Attributes   uiammodel.Attribute          `json:"attributes"`
+	Status       uiammodel.IdentityStatusEnum `json:"status"`
+	CreatedAt    time.Time                    `json:"created_at"`
 }
 
 // NewIdentityAuthsResponse 构造函数
-func NewIdentityAuthsResponse(identity *uiammodels.Identity) *IdentityAuthsResponse {
+func NewIdentityAuthsResponse(identity *uiammodel.Identity) *IdentityAuthsResponse {
 	response := &IdentityAuthsResponse{
 		IdentityID:   identity.UUID,
 		IdentityName: identity.Name,
@@ -40,7 +40,7 @@ func NewIdentityAuthsResponse(identity *uiammodels.Identity) *IdentityAuthsRespo
 }
 
 // NewIdentityWithAuthsResponse 构造函数
-func NewIdentityWithAuthsResponse(identity *uiammodels.Identity, profile *uiammodels.Profile, auth *uiammodels.Authorization) *IdentityAuthsResponse {
+func NewIdentityWithAuthsResponse(identity *uiammodel.Identity, profile *uiammodel.Profile, auth *uiammodel.Authorization) *IdentityAuthsResponse {
 	response := &IdentityAuthsResponse{
 		IdentityID:   identity.UUID,
 		IdentityName: identity.Name,

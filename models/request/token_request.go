@@ -3,49 +3,26 @@ package uiamsdk
 import (
 	"time"
 
-	uiammodels "github.com/uiam-net/uiam-sdk-go/models"
+	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
 // TokenCreateRequest TokenCreateRequest
 type TokenCreateRequest struct {
 	BaseRequest
 
-	Scheme uiammodels.AuthSchemeEnum `json:"scheme"`
-
-	Audience  string `json:"aud,omitempty"`
-	Issuer    string `json:"iss,omitempty"`
-	NotBefore int64  `json:"nbf,omitempty"`
-	Subject   string `json:"sub,omitempty"`
+	Audience  string        `json:"aud,omitempty"` // IdentityID
+	Issuer    string        `json:"iss,omitempty"` // RealmID
+	Subject   string        `json:"sub,omitempty"` // Subject
+	NotBefore int64         `json:"nbf,omitempty"` //
+	Duration  time.Duration `json:"duration"`      // ExpriedAt 有效时长
 
 	// Custom
-	Provider  uiammodels.AuthProviderTypeEnum `json:"oap,omitempty"`
-	UID       string                          `json:"uid,omitempty"`
-	SessionID string                          `json:"sid,omitempty"`
-	Sign      string                          `json:"sig,omitempty"`
-	SignAlg   string                          `json:"sal,omitempty"`
-	Extra     string                          `json:"extra,omitempty"`
-
-	// ExpriedAt
-	Duration time.Duration `json:"duration"` //  有效时长
+	Type      uiammodel.AuthTypeEnum         `json:"type"`
+	Provider  uiammodel.AuthProviderTypeEnum `json:"oap,omitempty"`
+	Scheme    uiammodel.AuthSchemeEnum       `json:"scheme,omitempty"`
+	UID       string                         `json:"uid,omitempty"` // Audience
+	SessionID string                         `json:"sid,omitempty"` // AuthKey
+	Sign      string                         `json:"sig,omitempty"` // Sign
+	SignAlg   string                         `json:"sal,omitempty"` // SignAlg
+	Extra     string                         `json:"extra,omitempty"`
 }
-
-// // TokenCreateRequest TokenCreateRequest
-// type TokenCreateRequest struct {
-// 	Type   AuthTypeEnum   `json:"type"`
-// 	Scheme AuthSchemeEnum `json:"scheme"`
-
-// 	Audience  string `json:"aud,omitempty"` // 这个表示 UIAM_ID
-// 	Issuer    string `json:"iss,omitempty"`
-// 	NotBefore int64  `json:"nbf,omitempty"`
-// 	Subject   string `json:"sub,omitempty"`
-
-// 	// Custom
-// 	Provider  string `json:"oap"` // Wechat / Dingding
-// 	UID       string `json:"uid"` // 这个 UID 表示的是第三方系统的 ID，像 ZOTC 里的那个自己的
-// 	SessionID string `json:"sid"`
-// 	Sign      string `json:"sig"`
-// 	SignAlg   string `json:"sal"`
-
-// 	// ExpriedAt
-// 	Duration time.Duration `json:"duration"` //  有效时长
-// }

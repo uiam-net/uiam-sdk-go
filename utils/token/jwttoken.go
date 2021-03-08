@@ -6,12 +6,12 @@ import (
 
 	jwtgo "github.com/dgrijalva/jwt-go"
 	goutilsauth "github.com/uiam-net/goutils/auth"
-	uiammodels "github.com/uiam-net/uiam-sdk-go/models"
+	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
 // GenJWTHSToken GenJWTHSToken
 func GenJWTHSToken(identityID, realmID, sessionID string, sccret string, duration time.Duration) (string, error) {
-	myJWTClaims := uiammodels.AppJWTPayload{
+	myJWTClaims := uiammodel.AppJWTPayload{
 		StandardClaims: jwtgo.StandardClaims{
 			Audience:  identityID,
 			Issuer:    realmID,

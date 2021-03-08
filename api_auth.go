@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	uiammodels "github.com/uiam-net/uiam-sdk-go/models"
+	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 	uiamreq "github.com/uiam-net/uiam-sdk-go/models/request"
 	uiamresp "github.com/uiam-net/uiam-sdk-go/models/response"
 )
@@ -13,8 +13,8 @@ import (
 // ============ api ============= //
 
 // // GetAuths GetAuths
-// func (ir IdentityRequest) GetAuths(ctx context.Context, provider string, offset, limit int) (*uiammodels.AuthorizationList, error) {
-// 	var auths uiammodels.AuthorizationList
+// func (ir IdentityRequest) GetAuths(ctx context.Context, provider string, offset, limit int) (*uiammodel.AuthorizationList, error) {
+// 	var auths uiammodel.AuthorizationList
 // 	var url = fmt.Sprintf("%s/v1/auths?provider=%s&limit=%v&offset=%v", ir.ServerURL, provider, limit, offset)
 
 // 	if err := Execute(ir.getRequest(ctx), "GET", url, nil, &auths); err != nil {
@@ -39,7 +39,7 @@ func (ir IdentityRequest) GetIdentityAuths(ctx context.Context, uuid string) (*u
 }
 
 // GetIdentityAuth GetIdentityAuth
-func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, provider uiammodels.AuthProviderTypeEnum) (*uiamresp.AuthorizationResponse, error) {
+func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, provider uiammodel.AuthProviderTypeEnum) (*uiamresp.AuthorizationResponse, error) {
 	var auth uiamresp.AuthorizationResponse
 	var url = fmt.Sprintf("%s/v1/identities/%s/auths/%s", ir.ServerURL, uuid, provider)
 
@@ -53,7 +53,7 @@ func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, prov
 // ============ GET by OAuthID ============= //
 
 // GetAuthByOAuthID GetAuthByOAuthID
-func (ir IdentityRequest) GetAuthByOAuthID(ctx context.Context, provider uiammodels.AuthProviderTypeEnum, oauthID string) (*uiamresp.AuthorizationResponse, error) {
+func (ir IdentityRequest) GetAuthByOAuthID(ctx context.Context, provider uiammodel.AuthProviderTypeEnum, oauthID string) (*uiamresp.AuthorizationResponse, error) {
 	var auth uiamresp.AuthorizationResponse
 	var url = fmt.Sprintf("%s/v1/auths/%s/auths/%s", ir.ServerURL, provider, oauthID)
 
@@ -110,8 +110,8 @@ func (ir IdentityRequest) UpdateAuthByOauthID(ctx context.Context, req *uiamreq.
 // ============ ID - AUTH Bind ============= //
 
 // BindAuth BindAuth
-func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBindingRequest) (*uiammodels.Authorization, error) {
-	var auth uiammodels.Authorization
+func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBindingRequest) (*uiammodel.Authorization, error) {
+	var auth uiammodel.Authorization
 	var url = fmt.Sprintf("%s/v1/identities/%v/auths/%s/bind", ir.ServerURL, req.UserID, req.Provider)
 
 	if err := Execute(ir.getRequest(ctx), "PUT", url, req, &auth); err != nil {
@@ -122,7 +122,7 @@ func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBinding
 }
 
 // UnbindAuth BindAuth
-func (ir IdentityRequest) UnbindAuth(ctx context.Context, userID uint64, provider uiammodels.AuthProviderTypeEnum) error {
+func (ir IdentityRequest) UnbindAuth(ctx context.Context, userID uint64, provider uiammodel.AuthProviderTypeEnum) error {
 	var result map[string]interface{}
 	var url = fmt.Sprintf("%s/v1/identities/%v/auths/%s/bind", ir.ServerURL, userID, provider)
 
@@ -131,7 +131,7 @@ func (ir IdentityRequest) UnbindAuth(ctx context.Context, userID uint64, provide
 	}
 
 	if result["result"] == nil || result["result"].(string) != "ok" {
-		return uiammodels.NewAppError("result error!")
+		return uiammodel.NewAppError("result error!")
 	}
 
 	return nil

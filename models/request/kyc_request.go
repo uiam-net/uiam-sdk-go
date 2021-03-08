@@ -6,7 +6,7 @@ import (
 
 	aesutils "github.com/uiam-net/goutils/crypto/aes"
 	hashutil "github.com/uiam-net/goutils/crypto/hash"
-	uiammodels "github.com/uiam-net/uiam-sdk-go/models"
+	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 	uiamerr "github.com/uiam-net/uiam-sdk-go/utils/error"
 )
 
@@ -14,28 +14,28 @@ import (
 type IdentityKycRequest struct {
 	BaseRequest
 
-	IdentityID       string                   `json:"identity_id"`
-	Country          uiammodels.CountryEnum   `json:"country"`
-	Gender           string                   `json:"gender" binding:"required,min=1"`
-	Name             string                   `json:"name" binding:"required,min=1"`
-	IDType           uiammodels.IDTypeEnum    `json:"id_type"`
-	IDNo             string                   `json:"id_no"`
-	Nation           string                   `json:"nation"`
-	Birth            string                   `json:"birth"`
-	IDValidDateStart string                   `json:"id_valid_date_start"`
-	IDValidDateEnd   string                   `json:"id_valid_date_end"`
-	EffectedAt       string                   `json:"effected_at"`
-	ExpiredAt        string                   `json:"expired_at"`
-	Address          string                   `json:"address"`
-	IssuedBy         string                   `json:"issued_by"`
-	KycLevel         uiammodels.KycLevelEnum  `json:"kyc_level"`
-	KycStatus        uiammodels.KycStatusEnum `json:"kyc_status"`
-	KycError         string                   `json:"kyc_error"`
-	CertifiedAt      *time.Time               `json:"certified_at" binding:"" time_format:"2006-01-02T15:04:05Z07:00"`
+	IdentityID       string                  `json:"identity_id"`
+	Country          uiammodel.CountryEnum   `json:"country"`
+	Gender           string                  `json:"gender" binding:"required,min=1"`
+	Name             string                  `json:"name" binding:"required,min=1"`
+	IDType           uiammodel.IDTypeEnum    `json:"id_type"`
+	IDNo             string                  `json:"id_no"`
+	Nation           string                  `json:"nation"`
+	Birth            string                  `json:"birth"`
+	IDValidDateStart string                  `json:"id_valid_date_start"`
+	IDValidDateEnd   string                  `json:"id_valid_date_end"`
+	EffectedAt       string                  `json:"effected_at"`
+	ExpiredAt        string                  `json:"expired_at"`
+	Address          string                  `json:"address"`
+	IssuedBy         string                  `json:"issued_by"`
+	KycLevel         uiammodel.KycLevelEnum  `json:"kyc_level"`
+	KycStatus        uiammodel.KycStatusEnum `json:"kyc_status"`
+	KycError         string                  `json:"kyc_error"`
+	CertifiedAt      *time.Time              `json:"certified_at" binding:"" time_format:"2006-01-02T15:04:05Z07:00"`
 }
 
 // NewProfileRequest NewProfile
-func NewProfileRequest(request *IdentityKycRequest, aesScecret string) (*uiammodels.Profile, uiamerr.Error) {
+func NewProfileRequest(request *IdentityKycRequest, aesScecret string) (*uiammodel.Profile, uiamerr.Error) {
 	var idNOEncrypted, idDigest, birthEncrypted, issuedByEncrypted, addressEncrypted, effectedAt, expiredAt string
 	var err error
 
@@ -86,14 +86,14 @@ func NewProfileRequest(request *IdentityKycRequest, aesScecret string) (*uiammod
 		expiredAt = request.IDValidDateEnd
 	}
 
-	genderEnum := uiammodels.NewGenderEnum(request.Gender)
+	genderEnum := uiammodel.NewGenderEnum(request.Gender)
 
 	if request.CertifiedAt == nil {
 		timeNow := time.Now()
 		request.CertifiedAt = &timeNow
 	}
 
-	newProfile := &uiammodels.Profile{
+	newProfile := &uiammodel.Profile{
 		IdentityID:        request.IdentityID,
 		Name:              request.Name,
 		Gender:            genderEnum,
