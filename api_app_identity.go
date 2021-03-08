@@ -34,7 +34,7 @@ func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bo
 		expand = append(expand, "profile")
 	}
 
-	url := fmt.Sprintf("%s/v1/identities/%s/?expand=%s", ir.ServerURL, userID, strings.Join(expand, ","))
+	url := fmt.Sprintf("%s/v1/identities/%s?expand=%s", ir.ServerURL, userID, strings.Join(expand, ","))
 
 	if err := Execute(ir.getRequest(ctx), "GET", url, nil, &resp); err != nil {
 		return nil, err
