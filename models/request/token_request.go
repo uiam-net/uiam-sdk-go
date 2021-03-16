@@ -10,19 +10,20 @@ import (
 type TokenCreateRequest struct {
 	BaseRequest
 
-	Audience  string        `json:"aud,omitempty"` // IdentityID
-	Issuer    string        `json:"iss,omitempty"` // RealmID
-	Subject   string        `json:"sub,omitempty"` // Subject
-	NotBefore int64         `json:"nbf,omitempty"` //
-	Duration  time.Duration `json:"duration"`      // ExpriedAt 有效时长
+	Audience  string        `json:"aud,omitempty"`
+	Issuer    string        `json:"iss,omitempty"`
+	NotBefore int64         `json:"nbf,omitempty"`
+	Subject   string        `json:"sub,omitempty"`
+	Duration  time.Duration `json:"duration"` // ExpriedAt 有效时长
 
 	// Custom
 	Type      uiammodel.AuthTypeEnum         `json:"type"`
-	Provider  uiammodel.AuthProviderTypeEnum `json:"oap,omitempty"`
-	Scheme    uiammodel.AuthSchemeEnum       `json:"scheme,omitempty"`
-	UID       string                         `json:"uid,omitempty"` // Audience
-	SessionID string                         `json:"sid,omitempty"` // AuthKey
-	Sign      string                         `json:"sig,omitempty"` // Sign
-	SignAlg   string                         `json:"sal,omitempty"` // SignAlg
-	Extra     string                         `json:"extra,omitempty"`
+	Provider  uiammodel.AuthProviderTypeEnum `json:"oap,omitempty"`    // wechat/alipay 有需要吗？
+	Scheme    uiammodel.AuthSchemeEnum       `json:"scheme"`           // 签名方式
+	UID       string                         `json:"uid,omitempty"`    // Audience 区别
+	Device    string                         `json:"device,omitempty"` // 每个 device 会有一个相对固定 session
+	SessionID string                         `json:"sid,omitempty"`    // 使用哪个 session 进行签名
+	Sign      string                         `json:"sig,omitempty"`    // ?
+	SignAlg   string                         `json:"sal,omitempty"`    // ?
+	Extra     string                         `json:"extra,omitempty"`  // 签名时，会把这部分也签进去
 }
