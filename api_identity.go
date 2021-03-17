@@ -37,7 +37,7 @@ func (r IdentityRequest) GetCurrentIdentity(ctx context.Context, profile bool) (
 		expand = append(expand, "profile")
 	}
 
-	url := fmt.Sprintf("%s/v1/identity?expand=%s", r.ServerURL, strings.Join(expand, ","))
+	url := fmt.Sprintf("%s/uv1/identity?expand=%s", r.ServerURL, strings.Join(expand, ","))
 
 	// Request
 	if err := Execute(r.getRequest(ctx), "GET", url, nil, &res); nil != err {
