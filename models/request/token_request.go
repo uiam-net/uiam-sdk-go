@@ -17,9 +17,10 @@ type TokenCreateRequest struct {
 	Duration  time.Duration `json:"duration"` // ExpriedAt 有效时长
 
 	// Custom
-	Type      uiammodel.AuthTypeEnum         `json:"type"`
+	JTI       string                         `json:"jti,omitempty"`
+	Type      uiammodel.AuthTypeEnum         `json:"type,omitempty"`
 	Provider  uiammodel.AuthProviderTypeEnum `json:"oap,omitempty"`    // wechat/alipay 有需要吗？
-	Scheme    uiammodel.AuthSchemeEnum       `json:"scheme"`           // 签名方式
+	Scheme    uiammodel.AuthSchemeEnum       `json:"scheme,omitempty"` // 签名方式
 	UID       string                         `json:"uid,omitempty"`    // Audience 区别
 	Device    string                         `json:"device,omitempty"` // 每个 device 会有一个相对固定 session
 	SessionID string                         `json:"sid,omitempty"`    // 使用哪个 session 进行签名
