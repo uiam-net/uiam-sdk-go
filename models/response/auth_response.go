@@ -23,24 +23,24 @@ type AuthVerifyResponse struct {
 
 // AuthorizationResponse AuthorizationResponse
 type AuthorizationResponse struct {
-	IdentityID  string                         `json:"identity_id"`
-	RealmID     string                         `json:"realm_id"`
-	Provider    uiammodel.AuthProviderTypeEnum `json:"provider"`
-	OauthID     string                         `json:"oauth_id"`
-	UnionID     string                         `json:"union_id"`
-	AppUserID   string                         `json:"app_user_id"`
-	AppUserName string                         `json:"app_user_name"`
-	Credential  uiammodel.Attribute            `json:"credential"`
-	CreatedAt   time.Time                      `json:"created_at"`
-	UpdatedAt   time.Time                      `json:"updated_at"`
+	IdentityID  string                            `json:"identity_id"`
+	RealmID     string                            `json:"realm_id"`
+	Provider    uiammodel.ConnectProviderTypeEnum `json:"provider"`
+	OauthID     string                            `json:"oauth_id"`
+	UnionID     string                            `json:"union_id"`
+	AppUserID   string                            `json:"app_user_id"`
+	AppUserName string                            `json:"app_user_name"`
+	Credential  uiammodel.Attribute               `json:"credential"`
+	CreatedAt   time.Time                         `json:"created_at"`
+	UpdatedAt   time.Time                         `json:"updated_at"`
 }
 
 // NewAuthorizationResponse NewAuthorizationResponse
-func NewAuthorizationResponse(auth *uiammodel.Authorization) *AuthorizationResponse {
+func NewAuthorizationResponse(auth *uiammodel.Connect) *AuthorizationResponse {
 	authResp := new(AuthorizationResponse)
 
-	authResp.IdentityID = auth.IdentityID
-	authResp.RealmID = auth.RealmID
+	authResp.IdentityID = auth.IdentityUUID
+	authResp.RealmID = auth.RealmUUID
 	authResp.Provider = auth.Provider
 	authResp.OauthID = auth.OauthID
 	authResp.UnionID = auth.UnionID
@@ -68,19 +68,19 @@ type MixinCredentialResp struct {
 
 // MixinAuthCredentialResponse MixinAuthCredential
 type MixinAuthCredentialResponse struct {
-	IdentityID string                         `json:"identity_id"`
-	RealmID    string                         `json:"app_id"`
-	Provider   uiammodel.AuthProviderTypeEnum `json:"provider"`
-	OauthID    string                         `json:"oauth_id"`
-	MixinID    string                         `json:"mixin_id"`
-	UserName   string                         `json:"user_name"`
-	Credential *MixinCredentialResp           `json:"credential"`
-	CreatedAt  time.Time                      `json:"created_at"`
-	UpdatedAt  time.Time                      `json:"updated_at"`
+	IdentityID string                            `json:"identity_id"`
+	RealmID    string                            `json:"app_id"`
+	Provider   uiammodel.ConnectProviderTypeEnum `json:"provider"`
+	OauthID    string                            `json:"oauth_id"`
+	MixinID    string                            `json:"mixin_id"`
+	UserName   string                            `json:"user_name"`
+	Credential *MixinCredentialResp              `json:"credential"`
+	CreatedAt  time.Time                         `json:"created_at"`
+	UpdatedAt  time.Time                         `json:"updated_at"`
 }
 
 // NewMixinAuthCredentialResp NewMixinAuthCredential
-func NewMixinAuthCredentialResp(auth *uiammodel.Authorization) *MixinAuthCredentialResponse {
+func NewMixinAuthCredentialResp(auth *uiammodel.Connect) *MixinAuthCredentialResponse {
 	// Deserialization Credential
 	mixinCredential := new(MixinCredentialResp)
 
@@ -103,8 +103,8 @@ func NewMixinAuthCredentialResp(auth *uiammodel.Authorization) *MixinAuthCredent
 	// }
 
 	mixinAuth := new(MixinAuthCredentialResponse)
-	mixinAuth.IdentityID = auth.IdentityID
-	mixinAuth.RealmID = auth.RealmID
+	mixinAuth.IdentityID = auth.IdentityUUID
+	mixinAuth.RealmID = auth.RealmUUID
 	mixinAuth.Provider = auth.Provider
 	mixinAuth.OauthID = auth.OauthID
 	mixinAuth.MixinID = auth.AppUserID

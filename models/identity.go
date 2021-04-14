@@ -8,7 +8,8 @@ type Identity struct {
 	UUID           string             `mapstructure:"uuid" json:"uuid" gorm:"COLUMN:uuid;NOT NULL;TYPE:VARCHAR(36)"`
 	Name           string             `mapstructure:"name" json:"name,omitempty" gorm:"COLUMN:name;NOT NULL;TYPE:VARCHAR(36)"`
 	Type           IdentityTypeEnum   `mapstructure:"type" json:"type,omitempty" gorm:"COLUMN:type;NOT NULL;TYPE:VARCHAR(18)"`
-	MerchantID     string             `mapstructure:"merchant_id" json:"merchant_id,omitempty" gorm:"COLUMN:merchant_id;NOT NULL;TYPE:VARCHAR(36)"`
+	RealmUUID      string             `mapstructure:"realm_uuid" json:"realm_uuid,omitempty" gorm:"COLUMN:realm_uuid;NOT NULL;TYPE:VARCHAR(36)"`
+	MerchantUUID   string             `mapstructure:"merchant_uuid" json:"merchant_uuid,omitempty" gorm:"COLUMN:merchant_uuid;NOT NULL;TYPE:VARCHAR(36)"`
 	PhoneCode      string             `mapstructure:"phone_code" json:"phone_code" gorm:"COLUMN:phone_code;TYPE:VARCHAR(16)"`
 	PhoneNumber    string             `mapstructure:"phone_number" json:"phone_number" gorm:"COLUMN:phone_number;TYPE:VARCHAR(32)"`
 	PasswordDigest string             `mapstructure:"-" json:"-" gorm:"COLUMN:password_digest;TYPE:VARCHAR(255)"`

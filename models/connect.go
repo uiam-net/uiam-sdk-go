@@ -5,63 +5,90 @@ import (
 	"time"
 )
 
-// Authorization Authorization
-type Authorization struct {
-	ID          uint64               `json:"id" gorm:"PRIMARY_KEY;NOT NULL"`
-	IdentityID  string               `json:"identity_id" gorm:"COLUMN:identity_id;NOT NULL;TYPE:BIGINT()"`
-	RealmID     string               `json:"realm_id" gorm:"COLUMN:realm_id;NOT NULL;TYPE:VARCHAR(36)"`
-	Provider    AuthProviderTypeEnum `json:"provider" gorm:"COLUMN:provider;NOT NULL;TYPE:VARCHAR(36)"`
-	OauthID     string               `json:"oauth_id" gorm:"COLUMN:oauth_id;NOT NULL;TYPE:VARCHAR(128)"`
-	UnionID     string               `json:"union_id" gorm:"COLUMN:union_id;NOT NULL;TYPE:VARCHAR(128)"`
-	AppUserID   string               `json:"app_user_id" gorm:"COLUMN:app_user_id;TYPE:VARCHAR(36)"`
-	AppUserName string               `json:"app_user_name" gorm:"COLUMN:app_user_name;TYPE:VARCHAR(36)"`
-	Credential  Attribute            `json:"credential" gorm:"COLUMN:credential;TYPE:json"`
-	CreatedAt   time.Time            `json:"created_at" gorm:"COLUMN:created_at;NOT NULL"`
-	UpdatedAt   time.Time            `json:"updated_at" gorm:"COLUMN:updated_at;NOT NULL"`
+// Connect Connect
+type Connect struct {
+	ID           uint64                  `json:"id" gorm:"PRIMARY_KEY;NOT NULL"`
+	IdentityUUID string                  `json:"identity_uuid" gorm:"COLUMN:identity_uuid;NOT NULL;TYPE:BIGINT()"`
+	RealmUUID    string                  `json:"realm_uuid" gorm:"COLUMN:realm_uuid;NOT NULL;TYPE:VARCHAR(36)"`
+	Provider     ConnectProviderTypeEnum `json:"provider" gorm:"COLUMN:provider;NOT NULL;TYPE:VARCHAR(36)"`
+	OauthID      string                  `json:"oauth_id" gorm:"COLUMN:oauth_id;NOT NULL;TYPE:VARCHAR(128)"`
+	UnionID      string                  `json:"union_id" gorm:"COLUMN:union_id;NOT NULL;TYPE:VARCHAR(128)"`
+	AppUserID    string                  `json:"app_user_id" gorm:"COLUMN:app_user_id;TYPE:VARCHAR(36)"`
+	AppUserName  string                  `json:"app_user_name" gorm:"COLUMN:app_user_name;TYPE:VARCHAR(36)"`
+	Credential   Attribute               `json:"credential" gorm:"COLUMN:credential;TYPE:json"`
+	CreatedAt    time.Time               `json:"created_at" gorm:"COLUMN:created_at;NOT NULL"`
+	UpdatedAt    time.Time               `json:"updated_at" gorm:"COLUMN:updated_at;NOT NULL"`
 }
 
 // TableName TableName
-func (Authorization) TableName() string {
-	return "authorizations"
+func (Connect) TableName() string {
+	return "connects"
 }
 
 // ================ 枚举 ================== //
 // ================ 枚举 ================== //
 
-// AuthProviderTypeEnum 枚举
-type AuthProviderTypeEnum string
+// ConnectProviderTypeEnum 枚举
+type ConnectProviderTypeEnum string
 
 const (
-	// AuthProviderTypeEnumMixin offer
-	AuthProviderTypeEnumMixin AuthProviderTypeEnum = "mixin"
-	// AuthProviderTypeEnumWechat wechat
-	AuthProviderTypeEnumWechat AuthProviderTypeEnum = "wechat"
-	// AuthProviderTypeEnumAlipay alipay
-	AuthProviderTypeEnumAlipay AuthProviderTypeEnum = "alipay"
+	// ConnectProviderTypeEnumGoogle google
+	ConnectProviderTypeEnumGoogle ConnectProviderTypeEnum = "google"
+	// ConnectProviderTypeEnumMicrosoft microsoft
+	ConnectProviderTypeEnumMicrosoft ConnectProviderTypeEnum = "microsoft"
+	// ConnectProviderTypeEnumFacebook facebook
+	ConnectProviderTypeEnumFacebook ConnectProviderTypeEnum = "facebook"
+	// ConnectProviderTypeEnumTwitter twitter
+	ConnectProviderTypeEnumTwitter ConnectProviderTypeEnum = "twitter"
+	// ConnectProviderTypeEnumWechat wechat
+	ConnectProviderTypeEnumWechat ConnectProviderTypeEnum = "wechat"
+	// ConnectProviderTypeEnumQQ qq
+	ConnectProviderTypeEnumQQ ConnectProviderTypeEnum = "qq"
+	// ConnectProviderTypeEnumAlipay alipay
+	ConnectProviderTypeEnumAlipay ConnectProviderTypeEnum = "alipay"
+	// ConnectProviderTypeEnumDingtalk dingtalk
+	ConnectProviderTypeEnumDingtalk ConnectProviderTypeEnum = "dingtalk"
+	// ConnectProviderTypeEnumWeibo weibo
+	ConnectProviderTypeEnumWeibo ConnectProviderTypeEnum = "weibo"
+	// ConnectProviderTypeEnumOLDP ladp / ad
+	ConnectProviderTypeEnumLADP ConnectProviderTypeEnum = "ladp"
 )
 
-func (e AuthProviderTypeEnum) String() string {
+func (e ConnectProviderTypeEnum) String() string {
 	switch e {
-	case AuthProviderTypeEnumMixin:
-		return "mixin"
-	case AuthProviderTypeEnumWechat:
+
+	case ConnectProviderTypeEnumGoogle:
+		return "google"
+	case ConnectProviderTypeEnumMicrosoft:
+		return "microsoft"
+	case ConnectProviderTypeEnumFacebook:
+		return "facebook"
+	case ConnectProviderTypeEnumTwitter:
+		return "twitter"
+	case ConnectProviderTypeEnumWechat:
 		return "wechat"
-	case AuthProviderTypeEnumAlipay:
+	case ConnectProviderTypeEnumQQ:
+		return "qq"
+	case ConnectProviderTypeEnumAlipay:
 		return "alipay"
+	case ConnectProviderTypeEnumDingtalk:
+		return "dingtalk"
+	case ConnectProviderTypeEnumWeibo:
+		return "weibo"
+	case ConnectProviderTypeEnumLADP:
+		return "ladp"
 	default:
 		return ""
 	}
 }
 
-// NewAuthProviderTypeEnum 构造函数
-func NewAuthProviderTypeEnum(provider string) (AuthProviderTypeEnum, error) {
+// NewConnectProviderTypeEnum 构造函数
+func NewConnectProviderTypeEnum(provider string) (ConnectProviderTypeEnum, error) {
 	switch provider {
-	case "mixin":
-		return AuthProviderTypeEnumMixin, nil
 	case "wechat":
-		return AuthProviderTypeEnumWechat, nil
+		return ConnectProviderTypeEnumWechat, nil
 	case "alipay":
-		return AuthProviderTypeEnumAlipay, nil
+		return ConnectProviderTypeEnumAlipay, nil
 	default:
 		return "", errors.New("Parse Provider Type Error")
 	}
@@ -114,6 +141,14 @@ const (
 	AuthSchemeEnumJWTRS AuthSchemeEnum = "jwtrs"
 	// AuthSchemeEnumJWTES jwt_es
 	AuthSchemeEnumJWTES AuthSchemeEnum = "jwtes"
+	// AuthSchemeEnumSAML saml
+	AuthSchemeEnumSAML AuthSchemeEnum = "saml"
+	// AuthSchemeEnumCAS cas
+	AuthSchemeEnumCAS AuthSchemeEnum = "cas"
+	// AuthSchemeEnumOIDC oidc
+	AuthSchemeEnumOIDC AuthSchemeEnum = "oidc"
+	// AuthSchemeEnumLDAP ldap
+	AuthSchemeEnumLDAP AuthSchemeEnum = "ldap"
 )
 
 func (e AuthSchemeEnum) String() string {
@@ -128,6 +163,14 @@ func (e AuthSchemeEnum) String() string {
 		return "jwtrs"
 	case AuthSchemeEnumJWTES:
 		return "jwtes"
+	case AuthSchemeEnumSAML:
+		return "saml"
+	case AuthSchemeEnumCAS:
+		return "cas"
+	case AuthSchemeEnumOIDC:
+		return "oidc"
+	case AuthSchemeEnumLDAP:
+		return "ldap"
 	default:
 		return ""
 	}

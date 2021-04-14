@@ -8,14 +8,14 @@ import (
 type IdentityListRequest struct {
 	BaseRequest
 
-	Offset        int                            `form:"offset" binding:"gte=0"`
-	Limit         int                            `form:"limit" binding:"gte=0,lte=500"`
-	PhoneCode     string                         `form:"phone_code"`
-	PhoneNumber   string                         `form:"phone_number"`
-	AppIdentityID string                         `form:"app_user_id"`
-	Provider      uiammodel.AuthProviderTypeEnum `form:"provider"`
-	Batch         string                         `form:"batch"`
-	Expand        string                         `form:"expand"`
+	Offset        int                               `form:"offset" binding:"gte=0"`
+	Limit         int                               `form:"limit" binding:"gte=0,lte=500"`
+	PhoneCode     string                            `form:"phone_code"`
+	PhoneNumber   string                            `form:"phone_number"`
+	AppIdentityID string                            `form:"app_user_id"`
+	Provider      uiammodel.ConnectProviderTypeEnum `form:"provider"`
+	Batch         string                            `form:"batch"`
+	Expand        string                            `form:"expand"`
 }
 
 // IdentityUpsertRequest IdentityUpsertRequest

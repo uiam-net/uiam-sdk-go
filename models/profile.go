@@ -7,7 +7,7 @@ import (
 // Profile profile
 type Profile struct {
 	ID                uint64        `json:"id" gorm:"PRIMARY_KEY;NOT NULL"`
-	IdentityID        string        `json:"identity_id" gorm:"COLUMN:identity_id;NOT NULL;TYPE:BIGINT(20)"`
+	IdentityID        string        `json:"identity_uuid" gorm:"COLUMN:identity_uuid;NOT NULL;TYPE:BIGINT(20)"`
 	Country           CountryEnum   `json:"country" gorm:"COLUMN:country;NOT NULL;TYPE:VARCHAR(18)"`
 	Name              string        `json:"name" gorm:"COLUMN:name;NOT NULL;TYPE:VARCHAR(18)"`
 	Gender            GenderEnum    `json:"gender" gorm:"COLUMN:gender;NOT NULL;TYPE:VARCHAR(2)"`

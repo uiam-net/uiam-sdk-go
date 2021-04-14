@@ -40,7 +40,7 @@ func NewIdentityAuthsResponse(identity *uiammodel.Identity) *IdentityAuthsRespon
 }
 
 // NewIdentityWithAuthsResponse 构造函数
-func NewIdentityWithAuthsResponse(identity *uiammodel.Identity, profile *uiammodel.Profile, auth *uiammodel.Authorization) *IdentityAuthsResponse {
+func NewIdentityWithAuthsResponse(identity *uiammodel.Identity, profile *uiammodel.Profile, auth *uiammodel.Connect) *IdentityAuthsResponse {
 	response := &IdentityAuthsResponse{
 		IdentityID:   identity.UUID,
 		IdentityName: identity.Name,

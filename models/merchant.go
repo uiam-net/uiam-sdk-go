@@ -7,7 +7,8 @@ import (
 // Merchant Merchant
 type Merchant struct {
 	ID          uint32             `json:"id" gorm:"COLUMN:id;PRIMARY_KEY;NOT NULL;TYPE:INT(11)"`
-	UUID        string             `json:"uuid" gorm:"COLUMN:uuid;NOT NULL;TYPE:VARCHAR(36)"`
+	UUID        string             `mapstructure:"uuid" json:"uuid" gorm:"COLUMN:uuid;NOT NULL;TYPE:VARCHAR(36)"`
+	Type        MerchantTypeEnum   `mapstructure:"type" json:"type,omitempty" gorm:"COLUMN:type;NOT NULL;TYPE:VARCHAR(18)"`
 	Slug        string             `json:"slug" gorm:"COLUMN:slug;NOT NULL;TYPE:VARCHAR(36)"`
 	Name        string             `json:"name" gorm:"COLUMN:name;NOT NULL;TYPE:VARCHAR(36)"`
 	Description string             `json:"description" gorm:"COLUMN:description;NOT NULL;TYPE:VARCHAR(255)"`
@@ -20,6 +21,29 @@ type Merchant struct {
 // TableName TableName
 func (Merchant) TableName() string {
 	return "merchants"
+}
+
+// =============== IdentityTypeEnum =============== //
+
+// IdentityTypeEnum 枚举
+type MerchantTypeEnum string
+
+const (
+	// MerchantTypeEnumPersonal 正常注册用户
+	MerchantTypeEnumPersonal MerchantTypeEnum = "personal"
+	// MerchantTypeEnumCompany 系统调用使用
+	MerchantTypeEnumCompany MerchantTypeEnum = "copmpany"
+)
+
+func (e MerchantTypeEnum) String() string {
+	switch e {
+	case MerchantTypeEnumPersonal:
+		return "personal"
+	case MerchantTypeEnumCompany:
+		return "copmpany"
+	default:
+		return ""
+	}
 }
 
 // MerchantStatusEnum 枚举
