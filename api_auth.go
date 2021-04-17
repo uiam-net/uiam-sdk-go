@@ -39,7 +39,7 @@ func (ir IdentityRequest) GetIdentityAuths(ctx context.Context, uuid string) (*u
 }
 
 // GetIdentityAuth GetIdentityAuth
-func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, provider uiammodel.AuthProviderTypeEnum) (*uiamresp.AuthorizationResponse, error) {
+func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, provider uiammodel.ConnectProviderTypeEnum) (*uiamresp.AuthorizationResponse, error) {
 	var auth uiamresp.AuthorizationResponse
 	var url = fmt.Sprintf("%s/v1/identities/%s/auths/%s", ir.ServerURL, uuid, provider)
 
@@ -53,7 +53,7 @@ func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, prov
 // ============ GET by OAuthID ============= //
 
 // GetAuthByOAuthID GetAuthByOAuthID
-func (ir IdentityRequest) GetAuthByOAuthID(ctx context.Context, provider uiammodel.AuthProviderTypeEnum, oauthID string) (*uiamresp.AuthorizationResponse, error) {
+func (ir IdentityRequest) GetAuthByOAuthID(ctx context.Context, provider uiammodel.ConnectProviderTypeEnum, oauthID string) (*uiamresp.AuthorizationResponse, error) {
 	var auth uiamresp.AuthorizationResponse
 	var url = fmt.Sprintf("%s/v1/auths/%s/auths/%s", ir.ServerURL, provider, oauthID)
 
@@ -110,8 +110,8 @@ func (ir IdentityRequest) UpdateAuthByOauthID(ctx context.Context, req *uiamreq.
 // ============ ID - AUTH Bind ============= //
 
 // BindAuth BindAuth
-func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBindingRequest) (*uiammodel.Authorization, error) {
-	var auth uiammodel.Authorization
+func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBindingRequest) (*uiammodel.Connect, error) {
+	var auth uiammodel.Connect
 	var url = fmt.Sprintf("%s/v1/identities/%v/auths/%s/bind", ir.ServerURL, req.UserID, req.Provider)
 
 	if err := Execute(ir.getRequest(ctx), "PUT", url, req, &auth); err != nil {
@@ -122,7 +122,7 @@ func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBinding
 }
 
 // UnbindAuth BindAuth
-func (ir IdentityRequest) UnbindAuth(ctx context.Context, userID uint64, provider uiammodel.AuthProviderTypeEnum) error {
+func (ir IdentityRequest) UnbindAuth(ctx context.Context, userID uint64, provider uiammodel.ConnectProviderTypeEnum) error {
 	var result map[string]interface{}
 	var url = fmt.Sprintf("%s/v1/identities/%v/auths/%s/bind", ir.ServerURL, userID, provider)
 

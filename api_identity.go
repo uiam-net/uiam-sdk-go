@@ -25,6 +25,15 @@ func NewUserRequestJwt(token, serverURL string) *IdentityRequest {
 	return userReq
 }
 
+// NewUserRequestJwt NewUserRequestJwt
+func NewUserRequest(serverURL string) *IdentityRequest {
+	userReq := &IdentityRequest{
+		ServerURL: serverURL,
+	}
+
+	return userReq
+}
+
 // ============ api ============= //
 // ============ api ============= //
 
