@@ -27,8 +27,8 @@ import (
 // ============ GET by Identity ============= //
 
 // GetIdentityAuths GetIdentityAuths
-func (ir IdentityRequest) GetIdentityAuths(ctx context.Context, uuid string) (*uiamresp.AuthorizationResponse, error) {
-	var auth uiamresp.AuthorizationResponse
+func (ir IdentityRequest) GetIdentityAuths(ctx context.Context, uuid string) (*uiamresp.Authorization, error) {
+	var auth uiamresp.Authorization
 	var url = fmt.Sprintf("%s/v1/identities/%s/auths", ir.ServerURL, uuid)
 
 	if err := Execute(ir.getRequest(ctx), "GET", url, nil, &auth); err != nil {
@@ -39,8 +39,8 @@ func (ir IdentityRequest) GetIdentityAuths(ctx context.Context, uuid string) (*u
 }
 
 // GetIdentityAuth GetIdentityAuth
-func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, provider uiammodel.ConnectProviderTypeEnum) (*uiamresp.AuthorizationResponse, error) {
-	var auth uiamresp.AuthorizationResponse
+func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, provider uiammodel.ConnectProviderTypeEnum) (*uiamresp.Authorization, error) {
+	var auth uiamresp.Authorization
 	var url = fmt.Sprintf("%s/v1/identities/%s/auths/%s", ir.ServerURL, uuid, provider)
 
 	if err := Execute(ir.getRequest(ctx), "GET", url, nil, &auth); err != nil {
@@ -53,8 +53,8 @@ func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, prov
 // ============ GET by OAuthID ============= //
 
 // GetAuthByOAuthID GetAuthByOAuthID
-func (ir IdentityRequest) GetAuthByOAuthID(ctx context.Context, provider uiammodel.ConnectProviderTypeEnum, oauthID string) (*uiamresp.AuthorizationResponse, error) {
-	var auth uiamresp.AuthorizationResponse
+func (ir IdentityRequest) GetAuthByOAuthID(ctx context.Context, provider uiammodel.ConnectProviderTypeEnum, oauthID string) (*uiamresp.Authorization, error) {
+	var auth uiamresp.Authorization
 	var url = fmt.Sprintf("%s/v1/auths/%s/auths/%s", ir.ServerURL, provider, oauthID)
 
 	if err := Execute(ir.getRequest(ctx), "GET", url, nil, &auth); err != nil {
@@ -67,8 +67,8 @@ func (ir IdentityRequest) GetAuthByOAuthID(ctx context.Context, provider uiammod
 // ============ REG & Update ============= //
 
 // RegAuthAndID RegAuthAndID
-func (ir IdentityRequest) RegAuthAndID(ctx context.Context, req *uiamreq.AuthIDCreateRequest) (*uiamresp.IdentityResponse, error) {
-	var auth uiamresp.IdentityResponse
+func (ir IdentityRequest) RegAuthAndID(ctx context.Context, req *uiamreq.AuthIDCreateRequest) (*uiamresp.Identity, error) {
+	var auth uiamresp.Identity
 	var url = fmt.Sprintf("%s/v1/auths/%s", ir.ServerURL, req.Provider)
 
 	if err := Execute(ir.getRequest(ctx), "POST", url, req, &auth); err != nil {
@@ -79,8 +79,8 @@ func (ir IdentityRequest) RegAuthAndID(ctx context.Context, req *uiamreq.AuthIDC
 }
 
 // UpdateAuthByID UpdateAuthByID
-func (ir IdentityRequest) UpdateAuthByID(ctx context.Context, req *uiamreq.AuthUpdateRequest) (*uiamresp.AuthorizationResponse, error) {
-	var auth uiamresp.AuthorizationResponse
+func (ir IdentityRequest) UpdateAuthByID(ctx context.Context, req *uiamreq.AuthUpdateRequest) (*uiamresp.Authorization, error) {
+	var auth uiamresp.Authorization
 
 	var url = fmt.Sprintf("%s/v1/identities/%s/auths/%s", ir.ServerURL, req.IdentityID, req.Provider)
 
@@ -95,8 +95,8 @@ func (ir IdentityRequest) UpdateAuthByID(ctx context.Context, req *uiamreq.AuthU
 }
 
 // UpdateAuthByOauthID UpdateAuth
-func (ir IdentityRequest) UpdateAuthByOauthID(ctx context.Context, req *uiamreq.AuthIDCreateRequest) (*uiamresp.AuthorizationResponse, error) {
-	var auth uiamresp.AuthorizationResponse
+func (ir IdentityRequest) UpdateAuthByOauthID(ctx context.Context, req *uiamreq.AuthIDCreateRequest) (*uiamresp.Authorization, error) {
+	var auth uiamresp.Authorization
 
 	var url = fmt.Sprintf("%s/v1/auths/%s/auths/%s", ir.ServerURL, req.Provider, req.OauthID)
 
@@ -110,8 +110,8 @@ func (ir IdentityRequest) UpdateAuthByOauthID(ctx context.Context, req *uiamreq.
 // ============ ID - AUTH Bind ============= //
 
 // BindAuth BindAuth
-func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBindingRequest) (*uiamresp.ConnectResponse, error) {
-	var auth uiamresp.ConnectResponse
+func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBindingRequest) (*uiamresp.Connect, error) {
+	var auth uiamresp.Connect
 	var url = fmt.Sprintf("%s/v1/identities/%v/auths/%s/bind", ir.ServerURL, req.UserID, req.Provider)
 
 	if err := Execute(ir.getRequest(ctx), "PUT", url, req, &auth); err != nil {

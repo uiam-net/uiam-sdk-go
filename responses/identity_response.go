@@ -6,8 +6,8 @@ import (
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
-// IdentityResponse Identity
-type IdentityResponse struct {
+// Identity Identity
+type Identity struct {
 	IdentityID   string                       `json:"uuid"`
 	IdentityName string                       `json:"name"`
 	PhoneCode    string                       `json:"phone_code"`
@@ -15,8 +15,8 @@ type IdentityResponse struct {
 	Email        string                       `json:"email"`
 	AvatarURL    string                       `json:"avatar_url"`
 	Description  string                       `json:"description"`
-	Auths        *AuthsResponse               `json:"authorizations,omitempty"`
-	Profile      *ProfileResponse             `json:"profile,omitempty"`
+	Auths        *Auths                       `json:"authorizations,omitempty"`
+	Profile      *Profile                     `json:"profile,omitempty"`
 	Attributes   uiammodel.Attribute          `json:"attributes"`
 	Status       uiammodel.IdentityStatusEnum `json:"status"`
 	CreatedAt    time.Time                    `json:"created_at"`

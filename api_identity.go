@@ -38,8 +38,8 @@ func NewUserRequest(serverURL string) *IdentityRequest {
 // ============ api ============= //
 
 // GetCurrentIdentity GetUser
-func (r IdentityRequest) GetCurrentIdentity(ctx context.Context, profile bool) (*uiamresp.IdentityResponse, error) {
-	var res uiamresp.IdentityResponse
+func (r IdentityRequest) GetCurrentIdentity(ctx context.Context, profile bool) (*uiamresp.Identity, error) {
+	var res uiamresp.Identity
 
 	var expand = make([]string, 0)
 	if profile {

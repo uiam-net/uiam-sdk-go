@@ -6,8 +6,8 @@ import (
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
-// ProfileResponse profile
-type RealmResponse struct {
+// Realm
+type Realm struct {
 	UUID         string                    `json:"uuid"`
 	Slug         string                    `json:"slug"`
 	MerchantUUID string                    `json:"merchant_uuid"`

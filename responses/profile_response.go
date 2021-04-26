@@ -6,8 +6,8 @@ import (
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
-// ProfileResponse profile
-type ProfileResponse struct {
+// Profile
+type Profile struct {
 	IdentityID  string                  `json:"identity_id"`
 	Name        string                  `json:"name,omitempty"`
 	KycLevel    uiammodel.KycLevelEnum  `json:"kyc_level,omitempty"`

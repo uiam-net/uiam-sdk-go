@@ -6,14 +6,14 @@ import (
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
-// AuthsResponse AuthsResponse
-type AuthsResponse struct {
+// Auths
+type Auths struct {
 	MixinAuth  interface{} `json:"mixin,omitempty"`
 	WechatAuth interface{} `json:"wechat,omitempty"`
 }
 
-// AuthVerifyResponse User
-type AuthVerifyResponse struct {
+// AuthVerify
+type AuthVerify struct {
 	App       string    `json:"app"`
 	User      string    `json:"user"`
 	Status    string    `json:"status"`
@@ -21,8 +21,8 @@ type AuthVerifyResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
-// AuthorizationResponse AuthorizationResponse
-type AuthorizationResponse struct {
+// Authorization
+type Authorization struct {
 	IdentityID  string                            `json:"identity_id"`
 	RealmID     string                            `json:"realm_id"`
 	Provider    uiammodel.ConnectProviderTypeEnum `json:"provider"`
@@ -35,10 +35,8 @@ type AuthorizationResponse struct {
 	UpdatedAt   time.Time                         `json:"updated_at"`
 }
 
-// ======================== mixin ============================ //
-
-// MixinCredentialResp MixinCredential
-type MixinCredentialResp struct {
+// MixinCredential
+type MixinCredential struct {
 	Type           uiammodel.MixinCredentialTypeEnum `json:"type,omitempty"`
 	EdPrivKey      string                            `json:"ed_priv_key,omitempty"`       // edkey
 	EdServerPubKey string                            `json:"ed_server_pub_key,omitempty"` // edkey
@@ -48,15 +46,15 @@ type MixinCredentialResp struct {
 	AccessToken    string                            `json:"access_token,omitempty"`      // token
 }
 
-// MixinAuthCredentialResponse MixinAuthCredential
-type MixinAuthCredentialResponse struct {
+// MixinAuthCredential
+type MixinAuthCredential struct {
 	IdentityID string                            `json:"identity_id"`
 	RealmID    string                            `json:"app_id"`
 	Provider   uiammodel.ConnectProviderTypeEnum `json:"provider"`
 	OauthID    string                            `json:"oauth_id"`
 	MixinID    string                            `json:"mixin_id"`
 	UserName   string                            `json:"user_name"`
-	Credential *MixinCredentialResp              `json:"credential"`
+	Credential *MixinCredential                  `json:"credential"`
 	CreatedAt  time.Time                         `json:"created_at"`
 	UpdatedAt  time.Time                         `json:"updated_at"`
 }

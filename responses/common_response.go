@@ -1,6 +1,6 @@
 package response
 
-// CommonResponse CommonResponse
-type CommonResponse struct {
+// Common Common
+type Common struct {
 	Success bool `json:"success"`
 }

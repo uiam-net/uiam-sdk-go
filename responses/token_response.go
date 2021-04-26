@@ -7,8 +7,8 @@ import (
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
-// JWTPayload RealmJWTPayload
-type JWTPayloadResponse struct {
+// JWTPayload
+type JWTPayload struct {
 	jwtgo.StandardClaims
 
 	UID           string                   `json:"uid,omitempty"`
@@ -21,8 +21,8 @@ type JWTPayloadResponse struct {
 	Extra         string                   `json:"extra,omitempty"` // 额外的字段，可以存放 json 等非标数据
 }
 
-// Token profile
-type TokenResponse struct {
+// Token
+type Token struct {
 	RealmID    string                   `json:"realm_id,omitempty"`
 	IdentityID string                   `json:"identity_id,omitempty"`
 	Type       uiammodel.AuthTypeEnum   `json:"type,omitempty"`

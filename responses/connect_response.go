@@ -6,8 +6,8 @@ import (
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
-// IdentityResponse Identity
-type ConnectResponse struct {
+// Connect Identity
+type Connect struct {
 	ID           uint64                            `json:"id"`
 	IdentityUUID string                            `json:"identity_uuid"`
 	RealmUUID    string                            `json:"realm_uuid"`

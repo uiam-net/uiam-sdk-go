@@ -15,8 +15,8 @@ import (
 // ============ api ============= //
 
 // GetAllUsers GetAllUsers
-func (ir IdentityRequest) GetAllUsers(ctx context.Context) (*uiamresp.BasePageResponse, error) {
-	var resp uiamresp.BasePageResponse
+func (ir IdentityRequest) GetAllUsers(ctx context.Context) (*uiamresp.BasePage, error) {
+	var resp uiamresp.BasePage
 
 	if err := Execute(ir.getRequest(ctx), "GET", fmt.Sprintf("%s/v1/identities", ir.ServerURL), nil, &resp); err != nil {
 		return nil, err
@@ -26,8 +26,8 @@ func (ir IdentityRequest) GetAllUsers(ctx context.Context) (*uiamresp.BasePageRe
 }
 
 // GetUser GetUser
-func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bool) (*uiamresp.IdentityResponse, error) {
-	var resp uiamresp.IdentityResponse
+func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bool) (*uiamresp.Identity, error) {
+	var resp uiamresp.Identity
 
 	var expand = make([]string, 0)
 	if profile {
@@ -43,8 +43,8 @@ func (ir IdentityRequest) GetUser(ctx context.Context, userID string, profile bo
 }
 
 // UpdateUser GetUser
-func (ir IdentityRequest) UpdateUser(ctx context.Context, req *uiamreq.IdentityUpdateRequest) (*uiamresp.IdentityResponse, error) {
-	var resp uiamresp.IdentityResponse
+func (ir IdentityRequest) UpdateUser(ctx context.Context, req *uiamreq.IdentityUpdateRequest) (*uiamresp.Identity, error) {
+	var resp uiamresp.Identity
 
 	url := fmt.Sprintf("%s/v1/identities/%s", ir.ServerURL, req.IdentityUUID)
 
@@ -55,8 +55,8 @@ func (ir IdentityRequest) UpdateUser(ctx context.Context, req *uiamreq.IdentityU
 }
 
 // GetUsersByIdentityIDs GetAllUsers
-func (ir IdentityRequest) GetUsersByIdentityIDs(ctx context.Context, identityIDs []string) ([]*uiamresp.IdentityResponse, error) {
-	var users []*uiamresp.IdentityResponse
+func (ir IdentityRequest) GetUsersByIdentityIDs(ctx context.Context, identityIDs []string) ([]*uiamresp.Identity, error) {
+	var users []*uiamresp.Identity
 
 	if err := Execute(ir.getRequest(ctx), "GET", fmt.Sprintf("%s/v1/identities?id=%s", ir.ServerURL, strings.Join(identityIDs, ",")), nil, &users); err != nil {
 		return nil, err
@@ -66,8 +66,8 @@ func (ir IdentityRequest) GetUsersByIdentityIDs(ctx context.Context, identityIDs
 }
 
 // GetUserByPhone GetUser
-func (ir IdentityRequest) GetUserByPhone(ctx context.Context, phoneCode, phoneNumber string) (*uiamresp.IdentityResponse, error) {
-	var resp uiamresp.BasePageResponse
+func (ir IdentityRequest) GetUserByPhone(ctx context.Context, phoneCode, phoneNumber string) (*uiamresp.Identity, error) {
+	var resp uiamresp.BasePage
 
 	url := fmt.Sprintf("%s/v1/identities?phone_code=%s&phone_number=%s&limit=1", ir.ServerURL, phoneCode, phoneNumber)
 
@@ -81,7 +81,7 @@ func (ir IdentityRequest) GetUserByPhone(ctx context.Context, phoneCode, phoneNu
 			return nil, uiammodel.NewAppError(err.Error())
 		}
 
-		user := new(uiamresp.IdentityResponse)
+		user := new(uiamresp.Identity)
 		err2 := json.Unmarshal(userBt, user)
 		if err2 != nil {
 			return nil, uiammodel.NewAppError(err2.Error())
@@ -93,8 +93,8 @@ func (ir IdentityRequest) GetUserByPhone(ctx context.Context, phoneCode, phoneNu
 }
 
 // VerifyUserPassword VerifyUserPassword
-func (ir IdentityRequest) VerifyUserPassword(ctx context.Context, identityID string, password string) (*uiamresp.IdentityResponse, error) {
-	var resp uiamresp.IdentityResponse
+func (ir IdentityRequest) VerifyUserPassword(ctx context.Context, identityID string, password string) (*uiamresp.Identity, error) {
+	var resp uiamresp.Identity
 
 	url := fmt.Sprintf("%s/v1/identities/%v/password/verify", ir.ServerURL, identityID)
 
@@ -106,8 +106,8 @@ func (ir IdentityRequest) VerifyUserPassword(ctx context.Context, identityID str
 }
 
 // CreateUser CreateUser
-func (ir IdentityRequest) CreateUser(ctx context.Context, req *uiamreq.IdentityUpsertRequest) (*uiamresp.IdentityResponse, error) {
-	var user uiamresp.IdentityResponse
+func (ir IdentityRequest) CreateUser(ctx context.Context, req *uiamreq.IdentityUpsertRequest) (*uiamresp.Identity, error) {
+	var user uiamresp.Identity
 
 	if err := Execute(ir.getRequest(ctx), "POST", fmt.Sprintf("%s%s", ir.ServerURL, "/v1/identities"), req, &user); err != nil {
 		return nil, err
@@ -117,8 +117,8 @@ func (ir IdentityRequest) CreateUser(ctx context.Context, req *uiamreq.IdentityU
 }
 
 // ChangePassword ChangePassword
-func (ir IdentityRequest) ChangePassword(ctx context.Context, req *uiamreq.UserResetPasswordRequest) (*uiamresp.IdentityResponse, error) {
-	var user uiamresp.IdentityResponse
+func (ir IdentityRequest) ChangePassword(ctx context.Context, req *uiamreq.UserResetPasswordRequest) (*uiamresp.Identity, error) {
+	var user uiamresp.Identity
 
 	url := fmt.Sprintf("%s/v1/identities/%v/password", ir.ServerURL, req.UserID)
 
@@ -130,8 +130,8 @@ func (ir IdentityRequest) ChangePassword(ctx context.Context, req *uiamreq.UserR
 }
 
 // ChangePhone ChangePhone
-func (ir IdentityRequest) ChangePhone(ctx context.Context, req *uiamreq.IdentityUpsertRequest) (*uiamresp.IdentityResponse, error) {
-	var user uiamresp.IdentityResponse
+func (ir IdentityRequest) ChangePhone(ctx context.Context, req *uiamreq.IdentityUpsertRequest) (*uiamresp.Identity, error) {
+	var user uiamresp.Identity
 
 	url := fmt.Sprintf("%s/v1/identities/%v/phone", ir.ServerURL, req.IdentityUUID)
 

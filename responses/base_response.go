@@ -1,6 +1,6 @@
 package response
 
-// Pagination Pagination
+// Pagination
 type Pagination struct {
 	Offset int   `json:"offset,omitempty"`
 	Page   int   `json:"page,omitempty"`
@@ -9,8 +9,8 @@ type Pagination struct {
 	Pages  int   `json:"pages,omitempty"`
 }
 
-// BasePageResponse BasePageResponse
-type BasePageResponse struct {
+// BasePage
+type BasePage struct {
 	Items      []interface{} `json:"data"`
 	Pagination *Pagination   `json:"pagination"`
 }

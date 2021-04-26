@@ -39,8 +39,8 @@ func (ir IdentityRequest) GenMfaPhoneCode(ctx context.Context, authReq *uiamreq.
 }
 
 // VerifyMfaPhoneCode VerifyMfaPhoneCode
-func (ir IdentityRequest) VerifyMfaPhoneCode(ctx context.Context, authReq *uiamreq.PhoneCodeVerifyRequest) (*uiamresp.IdentityResponse, error) {
-	var user uiamresp.IdentityResponse
+func (ir IdentityRequest) VerifyMfaPhoneCode(ctx context.Context, authReq *uiamreq.PhoneCodeVerifyRequest) (*uiamresp.Identity, error) {
+	var user uiamresp.Identity
 	if err := Execute(ir.getRequest(ctx), "POST", fmt.Sprintf("%s%s", ir.ServerURL, "/v1/mfa/phone/verify"), authReq, &user); err != nil {
 		return nil, err
 	}

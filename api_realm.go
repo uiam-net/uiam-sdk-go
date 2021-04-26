@@ -42,8 +42,8 @@ func NewRealmRequestJwt(token, serverURL string) *RealmRequest {
 // ============ api ============= //
 
 // GetCurrentRealm GetCurrentRealm
-func (ir RealmRequest) GetCurrentRealm(ctx context.Context) (*uiamresp.RealmResponse, error) {
-	var res uiamresp.RealmResponse
+func (ir RealmRequest) GetCurrentRealm(ctx context.Context) (*uiamresp.Realm, error) {
+	var res uiamresp.Realm
 
 	url := fmt.Sprintf("%s/v1/realm", ir.ServerURL)
 

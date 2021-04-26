@@ -6,7 +6,7 @@ import (
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
-type MerchantResponse struct {
+type Merchant struct {
 	ID          uint32                       `json:"id"`
 	UUID        string                       `mapstructure:"uuid" json:"uuid"`
 	Type        uiammodel.MerchantTypeEnum   `mapstructure:"type" json:"type,omitempty"`
