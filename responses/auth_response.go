@@ -35,24 +35,6 @@ type AuthorizationResponse struct {
 	UpdatedAt   time.Time                         `json:"updated_at"`
 }
 
-// NewAuthorizationResponse NewAuthorizationResponse
-func NewAuthorizationResponse(auth *uiammodel.Connect) *AuthorizationResponse {
-	authResp := new(AuthorizationResponse)
-
-	authResp.IdentityID = auth.IdentityUUID
-	authResp.RealmID = auth.RealmUUID
-	authResp.Provider = auth.Provider
-	authResp.OauthID = auth.OauthID
-	authResp.UnionID = auth.UnionID
-	authResp.AppUserID = auth.AppUserID
-	authResp.AppUserName = auth.AppUserName
-	authResp.Credential = auth.Credential
-	authResp.CreatedAt = auth.CreatedAt
-	authResp.UpdatedAt = auth.UpdatedAt
-
-	return authResp
-}
-
 // ======================== mixin ============================ //
 
 // MixinCredentialResp MixinCredential
@@ -77,41 +59,4 @@ type MixinAuthCredentialResponse struct {
 	Credential *MixinCredentialResp              `json:"credential"`
 	CreatedAt  time.Time                         `json:"created_at"`
 	UpdatedAt  time.Time                         `json:"updated_at"`
-}
-
-// NewMixinAuthCredentialResp NewMixinAuthCredential
-func NewMixinAuthCredentialResp(auth *uiammodel.Connect) *MixinAuthCredentialResponse {
-	// Deserialization Credential
-	mixinCredential := new(MixinCredentialResp)
-
-	// if auth.Credential != "" {
-	// 	var mapCredential map[string]interface{}
-
-	// 	if err := json.Unmarshal([]byte(auth.Credential), &mapCredential); err == nil {
-	// 		switch mapCredential["type"] {
-	// 		case uiammodel.MixinCredentialTypeEnumEdkey.String():
-	// 			json.Unmarshal([]byte(auth.Credential), mixinCredential)
-	// 			mixinCredential.Type = uiammodel.MixinCredentialTypeEnumEdkey
-	// 		case uiammodel.MixinCredentialTypeEnumToken.String():
-	// 			json.Unmarshal([]byte(auth.Credential), mixinCredential)
-	// 			mixinCredential.Type = uiammodel.MixinCredentialTypeEnumToken
-	// 		default:
-	// 			json.Unmarshal([]byte(auth.Credential), mixinCredential)
-	// 			mixinCredential.Type = uiammodel.MixinCredentialTypeEnumToken
-	// 		}
-	// 	}
-	// }
-
-	mixinAuth := new(MixinAuthCredentialResponse)
-	mixinAuth.IdentityID = auth.IdentityUUID
-	mixinAuth.RealmID = auth.RealmUUID
-	mixinAuth.Provider = auth.Provider
-	mixinAuth.OauthID = auth.OauthID
-	mixinAuth.MixinID = auth.AppUserID
-	mixinAuth.UserName = auth.AppUserName
-	mixinAuth.Credential = mixinCredential
-	mixinAuth.CreatedAt = auth.CreatedAt
-	mixinAuth.UpdatedAt = auth.UpdatedAt
-
-	return mixinAuth
 }

@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	resty "github.com/go-resty/resty/v2"
-	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
+	uiamresp "github.com/uiam-net/uiam-sdk-go/responses"
 )
 
 // RealmRequest RealmRequest
@@ -42,8 +42,8 @@ func NewRealmRequestJwt(token, serverURL string) *RealmRequest {
 // ============ api ============= //
 
 // GetCurrentRealm GetCurrentRealm
-func (ir RealmRequest) GetCurrentRealm(ctx context.Context) (*uiammodel.Realm, error) {
-	var res uiammodel.Realm
+func (ir RealmRequest) GetCurrentRealm(ctx context.Context) (*uiamresp.RealmResponse, error) {
+	var res uiamresp.RealmResponse
 
 	url := fmt.Sprintf("%s/v1/realm", ir.ServerURL)
 

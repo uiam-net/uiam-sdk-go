@@ -16,18 +16,3 @@ type ProfileResponse struct {
 	IDDigest    string                  `json:"id_digest,omitempty"`
 	CertifiedAt *time.Time              `json:"certified_at"`
 }
-
-// NewProfileResponse NewProfileResponse
-func NewProfileResponse(profile *uiammodel.Profile) *ProfileResponse {
-	response := &ProfileResponse{
-		IdentityID:  profile.IdentityID,
-		Name:        profile.Name,
-		KycLevel:    profile.KycLevel,
-		KycStatus:   profile.KycStatus,
-		KycError:    profile.KycError,
-		CertifiedAt: profile.CertifiedAt,
-		IDDigest:    profile.IDDigest,
-	}
-
-	return response
-}

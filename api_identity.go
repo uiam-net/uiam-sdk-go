@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	resty "github.com/go-resty/resty/v2"
-	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
+	uiamresp "github.com/uiam-net/uiam-sdk-go/responses"
 )
 
 // IdentityRequest IdentityRequest
@@ -38,8 +38,8 @@ func NewUserRequest(serverURL string) *IdentityRequest {
 // ============ api ============= //
 
 // GetCurrentIdentity GetUser
-func (r IdentityRequest) GetCurrentIdentity(ctx context.Context, profile bool) (*uiammodel.Identity, error) {
-	var res uiammodel.Identity
+func (r IdentityRequest) GetCurrentIdentity(ctx context.Context, profile bool) (*uiamresp.IdentityResponse, error) {
+	var res uiamresp.IdentityResponse
 
 	var expand = make([]string, 0)
 	if profile {

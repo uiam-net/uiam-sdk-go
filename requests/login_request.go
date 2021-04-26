@@ -15,11 +15,8 @@ type LoginRequest struct {
 type LoginTypeEnum string
 
 const (
-	// LoginTypeEnumID LoginTypeEnumID
-	LoginTypeEnumID LoginTypeEnum = "id"
-	// LoginTypeEnumPhone LoginTypeEnumPhone
+	LoginTypeEnumID    LoginTypeEnum = "id"
 	LoginTypeEnumPhone LoginTypeEnum = "phone"
-	// LoginTypeEnumEmail LoginTypeEnumEmail
 	LoginTypeEnumEmail LoginTypeEnum = "email"
 )
 

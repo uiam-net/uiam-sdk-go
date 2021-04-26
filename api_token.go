@@ -5,7 +5,8 @@ import (
 	"fmt"
 
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
-	uiamreq "github.com/uiam-net/uiam-sdk-go/models/request"
+	uiamreq "github.com/uiam-net/uiam-sdk-go/requests"
+	uiamresp "github.com/uiam-net/uiam-sdk-go/responses"
 )
 
 // ============ api ============= //
@@ -38,8 +39,8 @@ func (ir IdentityRequest) GenMfaPhoneCode(ctx context.Context, authReq *uiamreq.
 }
 
 // VerifyMfaPhoneCode VerifyMfaPhoneCode
-func (ir IdentityRequest) VerifyMfaPhoneCode(ctx context.Context, authReq *uiamreq.PhoneCodeVerifyRequest) (*uiammodel.Identity, error) {
-	var user uiammodel.Identity
+func (ir IdentityRequest) VerifyMfaPhoneCode(ctx context.Context, authReq *uiamreq.PhoneCodeVerifyRequest) (*uiamresp.IdentityResponse, error) {
+	var user uiamresp.IdentityResponse
 	if err := Execute(ir.getRequest(ctx), "POST", fmt.Sprintf("%s%s", ir.ServerURL, "/v1/mfa/phone/verify"), authReq, &user); err != nil {
 		return nil, err
 	}

@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
-	uiamreq "github.com/uiam-net/uiam-sdk-go/models/request"
-	uiamresp "github.com/uiam-net/uiam-sdk-go/models/response"
+	uiamreq "github.com/uiam-net/uiam-sdk-go/requests"
+	uiamresp "github.com/uiam-net/uiam-sdk-go/responses"
 )
 
 // ============ api ============= //
@@ -67,8 +67,8 @@ func (ir IdentityRequest) GetAuthByOAuthID(ctx context.Context, provider uiammod
 // ============ REG & Update ============= //
 
 // RegAuthAndID RegAuthAndID
-func (ir IdentityRequest) RegAuthAndID(ctx context.Context, req *uiamreq.AuthIDCreateRequest) (*uiamresp.IdentityAuthsResponse, error) {
-	var auth uiamresp.IdentityAuthsResponse
+func (ir IdentityRequest) RegAuthAndID(ctx context.Context, req *uiamreq.AuthIDCreateRequest) (*uiamresp.IdentityResponse, error) {
+	var auth uiamresp.IdentityResponse
 	var url = fmt.Sprintf("%s/v1/auths/%s", ir.ServerURL, req.Provider)
 
 	if err := Execute(ir.getRequest(ctx), "POST", url, req, &auth); err != nil {
@@ -110,8 +110,8 @@ func (ir IdentityRequest) UpdateAuthByOauthID(ctx context.Context, req *uiamreq.
 // ============ ID - AUTH Bind ============= //
 
 // BindAuth BindAuth
-func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBindingRequest) (*uiammodel.Connect, error) {
-	var auth uiammodel.Connect
+func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBindingRequest) (*uiamresp.ConnectResponse, error) {
+	var auth uiamresp.ConnectResponse
 	var url = fmt.Sprintf("%s/v1/identities/%v/auths/%s/bind", ir.ServerURL, req.UserID, req.Provider)
 
 	if err := Execute(ir.getRequest(ctx), "PUT", url, req, &auth); err != nil {
