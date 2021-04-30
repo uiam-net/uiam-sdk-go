@@ -8,67 +8,57 @@ import (
 // ================ 枚举 ================== //
 // ================ 枚举 ================== //
 
-// ConnectProviderTypeEnum 枚举
-type ConnectProviderTypeEnum string
+// ConnectProviderEnum 枚举
+type ConnectProviderEnum string
 
 const (
-	// ConnectProviderTypeEnumGoogle google
-	ConnectProviderTypeEnumGoogle ConnectProviderTypeEnum = "google"
-	// ConnectProviderTypeEnumMicrosoft microsoft
-	ConnectProviderTypeEnumMicrosoft ConnectProviderTypeEnum = "microsoft"
-	// ConnectProviderTypeEnumFacebook facebook
-	ConnectProviderTypeEnumFacebook ConnectProviderTypeEnum = "facebook"
-	// ConnectProviderTypeEnumTwitter twitter
-	ConnectProviderTypeEnumTwitter ConnectProviderTypeEnum = "twitter"
-	// ConnectProviderTypeEnumWechat wechat
-	ConnectProviderTypeEnumWechat ConnectProviderTypeEnum = "wechat"
-	// ConnectProviderTypeEnumQQ qq
-	ConnectProviderTypeEnumQQ ConnectProviderTypeEnum = "qq"
-	// ConnectProviderTypeEnumAlipay alipay
-	ConnectProviderTypeEnumAlipay ConnectProviderTypeEnum = "alipay"
-	// ConnectProviderTypeEnumDingtalk dingtalk
-	ConnectProviderTypeEnumDingtalk ConnectProviderTypeEnum = "dingtalk"
-	// ConnectProviderTypeEnumWeibo weibo
-	ConnectProviderTypeEnumWeibo ConnectProviderTypeEnum = "weibo"
-	// ConnectProviderTypeEnumOLDP ladp / ad
-	ConnectProviderTypeEnumLADP ConnectProviderTypeEnum = "ladp"
+	ConnectProviderEnumGoogle    ConnectProviderEnum = "google"
+	ConnectProviderEnumMicrosoft ConnectProviderEnum = "microsoft"
+	ConnectProviderEnumFacebook  ConnectProviderEnum = "facebook"
+	ConnectProviderEnumTwitter   ConnectProviderEnum = "twitter"
+	ConnectProviderEnumWechat    ConnectProviderEnum = "wechat"
+	ConnectProviderEnumQQ        ConnectProviderEnum = "qq"
+	ConnectProviderEnumAlipay    ConnectProviderEnum = "alipay"
+	ConnectProviderEnumDingtalk  ConnectProviderEnum = "dingtalk"
+	ConnectProviderEnumWeibo     ConnectProviderEnum = "weibo"
+	ConnectProviderEnumLADP      ConnectProviderEnum = "ladp"
 )
 
-func (e ConnectProviderTypeEnum) String() string {
+func (e ConnectProviderEnum) String() string {
 	switch e {
 
-	case ConnectProviderTypeEnumGoogle:
+	case ConnectProviderEnumGoogle:
 		return "google"
-	case ConnectProviderTypeEnumMicrosoft:
+	case ConnectProviderEnumMicrosoft:
 		return "microsoft"
-	case ConnectProviderTypeEnumFacebook:
+	case ConnectProviderEnumFacebook:
 		return "facebook"
-	case ConnectProviderTypeEnumTwitter:
+	case ConnectProviderEnumTwitter:
 		return "twitter"
-	case ConnectProviderTypeEnumWechat:
+	case ConnectProviderEnumWechat:
 		return "wechat"
-	case ConnectProviderTypeEnumQQ:
+	case ConnectProviderEnumQQ:
 		return "qq"
-	case ConnectProviderTypeEnumAlipay:
+	case ConnectProviderEnumAlipay:
 		return "alipay"
-	case ConnectProviderTypeEnumDingtalk:
+	case ConnectProviderEnumDingtalk:
 		return "dingtalk"
-	case ConnectProviderTypeEnumWeibo:
+	case ConnectProviderEnumWeibo:
 		return "weibo"
-	case ConnectProviderTypeEnumLADP:
+	case ConnectProviderEnumLADP:
 		return "ladp"
 	default:
 		return ""
 	}
 }
 
-// NewConnectProviderTypeEnum 构造函数
-func NewConnectProviderTypeEnum(provider string) (ConnectProviderTypeEnum, error) {
+// NewConnectProviderEnum 构造函数
+func NewConnectProviderEnum(provider string) (ConnectProviderEnum, error) {
 	switch provider {
 	case "wechat":
-		return ConnectProviderTypeEnumWechat, nil
+		return ConnectProviderEnumWechat, nil
 	case "alipay":
-		return ConnectProviderTypeEnumAlipay, nil
+		return ConnectProviderEnumAlipay, nil
 	default:
 		return "", errors.New("Parse Provider Type Error")
 	}
@@ -111,24 +101,15 @@ func (e AuthTypeEnum) String() string {
 type AuthSchemeEnum string
 
 const (
-	// AuthSchemeEnumBasic basic
-	AuthSchemeEnumBasic AuthSchemeEnum = "basic"
-	// AuthSchemeEnumDigest digest
+	AuthSchemeEnumBasic  AuthSchemeEnum = "basic"
 	AuthSchemeEnumDigest AuthSchemeEnum = "digest"
-	// AuthSchemeEnumJWTHS jwt_hs
-	AuthSchemeEnumJWTHS AuthSchemeEnum = "jwths"
-	// AuthSchemeEnumJWTRS jwt_rs
-	AuthSchemeEnumJWTRS AuthSchemeEnum = "jwtrs"
-	// AuthSchemeEnumJWTES jwt_es
-	AuthSchemeEnumJWTES AuthSchemeEnum = "jwtes"
-	// AuthSchemeEnumSAML saml
-	AuthSchemeEnumSAML AuthSchemeEnum = "saml"
-	// AuthSchemeEnumCAS cas
-	AuthSchemeEnumCAS AuthSchemeEnum = "cas"
-	// AuthSchemeEnumOIDC oidc
-	AuthSchemeEnumOIDC AuthSchemeEnum = "oidc"
-	// AuthSchemeEnumLDAP ldap
-	AuthSchemeEnumLDAP AuthSchemeEnum = "ldap"
+	AuthSchemeEnumJWTHS  AuthSchemeEnum = "jwths"
+	AuthSchemeEnumJWTRS  AuthSchemeEnum = "jwtrs"
+	AuthSchemeEnumJWTES  AuthSchemeEnum = "jwtes"
+	AuthSchemeEnumSAML   AuthSchemeEnum = "saml"
+	AuthSchemeEnumCAS    AuthSchemeEnum = "cas"
+	AuthSchemeEnumOIDC   AuthSchemeEnum = "oidc"
+	AuthSchemeEnumLDAP   AuthSchemeEnum = "ldap"
 )
 
 func (e AuthSchemeEnum) String() string {
@@ -200,9 +181,7 @@ type MixinCredential struct {
 type MixinCredentialTypeEnum string
 
 const (
-	// MixinCredentialTypeEnumEdkey edkey
 	MixinCredentialTypeEnumEdkey MixinCredentialTypeEnum = "edkey"
-	// MixinCredentialTypeEnumToken token
 	MixinCredentialTypeEnumToken MixinCredentialTypeEnum = "token"
 )
 

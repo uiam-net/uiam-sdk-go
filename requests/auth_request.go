@@ -10,42 +10,42 @@ import (
 type AuthIDCreateRequest struct {
 	BaseRequest
 
-	Provider     uiammodel.ConnectProviderTypeEnum `json:"provider"`
-	IdentityName string                            `json:"username"`
-	PhoneCode    string                            `json:"phone_code"`
-	PhoneNumber  string                            `json:"phone_number"`
-	Email        string                            `json:"email"`
-	AvatarURL    string                            `json:"avatar_url"`
-	Description  string                            `json:"description"`
-	OauthID      string                            `json:"oauth_id" binding:"required,min=4"`
-	UnionID      string                            `json:"union_id"`
-	AppUserID    string                            `json:"app_user_id"`
-	AppUserName  string                            `json:"app_user_name"`
-	Credential   uiammodel.Attribute               `json:"credential"`
+	Provider     uiammodel.ConnectProviderEnum `json:"provider"`
+	IdentityName string                        `json:"username"`
+	PhoneCode    string                        `json:"phone_code"`
+	PhoneNumber  string                        `json:"phone_number"`
+	Email        string                        `json:"email"`
+	AvatarURL    string                        `json:"avatar_url"`
+	Description  string                        `json:"description"`
+	OauthID      string                        `json:"oauth_id" binding:"required,min=4"`
+	UnionID      string                        `json:"union_id"`
+	AppUserID    string                        `json:"app_user_id"`
+	AppUserName  string                        `json:"app_user_name"`
+	Credential   uiammodel.Attribute           `json:"credential"`
 }
 
 // AuthCreateRequest AuthCreateRequest
 type AuthCreateRequest struct {
 	BaseRequest
 
-	Provider    uiammodel.ConnectProviderTypeEnum `json:"provider"`
-	OauthID     string                            `json:"oauth_id" binding:"required,min=4"`
-	UnionID     string                            `json:"union_id"`
-	AppUserID   string                            `json:"app_user_id"`
-	AppUserName string                            `json:"app_user_name"`
-	Credential  uiammodel.Attribute               `json:"credential"`
+	Provider    uiammodel.ConnectProviderEnum `json:"provider"`
+	OauthID     string                        `json:"oauth_id" binding:"required,min=4"`
+	UnionID     string                        `json:"union_id"`
+	AppUserID   string                        `json:"app_user_id"`
+	AppUserName string                        `json:"app_user_name"`
+	Credential  uiammodel.Attribute           `json:"credential"`
 }
 
 // AuthUpdateRequest AuthUpdateRequest
 type AuthUpdateRequest struct {
 	BaseRequest
 
-	Provider    uiammodel.ConnectProviderTypeEnum `json:"provider"`
-	OauthID     string                            `json:"oauth_id"`
-	UnionID     string                            `json:"union_id"`
-	AppUserID   string                            `json:"app_user_id"`
-	AppUserName string                            `json:"app_user_name"`
-	Credential  uiammodel.Attribute               `json:"credential"`
+	Provider    uiammodel.ConnectProviderEnum `json:"provider"`
+	OauthID     string                        `json:"oauth_id"`
+	UnionID     string                        `json:"union_id"`
+	AppUserID   string                        `json:"app_user_id"`
+	AppUserName string                        `json:"app_user_name"`
+	Credential  uiammodel.Attribute           `json:"credential"`
 }
 
 // ============= AuthRequest ============= //
@@ -54,13 +54,13 @@ type AuthUpdateRequest struct {
 type AuthBindingRequest struct {
 	BaseRequest
 
-	UserID      uint64                            `json:"user_id"`
-	Provider    uiammodel.ConnectProviderTypeEnum `json:"provider"`
-	OauthID     string                            `json:"oauth_id"`
-	UnionID     string                            `json:"union_id"`
-	AppUserName string                            `json:"app_user_name"`
-	AppUserID   string                            `json:"app_user_id"`
-	Credential  uiammodel.Attribute               `json:"credential"`
+	UserID      uint64                        `json:"user_id"`
+	Provider    uiammodel.ConnectProviderEnum `json:"provider"`
+	OauthID     string                        `json:"oauth_id"`
+	UnionID     string                        `json:"union_id"`
+	AppUserName string                        `json:"app_user_name"`
+	AppUserID   string                        `json:"app_user_id"`
+	Credential  uiammodel.Attribute           `json:"credential"`
 }
 
 // AuthVerifyRequest AuthVerifyRequest
@@ -76,7 +76,7 @@ type AuthVerifyRequest struct {
 type AuthListRequest struct {
 	BaseRequest
 
-	Offset   int                               `form:"offset" binding:"gte=0"`
-	Limit    int                               `form:"limit" binding:"required,gte=1,lte=500"`
-	Provider uiammodel.ConnectProviderTypeEnum `form:"provider"`
+	Offset   int                           `form:"offset" binding:"gte=0"`
+	Limit    int                           `form:"limit" binding:"required,gte=1,lte=500"`
+	Provider uiammodel.ConnectProviderEnum `form:"provider"`
 }

@@ -6,11 +6,8 @@ package uiamsdk
 type IdentityTypeEnum string
 
 const (
-	// IdentityTypeEnumStd 正常注册用户
 	IdentityTypeEnumStd IdentityTypeEnum = "std"
-	// IdentityTypeEnumSys 系统调用使用
 	IdentityTypeEnumSys IdentityTypeEnum = "sys"
-	// IdentityTypeEnumVir 系统需要注册的虚拟用户
 	IdentityTypeEnumVir IdentityTypeEnum = "vir"
 )
 
@@ -20,8 +17,6 @@ func (e IdentityTypeEnum) String() string {
 		return "std"
 	case IdentityTypeEnumSys:
 		return "sys"
-	case IdentityTypeEnumVir:
-		return "vir"
 	default:
 		return "unkonwn"
 	}
@@ -31,13 +26,10 @@ func (e IdentityTypeEnum) String() string {
 type IdentityStatusEnum string
 
 const (
-	// IdentityStatusEnumInit 禁用
-	IdentityStatusEnumInit IdentityStatusEnum = "init"
-	// IdentityStatusEnumPending 正常
-	IdentityStatusEnumPending IdentityStatusEnum = "pending"
-	// IdentityStatusEnumNormal 正常
-	IdentityStatusEnumNormal IdentityStatusEnum = "normal"
-	// IdentityStatusEnumDisabled 禁用
+	IdentityStatusEnumInit     IdentityStatusEnum = "init"
+	IdentityStatusEnumPending  IdentityStatusEnum = "pending"
+	IdentityStatusEnumNormal   IdentityStatusEnum = "normal"
+	IdentityStatusEnumLocked   IdentityStatusEnum = "locked"
 	IdentityStatusEnumDisabled IdentityStatusEnum = "disabled"
 )
 

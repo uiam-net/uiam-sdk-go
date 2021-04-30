@@ -23,16 +23,16 @@ type AuthVerify struct {
 
 // Authorization
 type Authorization struct {
-	IdentityID  string                            `json:"identity_id"`
-	RealmID     string                            `json:"realm_id"`
-	Provider    uiammodel.ConnectProviderTypeEnum `json:"provider"`
-	OauthID     string                            `json:"oauth_id"`
-	UnionID     string                            `json:"union_id"`
-	AppUserID   string                            `json:"app_user_id"`
-	AppUserName string                            `json:"app_user_name"`
-	Credential  uiammodel.Attribute               `json:"credential"`
-	CreatedAt   time.Time                         `json:"created_at"`
-	UpdatedAt   time.Time                         `json:"updated_at"`
+	IdentityID  string                        `json:"identity_id"`
+	RealmID     string                        `json:"realm_id"`
+	Provider    uiammodel.ConnectProviderEnum `json:"provider"`
+	OauthID     string                        `json:"oauth_id"`
+	UnionID     string                        `json:"union_id"`
+	AppUserID   string                        `json:"app_user_id"`
+	AppUserName string                        `json:"app_user_name"`
+	Credential  uiammodel.Attribute           `json:"credential"`
+	CreatedAt   time.Time                     `json:"created_at"`
+	UpdatedAt   time.Time                     `json:"updated_at"`
 }
 
 // MixinCredential
@@ -48,13 +48,13 @@ type MixinCredential struct {
 
 // MixinAuthCredential
 type MixinAuthCredential struct {
-	IdentityID string                            `json:"identity_id"`
-	RealmID    string                            `json:"app_id"`
-	Provider   uiammodel.ConnectProviderTypeEnum `json:"provider"`
-	OauthID    string                            `json:"oauth_id"`
-	MixinID    string                            `json:"mixin_id"`
-	UserName   string                            `json:"user_name"`
-	Credential *MixinCredential                  `json:"credential"`
-	CreatedAt  time.Time                         `json:"created_at"`
-	UpdatedAt  time.Time                         `json:"updated_at"`
+	IdentityID string                        `json:"identity_id"`
+	RealmID    string                        `json:"app_id"`
+	Provider   uiammodel.ConnectProviderEnum `json:"provider"`
+	OauthID    string                        `json:"oauth_id"`
+	MixinID    string                        `json:"mixin_id"`
+	UserName   string                        `json:"user_name"`
+	Credential *MixinCredential              `json:"credential"`
+	CreatedAt  time.Time                     `json:"created_at"`
+	UpdatedAt  time.Time                     `json:"updated_at"`
 }
