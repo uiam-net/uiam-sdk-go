@@ -7,6 +7,7 @@ import (
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 	uiamreq "github.com/uiam-net/uiam-sdk-go/requests"
 	uiamresp "github.com/uiam-net/uiam-sdk-go/responses"
+	httputil "github.com/uiam-net/uiam-sdk-go/utils/http"
 )
 
 // ============ api ============= //
@@ -29,9 +30,9 @@ import (
 // GetIdentityAuths GetIdentityAuths
 func (ir IdentityRequest) GetIdentityAuths(ctx context.Context, uuid string) (*uiamresp.Authorization, error) {
 	var auth uiamresp.Authorization
-	var url = fmt.Sprintf("%s/v1/identities/%s/auths", ir.ServerURL, uuid)
+	var url = fmt.Sprintf("%s/mv1/identities/%s/auths", ir.ServerURL, uuid)
 
-	if err := Execute(ir.getRequest(ctx), "GET", url, nil, &auth); err != nil {
+	if err := httputil.Execute(ir.getRequest(ctx), "GET", url, nil, &auth); err != nil {
 		return nil, err
 	}
 
@@ -39,11 +40,11 @@ func (ir IdentityRequest) GetIdentityAuths(ctx context.Context, uuid string) (*u
 }
 
 // GetIdentityAuth GetIdentityAuth
-func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, provider uiammodel.ConnectProviderTypeEnum) (*uiamresp.Authorization, error) {
+func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, provider uiammodel.ConnectProviderEnum) (*uiamresp.Authorization, error) {
 	var auth uiamresp.Authorization
-	var url = fmt.Sprintf("%s/v1/identities/%s/auths/%s", ir.ServerURL, uuid, provider)
+	var url = fmt.Sprintf("%s/mv1/identities/%s/auths/%s", ir.ServerURL, uuid, provider)
 
-	if err := Execute(ir.getRequest(ctx), "GET", url, nil, &auth); err != nil {
+	if err := httputil.Execute(ir.getRequest(ctx), "GET", url, nil, &auth); err != nil {
 		return nil, err
 	}
 
@@ -53,11 +54,11 @@ func (ir IdentityRequest) GetIdentityAuth(ctx context.Context, uuid string, prov
 // ============ GET by OAuthID ============= //
 
 // GetAuthByOAuthID GetAuthByOAuthID
-func (ir IdentityRequest) GetAuthByOAuthID(ctx context.Context, provider uiammodel.ConnectProviderTypeEnum, oauthID string) (*uiamresp.Authorization, error) {
+func (ir IdentityRequest) GetAuthByOAuthID(ctx context.Context, provider uiammodel.ConnectProviderEnum, oauthID string) (*uiamresp.Authorization, error) {
 	var auth uiamresp.Authorization
-	var url = fmt.Sprintf("%s/v1/auths/%s/auths/%s", ir.ServerURL, provider, oauthID)
+	var url = fmt.Sprintf("%s/mv1/auths/%s/auths/%s", ir.ServerURL, provider, oauthID)
 
-	if err := Execute(ir.getRequest(ctx), "GET", url, nil, &auth); err != nil {
+	if err := httputil.Execute(ir.getRequest(ctx), "GET", url, nil, &auth); err != nil {
 		return nil, err
 	}
 
@@ -69,9 +70,9 @@ func (ir IdentityRequest) GetAuthByOAuthID(ctx context.Context, provider uiammod
 // RegAuthAndID RegAuthAndID
 func (ir IdentityRequest) RegAuthAndID(ctx context.Context, req *uiamreq.AuthIDCreateRequest) (*uiamresp.Identity, error) {
 	var auth uiamresp.Identity
-	var url = fmt.Sprintf("%s/v1/auths/%s", ir.ServerURL, req.Provider)
+	var url = fmt.Sprintf("%s/mv1/auths/%s", ir.ServerURL, req.Provider)
 
-	if err := Execute(ir.getRequest(ctx), "POST", url, req, &auth); err != nil {
+	if err := httputil.Execute(ir.getRequest(ctx), "POST", url, req, &auth); err != nil {
 		return nil, err
 	}
 
@@ -82,12 +83,9 @@ func (ir IdentityRequest) RegAuthAndID(ctx context.Context, req *uiamreq.AuthIDC
 func (ir IdentityRequest) UpdateAuthByID(ctx context.Context, req *uiamreq.AuthUpdateRequest) (*uiamresp.Authorization, error) {
 	var auth uiamresp.Authorization
 
-	var url = fmt.Sprintf("%s/v1/identities/%s/auths/%s", ir.ServerURL, req.IdentityID, req.Provider)
+	var url = fmt.Sprintf("%s/mv1/identities/%s/auths/%s", ir.ServerURL, req.IdentityID, req.Provider)
 
-	// fmt.Printf("#INFO = IDAuthorizationupdate: %v", req.AppUserName)
-	// fmt.Printf("#INFO = IDAuthorizationupdate: %v", req.UnionID)
-
-	if err := Execute(ir.getRequest(ctx), "PATCH", url, req, &auth); err != nil {
+	if err := httputil.Execute(ir.getRequest(ctx), "PATCH", url, req, &auth); err != nil {
 		return nil, err
 	}
 
@@ -98,9 +96,9 @@ func (ir IdentityRequest) UpdateAuthByID(ctx context.Context, req *uiamreq.AuthU
 func (ir IdentityRequest) UpdateAuthByOauthID(ctx context.Context, req *uiamreq.AuthIDCreateRequest) (*uiamresp.Authorization, error) {
 	var auth uiamresp.Authorization
 
-	var url = fmt.Sprintf("%s/v1/auths/%s/auths/%s", ir.ServerURL, req.Provider, req.OauthID)
+	var url = fmt.Sprintf("%s/mv1/auths/%s/auths/%s", ir.ServerURL, req.Provider, req.OauthID)
 
-	if err := Execute(ir.getRequest(ctx), "PATCH", url, req, &auth); err != nil {
+	if err := httputil.Execute(ir.getRequest(ctx), "PATCH", url, req, &auth); err != nil {
 		return nil, err
 	}
 
@@ -112,9 +110,9 @@ func (ir IdentityRequest) UpdateAuthByOauthID(ctx context.Context, req *uiamreq.
 // BindAuth BindAuth
 func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBindingRequest) (*uiamresp.Connect, error) {
 	var auth uiamresp.Connect
-	var url = fmt.Sprintf("%s/v1/identities/%v/auths/%s/bind", ir.ServerURL, req.UserID, req.Provider)
+	var url = fmt.Sprintf("%s/mv1/identities/%v/auths/%s/bind", ir.ServerURL, req.UserID, req.Provider)
 
-	if err := Execute(ir.getRequest(ctx), "PUT", url, req, &auth); err != nil {
+	if err := httputil.Execute(ir.getRequest(ctx), "PUT", url, req, &auth); err != nil {
 		return nil, err
 	}
 
@@ -122,11 +120,11 @@ func (ir IdentityRequest) BindAuth(ctx context.Context, req *uiamreq.AuthBinding
 }
 
 // UnbindAuth BindAuth
-func (ir IdentityRequest) UnbindAuth(ctx context.Context, userID uint64, provider uiammodel.ConnectProviderTypeEnum) error {
+func (ir IdentityRequest) UnbindAuth(ctx context.Context, userID uint64, provider uiammodel.ConnectProviderEnum) error {
 	var result map[string]interface{}
-	var url = fmt.Sprintf("%s/v1/identities/%v/auths/%s/bind", ir.ServerURL, userID, provider)
+	var url = fmt.Sprintf("%s/mv1/identities/%v/auths/%s/bind", ir.ServerURL, userID, provider)
 
-	if err := Execute(ir.getRequest(ctx), "DELETE", url, nil, &result); err != nil {
+	if err := httputil.Execute(ir.getRequest(ctx), "DELETE", url, nil, &result); err != nil {
 		return err
 	}
 
