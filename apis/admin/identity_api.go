@@ -61,7 +61,7 @@ func (ir IdentityRequest) UpdateUser(ctx context.Context, req *uiamreq.IdentityU
 func (ir IdentityRequest) GetUsersByIdentityIDs(ctx context.Context, identityIDs []string) ([]*uiamresp.Identity, error) {
 	var users []*uiamresp.Identity
 
-	if err := httputil.Execute(ir.getRequest(ctx), "GET", fmt.Sprintf("%s/v1/identities?id=%s", ir.ServerURL, strings.Join(identityIDs, ",")), nil, &users); err != nil {
+	if err := httputil.Execute(ir.getRequest(ctx), "GET", fmt.Sprintf("%s/mv1/identities?id=%s", ir.ServerURL, strings.Join(identityIDs, ",")), nil, &users); err != nil {
 		return nil, err
 	}
 
@@ -113,7 +113,7 @@ func (ir IdentityRequest) VerifyUserPassword(ctx context.Context, identityID str
 func (ir IdentityRequest) CreateUser(ctx context.Context, req *uiamreq.IdentityUpsertRequest) (*uiamresp.Identity, error) {
 	var user uiamresp.Identity
 
-	if err := httputil.Execute(ir.getRequest(ctx), "POST", fmt.Sprintf("%s%s", ir.ServerURL, "/v1/identities"), req, &user); err != nil {
+	if err := httputil.Execute(ir.getRequest(ctx), "POST", fmt.Sprintf("%s%s", ir.ServerURL, "/mv1/identities"), req, &user); err != nil {
 		return nil, err
 	}
 
