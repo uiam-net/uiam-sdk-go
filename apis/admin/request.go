@@ -12,13 +12,15 @@ import (
 // IdentityRequest IdentityRequest
 type IdentityRequest struct {
 	Authorization string `json:"token"`
+	RealmID       string `json:"realm_id"`
 	ServerURL     string `json:"server_url"`
 }
 
 // NewUserRequestJwt NewUserRequestJwt
-func NewRequestJwt(token, serverURL string) *IdentityRequest {
+func NewRequestJwt(token, serverURL, realmID string) *IdentityRequest {
 	userReq := &IdentityRequest{
 		Authorization: fmt.Sprintf("Bearer %s", token),
+		RealmID:       realmID,
 		ServerURL:     serverURL,
 	}
 
@@ -53,5 +55,6 @@ func NewRequestBasic(authKey, authSecret, serverURL string) *IdentityRequest {
 func (r IdentityRequest) getRequest(ctx context.Context) *resty.Request {
 	return httputil.NewRequest(ctx).
 		SetHeader("Authorization", r.Authorization).
-		SetHeader(httputil.RequestIDKey, httputil.GenRequestID(ctx))
+		SetHeader(httputil.RequestIDKey, httputil.GenRequestID(ctx)).
+		SetHeader("UIAM-Realm-ID", r.RealmID)
 }

@@ -12,6 +12,7 @@ type JWTPayload struct {
 	jwtgo.StandardClaims
 
 	UID           string                   `json:"uid,omitempty"`
+	RealmID       string                   `json:"realm_id,omitempty"`
 	Mode          string                   `json:"mode,omitempty"`
 	Scheme        uiammodel.AuthSchemeEnum `json:"scheme,omitempty"`
 	OAuthProvider string                   `json:"oap,omitempty"` //oap: OAuth Provider
