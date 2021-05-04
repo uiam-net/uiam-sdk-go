@@ -17,7 +17,7 @@ type JWTPayload struct {
 	Subject   string `json:"sub,omitempty"`
 
 	UID           string                   `json:"uid,omitempty"`
-	RealmID       string                   `json:"realm_id,omitempty"`
+	RealmID       string                   `json:"rid,omitempty"`
 	Mode          string                   `json:"mode,omitempty"`
 	Scheme        uiammodel.AuthSchemeEnum `json:"scheme,omitempty"`
 	OAuthProvider string                   `json:"oap,omitempty"` //oap: OAuth Provider

@@ -3,21 +3,21 @@ package uiamsdk
 // ================== EUUM ================== //
 
 // RealmStatusEnum 枚举
-type RealmAuthModelEnum string
+type RealmAuthzModelEnum string
 
 const (
-	RealmAuthModelEnumRealm      RealmAuthModelEnum = "realm"
-	RealmAuthModelEnumUser       RealmAuthModelEnum = "user"
-	RealmAuthModelEnumUserDevice RealmAuthModelEnum = "device"
+	RealmAuthzModelEnumRealm      RealmAuthzModelEnum = "realm"
+	RealmAuthzModelEnumUser       RealmAuthzModelEnum = "user"
+	RealmAuthzModelEnumUserDevice RealmAuthzModelEnum = "device"
 )
 
-func (e RealmAuthModelEnum) String() string {
+func (e RealmAuthzModelEnum) String() string {
 	switch e {
-	case RealmAuthModelEnumRealm:
+	case RealmAuthzModelEnumRealm:
 		return "realm"
-	case RealmAuthModelEnumUser:
+	case RealmAuthzModelEnumUser:
 		return "user"
-	case RealmAuthModelEnumUserDevice:
+	case RealmAuthzModelEnumUserDevice:
 		return "device"
 	default:
 		return ""
