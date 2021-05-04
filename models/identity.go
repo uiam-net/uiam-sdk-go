@@ -6,19 +6,21 @@ package uiamsdk
 type IdentityTypeEnum string
 
 const (
-	IdentityTypeEnumStd IdentityTypeEnum = "std"
-	IdentityTypeEnumSys IdentityTypeEnum = "sys"
-	IdentityTypeEnumVir IdentityTypeEnum = "vir"
+	IdentityTypeEnumStd   IdentityTypeEnum = "std"
+	IdentityTypeEnumAdmin IdentityTypeEnum = "admin"
+	IdentityTypeEnumSys   IdentityTypeEnum = "sys"
 )
 
 func (e IdentityTypeEnum) String() string {
 	switch e {
 	case IdentityTypeEnumStd:
 		return "std"
+	case IdentityTypeEnumAdmin:
+		return "admin"
 	case IdentityTypeEnumSys:
 		return "sys"
 	default:
-		return "unkonwn"
+		return ""
 	}
 }
 
@@ -44,6 +46,6 @@ func (e IdentityStatusEnum) String() string {
 	case IdentityStatusEnumDisabled:
 		return "disabled"
 	default:
-		return "unkonwn"
+		return ""
 	}
 }
