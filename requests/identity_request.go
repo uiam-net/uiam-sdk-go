@@ -8,6 +8,7 @@ import (
 type IdentityListRequest struct {
 	BaseRequest
 
+	BizType     string                        `form:"type"`
 	Offset      int                           `form:"offset" binding:"gte=0"`
 	Limit       int                           `form:"limit" binding:"gte=0,lte=500"`
 	PhoneCode   string                        `form:"phone_code"`
