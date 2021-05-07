@@ -15,19 +15,22 @@ type LoginRequest struct {
 type LoginTypeEnum string
 
 const (
-	LoginTypeEnumID    LoginTypeEnum = "id"
-	LoginTypeEnumPhone LoginTypeEnum = "phone"
-	LoginTypeEnumEmail LoginTypeEnum = "email"
+	LoginTypeEnumName    LoginTypeEnum = "name"
+	LoginTypeEnumPhone   LoginTypeEnum = "phone"
+	LoginTypeEnumEmail   LoginTypeEnum = "email"
+	LoginTypeEnumSmsCode LoginTypeEnum = "sms_code"
 )
 
 func (e LoginTypeEnum) String() string {
 	switch e {
-	case LoginTypeEnumID:
-		return "id"
+	case LoginTypeEnumName:
+		return "name"
 	case LoginTypeEnumPhone:
 		return "phone"
 	case LoginTypeEnumEmail:
 		return "email"
+	case LoginTypeEnumSmsCode:
+		return "sms_code"
 	default:
 		return ""
 	}

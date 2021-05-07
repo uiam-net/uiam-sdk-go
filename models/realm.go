@@ -44,3 +44,61 @@ func (e RealmStatusEnum) String() string {
 		return ""
 	}
 }
+
+// RealmCaptchaModeEnum 枚举
+type RealmCaptchaModeEnum string
+
+const (
+	RealmCaptchaModeEnumNone RealmCaptchaModeEnum = "none" // 禁用
+	RealmCaptchaModeEnumPre  RealmCaptchaModeEnum = "pre"  // 前置，在提交登录请求时，需要带上 captcha 数据
+	RealmCaptchaModeEnumPost RealmCaptchaModeEnum = "post" // 后置，提交完登录请求后，再根据情况判断是否需要识别
+)
+
+func (e RealmCaptchaModeEnum) String() string {
+	switch e {
+	case RealmCaptchaModeEnumNone:
+		return "none"
+	case RealmCaptchaModeEnumPre:
+		return "pre"
+	case RealmCaptchaModeEnumPost:
+		return "pre"
+	default:
+		return ""
+	}
+}
+
+// RealmCaptchaTypeEnum 枚举
+type RealmCaptchaTypeEnum string
+
+const (
+	RealmCaptchaTypeEnumSMS             RealmCaptchaTypeEnum = "sms"
+	RealmCaptchaTypeEnumDigtal          RealmCaptchaTypeEnum = "digtal"
+	RealmCaptchaTypeEnumString          RealmCaptchaTypeEnum = "string"
+	RealmCaptchaTypeEnumMath            RealmCaptchaTypeEnum = "math"
+	RealmCaptchaTypeEnumSlide           RealmCaptchaTypeEnum = "slide"
+	RealmCaptchaTypeEnumBlockPuzzle     RealmCaptchaTypeEnum = "block_puzzle"
+	RealmCaptchaTypeEnumClickWord       RealmCaptchaTypeEnum = "click_word"
+	RealmCaptchaTypeEnumGoogleRecaptcha RealmCaptchaTypeEnum = "recaptcha"
+	RealmCaptchaTypeEnumAliyunCaptcha   RealmCaptchaTypeEnum = "aliyun"
+)
+
+func (e RealmCaptchaTypeEnum) String() string {
+	switch e {
+	case RealmCaptchaTypeEnumSMS:
+		return "sms"
+	case RealmCaptchaTypeEnumDigtal:
+		return "digtal"
+	case RealmCaptchaTypeEnumString:
+		return "string"
+	case RealmCaptchaTypeEnumMath:
+		return "math"
+	case RealmCaptchaTypeEnumSlide:
+		return "slide"
+	case RealmCaptchaTypeEnumBlockPuzzle:
+		return "block_puzzle"
+	case RealmCaptchaTypeEnumClickWord:
+		return "click_word"
+	default:
+		return ""
+	}
+}

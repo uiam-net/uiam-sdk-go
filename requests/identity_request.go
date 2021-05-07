@@ -24,7 +24,8 @@ type IdentityUpsertRequest struct {
 
 	IdentityUUID string                     `json:"uuid"`
 	IdentityName string                     `json:"username" binding:"required,min=1"`
-	Type         uiammodel.IdentityTypeEnum `json:"type" binding:"required,min=1"`
+	Type         uiammodel.IdentityTypeEnum `json:"_" binding:"required,min=1"`
+	BizType      string                     `json:"type" binding:"required,min=1"`
 	PhoneCode    string                     `json:"phone_code" binding:"required,min=1"`
 	PhoneNumber  string                     `json:"phone_number" binding:"required,min=1"`
 	Email        string                     `json:"email"`
