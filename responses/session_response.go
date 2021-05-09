@@ -9,12 +9,21 @@ type RealmCaptchaTypeDigtal struct {
 }
 
 type LoginData struct {
-	Captcha *Captcha `json:"captcha,omitempty"`
+	RealmID string       `json:"realm,omitempty"`
+	Captcha *CaptchaData `json:"captcha,omitempty"`
 }
 
-// JWTPayload
-type Captcha struct {
-	Mode uiammodel.RealmCaptchaModeEnum `json:"mode,omitempty"`
-	Type uiammodel.RealmCaptchaTypeEnum `json:"type,omitempty"`
-	Data uiammodel.Attribute            `json:"data,omitempty"`
+type CaptchaUiamDigtal struct {
+	Length    int    `json:"length,omitempty"`
+	Height    int    `json:"-"`
+	Width     int    `json:"-"`
+	CaptchaID string `json:"captcha_id,omitempty"`
+	Data      string `json:"data,omitempty"`
+}
+
+// CaptchaData
+type CaptchaData struct {
+	Mode     uiammodel.RealmCaptchaModeEnum     `json:"mode"`
+	Provider uiammodel.RealmCaptchaProviderEnum `json:"provider"`
+	Payload  interface{}                        `json:"payload"`
 }

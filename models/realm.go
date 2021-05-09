@@ -61,9 +61,34 @@ func (e RealmCaptchaModeEnum) String() string {
 	case RealmCaptchaModeEnumPre:
 		return "pre"
 	case RealmCaptchaModeEnumPost:
-		return "pre"
+		return "post"
 	default:
 		return ""
+	}
+}
+
+// RealmCaptchaProviderEnum 枚举
+type RealmCaptchaProviderEnum string
+
+const (
+	RealmCaptchaProviderEnumSMS     RealmCaptchaProviderEnum = "sms"
+	RealmCaptchaProviderEnumUiam    RealmCaptchaProviderEnum = "uiam"
+	RealmCaptchaProviderEnumAliyun  RealmCaptchaProviderEnum = "aliyun"
+	RealmCaptchaProviderEnumGeetest RealmCaptchaProviderEnum = "geetest"
+)
+
+func (e RealmCaptchaProviderEnum) String() string {
+	switch e {
+	case RealmCaptchaProviderEnumSMS:
+		return "sms"
+	case RealmCaptchaProviderEnumUiam:
+		return "uiam"
+	case RealmCaptchaProviderEnumAliyun:
+		return "aliyun"
+	case RealmCaptchaProviderEnumGeetest:
+		return "geetest"
+	default:
+		return "none"
 	}
 }
 
@@ -71,7 +96,6 @@ func (e RealmCaptchaModeEnum) String() string {
 type RealmCaptchaTypeEnum string
 
 const (
-	RealmCaptchaTypeEnumSMS             RealmCaptchaTypeEnum = "sms"
 	RealmCaptchaTypeEnumDigtal          RealmCaptchaTypeEnum = "digtal"
 	RealmCaptchaTypeEnumString          RealmCaptchaTypeEnum = "string"
 	RealmCaptchaTypeEnumMath            RealmCaptchaTypeEnum = "math"
@@ -79,13 +103,10 @@ const (
 	RealmCaptchaTypeEnumBlockPuzzle     RealmCaptchaTypeEnum = "block_puzzle"
 	RealmCaptchaTypeEnumClickWord       RealmCaptchaTypeEnum = "click_word"
 	RealmCaptchaTypeEnumGoogleRecaptcha RealmCaptchaTypeEnum = "recaptcha"
-	RealmCaptchaTypeEnumAliyunCaptcha   RealmCaptchaTypeEnum = "aliyun"
 )
 
 func (e RealmCaptchaTypeEnum) String() string {
 	switch e {
-	case RealmCaptchaTypeEnumSMS:
-		return "sms"
 	case RealmCaptchaTypeEnumDigtal:
 		return "digtal"
 	case RealmCaptchaTypeEnumString:
