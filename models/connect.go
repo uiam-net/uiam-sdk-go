@@ -60,7 +60,7 @@ func NewConnectProviderEnum(provider string) (ConnectProviderEnum, error) {
 	case "alipay":
 		return ConnectProviderEnumAlipay, nil
 	default:
-		return "", errors.New("Parse Provider Type Error")
+		return "", errors.New("parse provider type error")
 	}
 }
 

@@ -1,8 +1,6 @@
 package response
 
 import (
-	"time"
-
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
@@ -29,16 +27,4 @@ type JWTPayload struct {
 
 func (c JWTPayload) Valid() error {
 	return nil
-}
-
-// Token
-type Token struct {
-	RealmID    string                   `json:"realm_id,omitempty"`
-	IdentityID string                   `json:"identity_id,omitempty"`
-	Type       uiammodel.AuthTypeEnum   `json:"type,omitempty"`
-	Scheme     uiammodel.AuthSchemeEnum `json:"scheme,omitempty"`
-	Provider   string                   `json:"oap,omitempty"`
-	Key        string                   `json:"sid,omitempty"`
-	ExpriedAt  *time.Time               `json:"expried_at,omitempty"`
-	Token      string                   `json:"token,omitempty"`
 }

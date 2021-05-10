@@ -49,3 +49,23 @@ func (e IdentityStatusEnum) String() string {
 		return ""
 	}
 }
+
+// MfaModeEnum 枚举
+type MfaModeEnum string
+
+const (
+	MfaModeEnumNone MfaModeEnum = "none"
+	MfaModeEnumOtp  MfaModeEnum = "otp"
+	MfaModeEnumSms  MfaModeEnum = "sms"
+)
+
+func (e MfaModeEnum) String() string {
+	switch e {
+	case MfaModeEnumOtp:
+		return "otp"
+	case MfaModeEnumSms:
+		return "sms"
+	default:
+		return "none"
+	}
+}
