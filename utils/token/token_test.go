@@ -5,12 +5,12 @@ import (
 	"testing"
 	"time"
 
-	uiamresp "github.com/uiam-net/uiam-sdk-go/responses"
+	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
 func TestGenerateHSToken(t *testing.T) {
 	// Build JWT
-	myJWTClaims := uiamresp.JWTPayload{
+	myJWTClaims := uiammodel.JWTPayload{
 		IssuedAt:  time.Now().Unix(),
 		ExpiresAt: time.Now().Add(time.Duration(time.Hour * 168)).Unix(),
 	}

@@ -2,9 +2,9 @@ package uiamsdk
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
-	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 	uiamreq "github.com/uiam-net/uiam-sdk-go/requests"
 	uiamresp "github.com/uiam-net/uiam-sdk-go/responses"
 	httputil "github.com/uiam-net/uiam-sdk-go/utils/http"
@@ -14,8 +14,8 @@ import (
 // ============ api ============= //
 
 // GenToken GenToken
-func (ir IdentityRequest) GenToken(ctx context.Context, req *uiamreq.TokenCreateRequest) (*uiammodel.Token, error) {
-	var tokenRes uiammodel.Token
+func (ir IdentityRequest) GenToken(ctx context.Context, req *uiamreq.TokenCreateRequest) (*uiamresp.LoginResp, error) {
+	var tokenRes uiamresp.LoginResp
 	var url = fmt.Sprintf("%s/mv1/identities/%v/tokens", ir.ServerURL, req.Audience)
 
 	if err := httputil.Execute(ir.getRequest(ctx), "POST", url, req, &tokenRes); err != nil {
@@ -33,7 +33,7 @@ func (ir IdentityRequest) GenMfaPhoneCode(ctx context.Context, authReq *uiamreq.
 	}
 
 	if result["code"] == nil {
-		return "", uiammodel.NewAppError("result error!")
+		return "", errors.New("result error!")
 	}
 
 	return result["code"].(string), nil

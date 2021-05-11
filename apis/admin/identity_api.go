@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"strings"
 
-	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 	uiamreq "github.com/uiam-net/uiam-sdk-go/requests"
 	uiamresp "github.com/uiam-net/uiam-sdk-go/responses"
 	httputil "github.com/uiam-net/uiam-sdk-go/utils/http"
@@ -81,13 +80,13 @@ func (ir IdentityRequest) GetUserByPhone(ctx context.Context, phoneCode, phoneNu
 	if len(resp.Items) > 0 {
 		userBt, err := json.Marshal(resp.Items[0])
 		if err != nil {
-			return nil, uiammodel.NewAppError(err.Error())
+			return nil, err
 		}
 
 		user := new(uiamresp.Identity)
 		err2 := json.Unmarshal(userBt, user)
 		if err2 != nil {
-			return nil, uiammodel.NewAppError(err2.Error())
+			return nil, err2
 		}
 
 		return user, nil

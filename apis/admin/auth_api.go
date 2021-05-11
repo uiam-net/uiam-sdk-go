@@ -2,6 +2,7 @@ package uiamsdk
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
@@ -129,7 +130,7 @@ func (ir IdentityRequest) UnbindAuth(ctx context.Context, userID uint64, provide
 	}
 
 	if result["result"] == nil || result["result"].(string) != "ok" {
-		return uiammodel.NewAppError("result error!")
+		return errors.New("result error!")
 	}
 
 	return nil
