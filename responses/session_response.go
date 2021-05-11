@@ -23,8 +23,8 @@ type CaptchaUiamDigtal struct {
 // CaptchaData
 type CaptchaData struct {
 	Mode     uiammodel.RealmCaptchaModeEnum     `json:"mode"`
-	Provider uiammodel.RealmCaptchaProviderEnum `json:"provider"`
-	Payload  interface{}                        `json:"payload"`
+	Provider uiammodel.RealmCaptchaProviderEnum `json:"provider,omitempty"`
+	Payload  interface{}                        `json:"payload,omitempty"`
 }
 
 // LoginConfig 登录前返回 LoginConfig
@@ -41,7 +41,7 @@ type LoginResp interface {
 type LoginCaptcha struct {
 	Type           uiammodel.SessionTypeEnum          `json:"type,omitempty"`
 	RealmID        string                             `json:"realm_id,omitempty"`
-	Mode           uiammodel.RealmCaptchaModeEnum     `json:"mode"`
+	Mode           uiammodel.RealmCaptchaModeEnum     `json:"mode,omitempty"`
 	Provider       uiammodel.RealmCaptchaProviderEnum `json:"provider"`
 	CaptchaPayload interface{}                        `json:"payload"`
 }
