@@ -54,17 +54,26 @@ func (e IdentityStatusEnum) String() string {
 type MfaModeEnum string
 
 const (
-	MfaModeEnumNone MfaModeEnum = "none"
-	MfaModeEnumOtp  MfaModeEnum = "otp"
-	MfaModeEnumSms  MfaModeEnum = "sms"
+	MfaModeEnumNone        MfaModeEnum = "none"
+	MfaModeEnumOtp         MfaModeEnum = "otp"
+	MfaModeEnumSmsCode     MfaModeEnum = "sms_code"
+	MfaModeEnumEmailCode   MfaModeEnum = "email_code"
+	MfaModeEnumFaceprint   MfaModeEnum = "faceprint"   // 面纹
+	MfaModeEnumFingerprint MfaModeEnum = "fingerprint" // 指纹
 )
 
 func (e MfaModeEnum) String() string {
 	switch e {
 	case MfaModeEnumOtp:
 		return "otp"
-	case MfaModeEnumSms:
-		return "sms"
+	case MfaModeEnumSmsCode:
+		return "sms_code"
+	case MfaModeEnumEmailCode:
+		return "email_code"
+	case MfaModeEnumFaceprint:
+		return "faceprint"
+	case MfaModeEnumFingerprint:
+		return "fingerprint"
 	default:
 		return "none"
 	}

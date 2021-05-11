@@ -6,14 +6,9 @@ package uiamsdk
 type KycStatusEnum string
 
 const (
-	// KycStatusEnumProcessing 处理中
 	KycStatusEnumProcessing KycStatusEnum = "processing"
-	// KycStatusEnumRejected rejected
-	KycStatusEnumRejected KycStatusEnum = "rejected"
-	// KycStatusEnumApproved approved
-	KycStatusEnumApproved KycStatusEnum = "approved"
-	// KycStatusEnumUnkonwn unkonwn
-	KycStatusEnumUnkonwn KycStatusEnum = "unkonwn"
+	KycStatusEnumRejected   KycStatusEnum = "rejected"
+	KycStatusEnumApproved   KycStatusEnum = "approved"
 )
 
 func (e KycStatusEnum) String() string {
@@ -25,7 +20,7 @@ func (e KycStatusEnum) String() string {
 	case KycStatusEnumApproved:
 		return "approved"
 	default:
-		return "unkonwn"
+		return ""
 	}
 }
 
@@ -39,6 +34,6 @@ func NewKycStatusEnum(enum string) KycStatusEnum {
 	case "approved":
 		return KycStatusEnumApproved
 	default:
-		return KycStatusEnumUnkonwn
+		return ""
 	}
 }

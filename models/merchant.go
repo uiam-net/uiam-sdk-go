@@ -2,14 +2,11 @@ package uiamsdk
 
 // =============== IdentityTypeEnum =============== //
 
-// IdentityTypeEnum 枚举
 type MerchantTypeEnum string
 
 const (
-	// MerchantTypeEnumPersonal 正常注册用户
-	MerchantTypeEnumPersonal MerchantTypeEnum = "personal"
-	// MerchantTypeEnumCompany 系统调用使用
-	MerchantTypeEnumCompany MerchantTypeEnum = "copmpany"
+	MerchantTypeEnumPersonal MerchantTypeEnum = "personal" // 正常注册用户
+	MerchantTypeEnumCompany  MerchantTypeEnum = "copmpany" // 系统调用使用
 )
 
 func (e MerchantTypeEnum) String() string {

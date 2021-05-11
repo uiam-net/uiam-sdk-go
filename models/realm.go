@@ -99,10 +99,10 @@ const (
 	RealmCaptchaTypeEnumDigtal          RealmCaptchaTypeEnum = "digtal"
 	RealmCaptchaTypeEnumString          RealmCaptchaTypeEnum = "string"
 	RealmCaptchaTypeEnumMath            RealmCaptchaTypeEnum = "math"
-	RealmCaptchaTypeEnumSlide           RealmCaptchaTypeEnum = "slide"
-	RealmCaptchaTypeEnumBlockPuzzle     RealmCaptchaTypeEnum = "block_puzzle"
-	RealmCaptchaTypeEnumClickWord       RealmCaptchaTypeEnum = "click_word"
-	RealmCaptchaTypeEnumGoogleRecaptcha RealmCaptchaTypeEnum = "recaptcha"
+	RealmCaptchaTypeEnumSlide           RealmCaptchaTypeEnum = "slide"        // 滑动到底
+	RealmCaptchaTypeEnumBlockPuzzle     RealmCaptchaTypeEnum = "block_puzzle" // 滑动拼图
+	RealmCaptchaTypeEnumClickWord       RealmCaptchaTypeEnum = "click_word"   // 选中文字
+	RealmCaptchaTypeEnumGoogleRecaptcha RealmCaptchaTypeEnum = "recaptcha"    // Google reCaptcha v3
 )
 
 func (e RealmCaptchaTypeEnum) String() string {

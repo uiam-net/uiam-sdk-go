@@ -26,9 +26,7 @@ func NewCountryEnum(enum string) CountryEnum {
 type GenderEnum string
 
 const (
-	// GenderEnumMale 男
-	GenderEnumMale GenderEnum = "male"
-	// GenderEnumFemale 女
+	GenderEnumMale   GenderEnum = "male"
 	GenderEnumFemale GenderEnum = "female"
 )
 
@@ -66,34 +64,20 @@ func NewGenderEnum(enum string) GenderEnum {
 type IDTypeEnum string
 
 const (
-	// IDTypeEnumIDCard 身份证
-	IDTypeEnumIDCard IDTypeEnum = "idcard"
-	// IDTypeEnumDriverLicense 驾照
-	IDTypeEnumDriverLicense IDTypeEnum = "driverlicense"
-	// IDTypeEnumPassport 护照
-	IDTypeEnumPassport IDTypeEnum = "passport"
-	// IDTypeEnumPermanentResident 户口本
-	IDTypeEnumPermanentResident IDTypeEnum = "permanentresident"
-	// IDTypeEnumForeign 外国人永久居留证
-	IDTypeEnumForeign IDTypeEnum = "foreign"
-	// IDTypeEnumArmymanCard 军人证
-	IDTypeEnumArmymanCard IDTypeEnum = "armymancard"
-	// IDTypeEnumPoliceCard 武警证
-	IDTypeEnumPoliceCard IDTypeEnum = "policecard"
-	// IDTypeEnumCachet 公章
-	IDTypeEnumCachet IDTypeEnum = "cachet"
-	// IDTypeEnumBusinessLicense 工商营业执照
-	IDTypeEnumBusinessLicense IDTypeEnum = "businesslicense"
-	// IDTypeEnumCorporationID 法人代码证
-	IDTypeEnumCorporationID IDTypeEnum = "corporationid"
-	// IDTypeEnumStudentCard 学生证
-	IDTypeEnumStudentCard IDTypeEnum = "studentcard"
-	// IDTypeEnumSoldierCard 士兵证
-	IDTypeEnumSoldierCard IDTypeEnum = "soldiercard"
-	// IDTypeEnumGAJMLW 港澳居民来往内地通行证
-	IDTypeEnumGAJMLW IDTypeEnum = "gajmlw"
-	// IDTypeEnumTWJMLW 台湾居民来往大陆通行证
-	IDTypeEnumTWJMLW IDTypeEnum = "twjmlw"
+	IDTypeEnumIDCard            IDTypeEnum = "idcard"            //身份证
+	IDTypeEnumDriverLicense     IDTypeEnum = "driverlicense"     //驾照
+	IDTypeEnumPassport          IDTypeEnum = "passport"          // 护照
+	IDTypeEnumPermanentResident IDTypeEnum = "permanentresident" // 户口本
+	IDTypeEnumForeign           IDTypeEnum = "foreign"           // 外国人永久居留证
+	IDTypeEnumArmymanCard       IDTypeEnum = "armymancard"       //军人证
+	IDTypeEnumPoliceCard        IDTypeEnum = "policecard"        // 武警证
+	IDTypeEnumCachet            IDTypeEnum = "cachet"            // 公章
+	IDTypeEnumBusinessLicense   IDTypeEnum = "businesslicense"   // 工商营业执照
+	IDTypeEnumCorporationID     IDTypeEnum = "corporationid"     // 法人代码证
+	IDTypeEnumStudentCard       IDTypeEnum = "studentcard"       // 学生证
+	IDTypeEnumSoldierCard       IDTypeEnum = "soldiercard"       // 士兵证
+	IDTypeEnumGAJMLW            IDTypeEnum = "gajmlw"            // 港澳居民来往内地通行证
+	IDTypeEnumTWJMLW            IDTypeEnum = "twjmlw"            //台湾居民来往大陆通行证
 )
 
 // NewIDTypeEnum NewCountryEnum
