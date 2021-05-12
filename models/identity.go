@@ -50,31 +50,50 @@ func (e IdentityStatusEnum) String() string {
 	}
 }
 
-// MfaModeEnum 枚举
-type MfaModeEnum string
+// MfaTypeEnum 枚举
+type MfaTypeEnum string
 
 const (
-	MfaModeEnumNone        MfaModeEnum = "none"
-	MfaModeEnumOtp         MfaModeEnum = "otp"
-	MfaModeEnumSmsCode     MfaModeEnum = "sms_code"
-	MfaModeEnumEmailCode   MfaModeEnum = "email_code"
-	MfaModeEnumFaceprint   MfaModeEnum = "faceprint"   // 面纹
-	MfaModeEnumFingerprint MfaModeEnum = "fingerprint" // 指纹
+	MfaTypeEnumNone        MfaTypeEnum = "none"
+	MfaTypeEnumOtp         MfaTypeEnum = "otp"
+	MfaTypeEnumSmsCode     MfaTypeEnum = "sms_code"
+	MfaTypeEnumEmailCode   MfaTypeEnum = "email_code"
+	MfaTypeEnumFaceprint   MfaTypeEnum = "faceprint"   // 面纹
+	MfaTypeEnumFingerprint MfaTypeEnum = "fingerprint" // 指纹
 )
 
-func (e MfaModeEnum) String() string {
+func (e MfaTypeEnum) String() string {
 	switch e {
-	case MfaModeEnumOtp:
+	case MfaTypeEnumOtp:
 		return "otp"
-	case MfaModeEnumSmsCode:
+	case MfaTypeEnumSmsCode:
 		return "sms_code"
-	case MfaModeEnumEmailCode:
+	case MfaTypeEnumEmailCode:
 		return "email_code"
-	case MfaModeEnumFaceprint:
+	case MfaTypeEnumFaceprint:
 		return "faceprint"
-	case MfaModeEnumFingerprint:
+	case MfaTypeEnumFingerprint:
 		return "fingerprint"
 	default:
 		return "none"
+	}
+}
+
+// MfaTypeEnum 枚举
+type MfaStatusEnum string
+
+const (
+	MfaStatusEnumActive    MfaStatusEnum = "active"
+	MfaStatusEnumDisactive MfaStatusEnum = "disactive"
+)
+
+func (e MfaStatusEnum) String() string {
+	switch e {
+	case MfaStatusEnumActive:
+		return "active"
+	case MfaStatusEnumDisactive:
+		return "disactive"
+	default:
+		return "disactive"
 	}
 }

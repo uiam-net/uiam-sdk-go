@@ -54,7 +54,7 @@ func (captcha LoginCaptcha) GetType() uiammodel.SessionTypeEnum {
 type LoginMfa struct {
 	Type       uiammodel.SessionTypeEnum `json:"type,omitempty"`
 	RealmID    string                    `json:"realm_id,omitempty"`
-	Mode       uiammodel.MfaModeEnum     `json:"mode"` // otp/sms
+	Mode       uiammodel.MfaTypeEnum     `json:"mode"` // otp/sms
 	TempID     string                    `json:"temp_id,omitempty"`
 	MfaPayload interface{}               `json:"payload,omitempty"`
 }

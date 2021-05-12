@@ -23,7 +23,6 @@ type IdentityListRequest struct {
 type IdentityUpsertRequest struct {
 	BaseRequest
 
-	IdentityUUID string                     `json:"uuid"`
 	IdentityName string                     `json:"username" binding:"required,min=1"`
 	Type         uiammodel.IdentityTypeEnum `json:"_" binding:"required,min=1"`
 	BizType      string                     `json:"type" binding:"required,min=1"`
@@ -41,7 +40,6 @@ type IdentityUpsertRequest struct {
 type IdentityUpdateRequest struct {
 	BaseRequest
 
-	IdentityUUID string                       `json:"uuid"`
 	IdentityName string                       `json:"username"`
 	PhoneCode    string                       `json:"phone_code"`
 	PhoneNumber  string                       `json:"phone_number"`
@@ -56,11 +54,20 @@ type IdentityUpdateRequest struct {
 
 // IdentityUpdateBasicRequest UpdateRequest
 type IdentityUpdateBasicRequest struct {
-	IdentityUUID string              `json:"user_id"`
-	Username     string              `json:"username"`
-	Description  string              `json:"description"`
-	AvatarURL    string              `json:"avatar_url"`
-	Attributes   uiammodel.Attribute `json:"attributes"`
+	BaseRequest
+
+	PhoneCode   string              `json:"username"`
+	Description string              `json:"description"`
+	AvatarURL   string              `json:"avatar_url"`
+	Attributes  uiammodel.Attribute `json:"attributes"`
+}
+
+// IdentityUpdateBasicRequest UpdateRequest
+type IdentityMfaRequest struct {
+	BaseRequest
+
+	MfaType  uiammodel.MfaTypeEnum `json:"type"`
+	Passcode string                `json:"passcode"`
 }
 
 // ================ Update ================= //
