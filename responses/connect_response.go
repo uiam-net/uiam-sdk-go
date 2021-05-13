@@ -9,8 +9,10 @@ import (
 // Connect Identity
 type Connect struct {
 	ID           uint64                        `json:"id"`
+	IdentityID   uint64                        `json:"-"`
 	IdentityUUID string                        `json:"identity_uuid"`
-	RealmUUID    string                        `json:"realm_uuid"`
+	RealmID      uint64                        `json:"-"`
+	RealmSlug    string                        `json:"realm_slug"`
 	Provider     uiammodel.ConnectProviderEnum `json:"provider"`
 	OauthID      string                        `json:"oauth_id"`
 	UnionID      string                        `json:"union_id"`

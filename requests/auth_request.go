@@ -12,6 +12,7 @@ type AuthIDCreateRequest struct {
 
 	Provider     uiammodel.ConnectProviderEnum `json:"provider"`
 	IdentityName string                        `json:"username"`
+	BizType      string                        `json:"biz_type"`
 	PhoneCode    string                        `json:"phone_code"`
 	PhoneNumber  string                        `json:"phone_number"`
 	Email        string                        `json:"email"`

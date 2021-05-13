@@ -4,7 +4,6 @@ package uiamsdk
 type PasswordVerifyRequest struct {
 	BaseRequest
 
-	ID       string `json:"id"`
 	Password string `json:"password"`
 }
 

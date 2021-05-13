@@ -7,10 +7,9 @@ import (
 )
 
 type Merchant struct {
-	ID          uint32                       `json:"id"`
-	UUID        string                       `mapstructure:"uuid" json:"uuid"`
-	Type        uiammodel.MerchantTypeEnum   `mapstructure:"type" json:"type,omitempty"`
+	ID          uint64                       `json:"-"`
 	Slug        string                       `json:"slug"`
+	Type        uiammodel.MerchantTypeEnum   `mapstructure:"type" json:"type,omitempty"`
 	Name        string                       `json:"name"`
 	Description string                       `json:"description"`
 	Remark      string                       `json:"remark"`

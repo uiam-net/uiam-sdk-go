@@ -10,7 +10,7 @@ import (
 type IdentityKycRequest struct {
 	BaseRequest
 
-	IdentityID       string                  `json:"identity_id"`
+	IdentityID       uint64                  `json:"identity_id"`
 	Country          uiammodel.CountryEnum   `json:"country"`
 	Gender           string                  `json:"gender" binding:"required,min=1"`
 	Name             string                  `json:"name" binding:"required,min=1"`

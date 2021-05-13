@@ -19,43 +19,45 @@ type IdentityListRequest struct {
 	Expand      string                        `form:"expand"`
 }
 
-// IdentityUpsertRequest IdentityUpsertRequest
-type IdentityUpsertRequest struct {
+// IdentityCreateRequest IdentityCreateRequest
+type IdentityCreateRequest struct {
 	BaseRequest
 
-	IdentityName string                     `json:"username" binding:"required,min=1"`
-	Type         uiammodel.IdentityTypeEnum `json:"_" binding:"required,min=1"`
-	BizType      string                     `json:"type" binding:"required,min=1"`
-	PhoneCode    string                     `json:"phone_code" binding:"required,min=1"`
-	PhoneNumber  string                     `json:"phone_number" binding:"required,min=1"`
-	Email        string                     `json:"email"`
-	Password     string                     `json:"password"`
-	AvatarURL    string                     `json:"avatar_url"`
-	Description  string                     `json:"description"`
-	Remark       string                     `json:"remark"`
-	Attributes   uiammodel.Attribute        `json:"attributes"`
+	Name        string                     `json:"name"`
+	Nickname    string                     `json:"nickname"`
+	Type        uiammodel.IdentityTypeEnum `json:"_"`
+	BizType     string                     `json:"biz_type" binding:"required,min=1"`
+	PhoneCode   string                     `json:"phone_code" binding:"required,min=1"`
+	PhoneNumber string                     `json:"phone_number" binding:"required,min=1"`
+	Email       string                     `json:"email"`
+	Password    string                     `json:"password"`
+	AvatarURL   string                     `json:"avatar_url"`
+	Description string                     `json:"description"`
+	Remark      string                     `json:"remark"`
+	Attributes  uiammodel.Attribute        `json:"attributes"`
 }
 
 // IdentityUpdateRequest IdentityUpdateRequest
 type IdentityUpdateRequest struct {
 	BaseRequest
 
-	IdentityName string                       `json:"username"`
-	PhoneCode    string                       `json:"phone_code"`
-	PhoneNumber  string                       `json:"phone_number"`
-	Email        string                       `json:"email"`
-	Password     string                       `json:"password"`
-	AvatarURL    string                       `json:"avatar_url"`
-	Description  string                       `json:"description"`
-	Remark       string                       `json:"remark"`
-	Attributes   uiammodel.Attribute          `json:"attributes"`
-	Status       uiammodel.IdentityStatusEnum `json:"status"`
+	Nickname    string                       `json:"nickname"`
+	PhoneCode   string                       `json:"phone_code"`
+	PhoneNumber string                       `json:"phone_number"`
+	Email       string                       `json:"email"`
+	Password    string                       `json:"password"`
+	AvatarURL   string                       `json:"avatar_url"`
+	Description string                       `json:"description"`
+	Remark      string                       `json:"remark"`
+	Attributes  uiammodel.Attribute          `json:"attributes"`
+	Status      uiammodel.IdentityStatusEnum `json:"status"`
 }
 
 // IdentityUpdateBasicRequest UpdateRequest
 type IdentityUpdateBasicRequest struct {
 	BaseRequest
 
+	Nickname    string              `json:"nickname"`
 	PhoneCode   string              `json:"username"`
 	Description string              `json:"description"`
 	AvatarURL   string              `json:"avatar_url"`
@@ -83,7 +85,7 @@ type IdentityChangePhoneRequest struct {
 
 // UserResetPasswordRequest UpdateRequest
 type UserResetPasswordRequest struct {
-	UserID   string `json:"user_id"`
-	RealmID  string `json:"realm_id"`
+	BaseRequest
+
 	Password string `json:"password"`
 }

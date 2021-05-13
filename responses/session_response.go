@@ -29,8 +29,8 @@ type CaptchaData struct {
 
 // LoginConfig 登录前返回 LoginConfig
 type LoginConfig struct {
-	RealmID string       `json:"realm,omitempty"`
-	Captcha *CaptchaData `json:"captcha,omitempty"`
+	RealmSlug string       `json:"realm_slug,omitempty"`
+	Captcha   *CaptchaData `json:"captcha,omitempty"`
 }
 
 type LoginResp interface {
@@ -40,7 +40,7 @@ type LoginResp interface {
 // LoginCaptcha 登录请求后返回类型  LoginCaptcha
 type LoginCaptcha struct {
 	Type           uiammodel.SessionTypeEnum          `json:"type,omitempty"`
-	RealmID        string                             `json:"realm_id,omitempty"`
+	RealmSlug      string                             `json:"realm_slug,omitempty"`
 	Mode           uiammodel.RealmCaptchaModeEnum     `json:"mode,omitempty"`
 	Provider       uiammodel.RealmCaptchaProviderEnum `json:"provider"`
 	CaptchaPayload interface{}                        `json:"payload"`
@@ -53,7 +53,7 @@ func (captcha LoginCaptcha) GetType() uiammodel.SessionTypeEnum {
 // LoginMfa 登录请求后返回类型 LoginMfa
 type LoginMfa struct {
 	Type       uiammodel.SessionTypeEnum `json:"type,omitempty"`
-	RealmID    string                    `json:"realm_id,omitempty"`
+	RealmSlug  string                    `json:"realm_slug,omitempty"`
 	Mode       uiammodel.MfaTypeEnum     `json:"mode"` // otp/sms
 	TempID     string                    `json:"temp_id,omitempty"`
 	MfaPayload interface{}               `json:"payload,omitempty"`
@@ -66,7 +66,7 @@ func (mfa LoginMfa) GetType() uiammodel.SessionTypeEnum {
 // LoginToken 登录请求后返回类型 LoginToken
 type LoginToken struct {
 	Type         uiammodel.SessionTypeEnum `json:"type,omitempty"`
-	RealmID      string                    `json:"realm_id,omitempty"`
+	RealmSlug    string                    `json:"realm_slug,omitempty"`
 	IdentityUUID string                    `json:"identity_id,omitempty"`
 	ExpriedAt    *time.Time                `json:"expried_at,omitempty"`
 	Token        string                    `json:"token,omitempty"`

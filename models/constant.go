@@ -2,5 +2,6 @@ package uiamsdk
 
 const (
 	HTTPAuthorization = "Authorization"
-	HTTPRelamID       = "UIAM-Realm-ID"
+	HTTPRelamSlug     = "UIAM-Realm-Slug"
+	HTTPMerchantSlug  = "UIAM-Merchant-Slug"
 )

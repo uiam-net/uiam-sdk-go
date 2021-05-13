@@ -8,7 +8,7 @@ import (
 
 type AuthorizedKey struct {
 	IdentityUUID string                   `json:"identity_uuid"`
-	ReamUUID     string                   `json:"realm_uuid"`
+	ReamSlug     string                   `json:"realm_uuid"`
 	Name         string                   `json:"name"`
 	Description  string                   `json:"description"`
 	Scheme       uiammodel.AuthSchemeEnum `json:"scheme"`

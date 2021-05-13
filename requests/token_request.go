@@ -18,14 +18,17 @@ type TokenCreateRequest struct {
 	Duration  time.Duration `json:"duration"` // ExpriedAt 有效时长
 
 	// Custom
-	IdentityType uiammodel.IdentityTypeEnum    `json:"identity_type,omitempty"`
-	Provider     uiammodel.ConnectProviderEnum `json:"oap,omitempty"`         // wechat/alipay 有需要吗？
-	Scheme       uiammodel.AuthSchemeEnum      `json:"scheme,omitempty"`      // 签名方式
-	UID          string                        `json:"uid,omitempty"`         // Audience 区别
-	Device       string                        `json:"device,omitempty"`      // 每个 device 会有一个相对固定 session
-	Description  string                        `json:"description,omitempty"` // device 介绍
-	SessionID    string                        `json:"sid,omitempty"`         // 使用哪个 session 进行签名
-	Sign         string                        `json:"sig,omitempty"`         // ?
-	SignAlg      string                        `json:"sal,omitempty"`         // ?
-	Extra        string                        `json:"extra,omitempty"`       // 签名时，会把这部分也签进去
+	RealmID      uint64                     `json:"realm_id,omitempty"`
+	RealmSlug    string                     `json:"realm_slug,omitempty"`
+	MerchantID   uint64                     `json:"merchant_id,omitempty"`
+	MerchantSlug string                     `json:"merchant_slug,omitempty"`
+	IdentityType uiammodel.IdentityTypeEnum `json:"identity_type,omitempty"`
+	Scheme       uiammodel.AuthSchemeEnum   `json:"scheme,omitempty"`      // 签名方式
+	UID          string                     `json:"uid,omitempty"`         // Audience 区别
+	Device       string                     `json:"device,omitempty"`      // 每个 device 会有一个相对固定 session
+	Description  string                     `json:"description,omitempty"` // device 介绍
+	SessionID    string                     `json:"sid,omitempty"`         // 使用哪个 session 进行签名
+	Sign         string                     `json:"sig,omitempty"`         // ?
+	SignAlg      string                     `json:"sal,omitempty"`         // ?
+	Extra        string                     `json:"extra,omitempty"`       // 签名时，会把这部分也签进去
 }
