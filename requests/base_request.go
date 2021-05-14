@@ -7,7 +7,6 @@ type BaseRequest struct {
 	IdentityID   uint64 `json:"identity_id"`
 	IdentityUUID string `json:"identity_uuid"`
 	MerchantSlug string `json:"merchant_slug"`
-	// Authorization string `json:"authorization"`
 }
 
 // BasePageRequest BasePageRequest
