@@ -33,8 +33,11 @@ type LoginConfig struct {
 	Captcha   *CaptchaData `json:"captcha,omitempty"`
 }
 
-type LoginResp interface {
-	GetType() uiammodel.SessionTypeEnum
+type LoginResp struct {
+	Type    uiammodel.SessionTypeEnum `json:"type,omitempty"`
+	Captcha *LoginCaptcha
+	Mfa     *LoginMfa
+	Token   *LoginToken
 }
 
 // LoginCaptcha 登录请求后返回类型  LoginCaptcha
@@ -46,10 +49,6 @@ type LoginCaptcha struct {
 	CaptchaPayload interface{}                        `json:"payload"`
 }
 
-func (captcha LoginCaptcha) GetType() uiammodel.SessionTypeEnum {
-	return captcha.Type
-}
-
 // LoginMfa 登录请求后返回类型 LoginMfa
 type LoginMfa struct {
 	Type       uiammodel.SessionTypeEnum `json:"type,omitempty"`
@@ -59,10 +58,6 @@ type LoginMfa struct {
 	MfaPayload interface{}               `json:"payload,omitempty"`
 }
 
-func (mfa LoginMfa) GetType() uiammodel.SessionTypeEnum {
-	return mfa.Type
-}
-
 // LoginToken 登录请求后返回类型 LoginToken
 type LoginToken struct {
 	Type         uiammodel.SessionTypeEnum `json:"type,omitempty"`
@@ -70,8 +65,4 @@ type LoginToken struct {
 	IdentityUUID string                    `json:"identity_id,omitempty"`
 	ExpriedAt    *time.Time                `json:"expried_at,omitempty"`
 	Token        string                    `json:"token,omitempty"`
-}
-
-func (token LoginToken) GetType() uiammodel.SessionTypeEnum {
-	return token.Type
 }

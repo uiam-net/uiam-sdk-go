@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"strings"
 	"sync"
 	"time"
@@ -37,6 +38,30 @@ func Client() *resty.Client {
 }
 
 // Execute Execute
+func Execute1(request *resty.Request, method, url string, body interface{}, resp interface{}) error {
+	if body != nil {
+		request = request.SetBody(body)
+	}
+
+	r, err := request.Execute(strings.ToUpper(method), url)
+	if err != nil {
+		return err
+	}
+
+	// 检查 requestid
+	sourceReqID := request.Header.Get(RequestIDKey)
+	returnReqID := r.Header().Get(RequestIDKey)
+
+	if sourceReqID == "" || returnReqID == "" || sourceReqID != returnReqID {
+		return errors.New("RequestID Not Match")
+	}
+
+	resp = r
+
+	return nil
+}
+
+// Execute Execute
 func Execute(request *resty.Request, method, url string, body interface{}, resp interface{}) error {
 	if body != nil {
 		request = request.SetBody(body)
@@ -62,6 +87,7 @@ func Execute(request *resty.Request, method, url string, body interface{}, resp 
 func ParseResponse(r *resty.Response, obj interface{}) error {
 	if r.IsSuccess() {
 		if err := json.Unmarshal([]byte(r.Body()), obj); err != nil {
+			fmt.Printf("==================%v", err)
 			return err
 		}
 		return nil

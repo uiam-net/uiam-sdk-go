@@ -10,19 +10,19 @@ import (
 type AuthIDCreateRequest struct {
 	BaseRequest
 
-	Provider     uiammodel.ConnectProviderEnum `json:"provider"`
-	IdentityName string                        `json:"username"`
-	BizType      string                        `json:"biz_type"`
-	PhoneCode    string                        `json:"phone_code"`
-	PhoneNumber  string                        `json:"phone_number"`
-	Email        string                        `json:"email"`
-	AvatarURL    string                        `json:"avatar_url"`
-	Description  string                        `json:"description"`
-	OauthID      string                        `json:"oauth_id" binding:"required,min=4"`
-	UnionID      string                        `json:"union_id"`
-	AppUserID    string                        `json:"app_user_id"`
-	AppUserName  string                        `json:"app_user_name"`
-	Credential   uiammodel.Attribute           `json:"credential"`
+	Provider    uiammodel.ConnectProviderEnum `json:"provider"`
+	Username    string                        `json:"username"`
+	BizType     string                        `json:"biz_type"`
+	PhoneCode   string                        `json:"phone_code"`
+	PhoneNumber string                        `json:"phone_number"`
+	Email       string                        `json:"email"`
+	AvatarURL   string                        `json:"avatar_url"`
+	Description string                        `json:"description"`
+	OauthID     string                        `json:"oauth_id" binding:"required,min=4"`
+	UnionID     string                        `json:"union_id"`
+	AppUserID   string                        `json:"app_user_id"`
+	AppUserName string                        `json:"app_user_name"`
+	Credential  uiammodel.Attribute           `json:"credential"`
 }
 
 // AuthCreateRequest AuthCreateRequest

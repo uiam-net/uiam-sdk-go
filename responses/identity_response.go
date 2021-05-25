@@ -10,7 +10,7 @@ import (
 type Identity struct {
 	IdentityID   uint64                       `json:"-"`
 	IdentityUUID string                       `json:"uuid"`
-	IdentityName string                       `json:"name"`
+	Username     string                       `json:"username"`
 	PhoneCode    string                       `json:"phone_code"`
 	PhoneNumber  string                       `json:"phone_number"`
 	Email        string                       `json:"email"`

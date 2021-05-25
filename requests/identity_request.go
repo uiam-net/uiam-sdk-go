@@ -23,10 +23,10 @@ type IdentityListRequest struct {
 type IdentityCreateRequest struct {
 	BaseRequest
 
-	Name        string                     `json:"name"`
+	Username    string                     `json:"username"`
 	Nickname    string                     `json:"nickname"`
 	Type        uiammodel.IdentityTypeEnum `json:"_"`
-	BizType     string                     `json:"biz_type" binding:"required,min=1"`
+	BizType     string                     `json:"biz_type"`
 	PhoneCode   string                     `json:"phone_code" binding:"required,min=1"`
 	PhoneNumber string                     `json:"phone_number" binding:"required,min=1"`
 	Email       string                     `json:"email"`

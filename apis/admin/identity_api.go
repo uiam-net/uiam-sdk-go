@@ -109,7 +109,7 @@ func (ir IdentityRequest) VerifyUserPassword(ctx context.Context, identityID str
 }
 
 // CreateUser CreateUser
-func (ir IdentityRequest) CreateUser(ctx context.Context, req *uiamreq.IdentityUpsertRequest) (*uiamresp.Identity, error) {
+func (ir IdentityRequest) CreateUser(ctx context.Context, req *uiamreq.IdentityCreateRequest) (*uiamresp.Identity, error) {
 	var user uiamresp.Identity
 
 	if err := httputil.Execute(ir.getRequest(ctx), "POST", fmt.Sprintf("%s%s", ir.ServerURL, "/mv1/identities"), req, &user); err != nil {
@@ -123,7 +123,7 @@ func (ir IdentityRequest) CreateUser(ctx context.Context, req *uiamreq.IdentityU
 func (ir IdentityRequest) ChangePassword(ctx context.Context, req *uiamreq.UserResetPasswordRequest) (*uiamresp.Identity, error) {
 	var user uiamresp.Identity
 
-	url := fmt.Sprintf("%s/mv1/identities/%v/password", ir.ServerURL, req.UserID)
+	url := fmt.Sprintf("%s/mv1/identities/%v/password", ir.ServerURL, req.IdentityUUID)
 
 	if err := httputil.Execute(ir.getRequest(ctx), "PUT", url, req, &user); err != nil {
 		return nil, err
@@ -133,7 +133,7 @@ func (ir IdentityRequest) ChangePassword(ctx context.Context, req *uiamreq.UserR
 }
 
 // ChangePhone ChangePhone
-func (ir IdentityRequest) ChangePhone(ctx context.Context, req *uiamreq.IdentityUpsertRequest) (*uiamresp.Identity, error) {
+func (ir IdentityRequest) ChangePhone(ctx context.Context, req *uiamreq.IdentityCreateRequest) (*uiamresp.Identity, error) {
 	var user uiamresp.Identity
 
 	url := fmt.Sprintf("%s/mv1/identities/%v/phone", ir.ServerURL, req.IdentityUUID)

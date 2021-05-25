@@ -2,10 +2,11 @@ package uiamsdk
 
 // BaseRequest BaseRequest
 type BaseRequest struct {
-	RealmID      uint64 `json:"realm_id"`
-	RealmSlug    string `json:"realm_slug"`
 	IdentityID   uint64 `json:"identity_id"`
 	IdentityUUID string `json:"identity_uuid"`
+	RealmID      uint64 `json:"realm_id"`
+	RealmSlug    string `json:"realm_slug"`
+	MerchantID   uint64 `json:"-"`
 	MerchantSlug string `json:"merchant_slug"`
 }
 
