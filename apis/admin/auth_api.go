@@ -84,7 +84,7 @@ func (ir IdentityRequest) RegAuthAndID(ctx context.Context, req *uiamreq.AuthIDC
 func (ir IdentityRequest) UpdateAuthByID(ctx context.Context, req *uiamreq.AuthUpdateRequest) (*uiamresp.Authorization, error) {
 	var auth uiamresp.Authorization
 
-	var url = fmt.Sprintf("%s/mv1/identities/%s/auths/%s", ir.ServerURL, req.IdentityID, req.Provider)
+	var url = fmt.Sprintf("%s/mv1/identities/%s/auths/%s", ir.ServerURL, req.IdentityUUID, req.Provider)
 
 	if err := httputil.Execute(ir.getRequest(ctx), "PATCH", url, req, &auth); err != nil {
 		return nil, err
