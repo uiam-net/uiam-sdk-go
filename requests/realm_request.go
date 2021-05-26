@@ -4,6 +4,13 @@ import (
 	uiammodel "github.com/uiam-net/uiam-sdk-go/models"
 )
 
+// RealmListRequest
+type RealmListRequest struct {
+	BasePageRequest
+
+	MerchantID uint64 `json:"merchant_id"`
+}
+
 // RealmCreateRequest
 type RealmCreateRequest struct {
 	BaseRequest

@@ -35,9 +35,9 @@ type LoginConfig struct {
 
 type LoginResp struct {
 	Type    uiammodel.SessionTypeEnum `json:"type,omitempty"`
-	Captcha *LoginCaptcha
-	Mfa     *LoginMfa
-	Token   *LoginToken
+	Captcha *LoginCaptcha             `json:"captcha,omitempty"`
+	Mfa     *LoginMfa                 `json:"mfa,omitempty"`
+	Token   *LoginToken               `json:"token,omitempty"`
 }
 
 // LoginCaptcha 登录请求后返回类型  LoginCaptcha

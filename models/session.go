@@ -29,7 +29,7 @@ const (
 	LoginTypeEnumUsername LoginTypeEnum = "username"
 	LoginTypeEnumPhone    LoginTypeEnum = "phone"
 	LoginTypeEnumEmail    LoginTypeEnum = "email"
-	LoginTypeEnumSmsCode  LoginTypeEnum = "sms_code"
+	LoginTypeEnumSmsCode  LoginTypeEnum = "smscode"
 )
 
 func (e LoginTypeEnum) String() string {
@@ -41,7 +41,7 @@ func (e LoginTypeEnum) String() string {
 	case LoginTypeEnumEmail:
 		return "email"
 	case LoginTypeEnumSmsCode:
-		return "sms_code"
+		return "smscode"
 	default:
 		return ""
 	}

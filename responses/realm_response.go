@@ -8,13 +8,12 @@ import (
 
 // Realm
 type Realm struct {
-	UUID         string                    `json:"uuid"`
-	Slug         string                    `json:"slug"`
-	MerchantUUID string                    `json:"merchant_uuid"`
-	Name         string                    `json:"name"`
-	AuthModel    string                    `json:"auth_model"`
-	Description  string                    `json:"description"`
-	Remark       string                    `json:"remark"`
-	Status       uiammodel.RealmStatusEnum `json:"status"`
-	CreatedAt    time.Time                 `json:"created_at"`
+	Slug        string                    `json:"slug"`
+	Name        string                    `json:"name"`
+	AvatarURL   string                    `json:"avatar_url"`
+	AuthModel   string                    `json:"auth_model"`
+	Description string                    `json:"description"`
+	Remark      string                    `json:"remark"`
+	Status      uiammodel.RealmStatusEnum `json:"status"`
+	CreatedAt   time.Time                 `json:"created_at"`
 }

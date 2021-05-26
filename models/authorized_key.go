@@ -2,20 +2,32 @@ package uiamsdk
 
 // =============== AuthKeyTypeEnum =============== //
 
-// AuthKeyTypeEnum 枚举
-type AuthKeyTypeEnum string
+// AuthkeyTypeEnum 枚举
+type AuthkeyTypeEnum string
 
 const (
-	AuthKeyTypeEnumLogin AuthKeyTypeEnum = "login"
-	AuthKeyTypeEnumApi   AuthKeyTypeEnum = "api"
+	AuthkeyTypeEnumLogin AuthkeyTypeEnum = "login"
+	AuthkeyTypeEnumApi   AuthkeyTypeEnum = "api"
 )
 
-func (e AuthKeyTypeEnum) String() string {
+func (e AuthkeyTypeEnum) String() string {
 	switch e {
-	case AuthKeyTypeEnumLogin:
+	case AuthkeyTypeEnumLogin:
 		return "login"
-	case AuthKeyTypeEnumApi:
+	case AuthkeyTypeEnumApi:
 		return "api"
+	default:
+		return ""
+	}
+}
+
+// NewAuthkeyTypeEnum 构造函数
+func NewAuthkeyTypeEnum(keyType string) AuthkeyTypeEnum {
+	switch keyType {
+	case "login":
+		return AuthkeyTypeEnumLogin
+	case "api":
+		return AuthkeyTypeEnumApi
 	default:
 		return ""
 	}

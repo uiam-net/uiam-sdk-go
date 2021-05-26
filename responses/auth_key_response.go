@@ -7,15 +7,13 @@ import (
 )
 
 type AuthorizedKey struct {
-	IdentityUUID string                   `json:"identity_uuid"`
-	ReamSlug     string                   `json:"realm_uuid"`
-	Name         string                   `json:"name"`
-	Description  string                   `json:"description"`
-	Scheme       uiammodel.AuthSchemeEnum `json:"scheme"`
-	Scopes       string                   `json:"scopes"`
-	Key          string                   `json:"auth_key"`
-	Secret       string                   `json:"secret"`
-	Remark       string                   `json:"remark"`
-	ExpriedAt    *time.Time               `json:"expried_at"`
-	CreatedAt    time.Time                `json:"created_at"`
+	Key         string                   `json:"key"`
+	Name        string                   `json:"name"`
+	Description string                   `json:"description"`
+	Scheme      uiammodel.AuthSchemeEnum `json:"scheme"`
+	Secret      string                   `json:"secret,omitempty"`
+	Scopes      string                   `json:"scopes"`
+	Remark      string                   `json:"remark,omitempty"`
+	ExpriedAt   *time.Time               `json:"expried_at"`
+	CreatedAt   time.Time                `json:"created_at"`
 }

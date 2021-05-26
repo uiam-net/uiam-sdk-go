@@ -14,6 +14,6 @@ type BaseRequest struct {
 type BasePageRequest struct {
 	BaseRequest
 
-	Offset uint64 `form:"offset"`
-	Limit  uint64 `form:"limit"`
+	Offset int `form:"offset"`
+	Limit  int `form:"limit"`
 }

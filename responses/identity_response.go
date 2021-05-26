@@ -11,9 +11,10 @@ type Identity struct {
 	IdentityID   uint64                       `json:"-"`
 	IdentityUUID string                       `json:"uuid"`
 	Username     string                       `json:"username"`
+	Nickname     string                       `json:"nickname"`
 	PhoneCode    string                       `json:"phone_code"`
 	PhoneNumber  string                       `json:"phone_number"`
-	Email        string                       `json:"email"`
+	Email        string                       `json:"email,omitempty"`
 	AvatarURL    string                       `json:"avatar_url"`
 	Description  string                       `json:"description"`
 	Auths        *Auths                       `json:"authorizations,omitempty"`

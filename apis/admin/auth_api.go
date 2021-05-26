@@ -130,7 +130,7 @@ func (ir IdentityRequest) UnbindAuth(ctx context.Context, userID uint64, provide
 	}
 
 	if result["result"] == nil || result["result"].(string) != "ok" {
-		return errors.New("result error!")
+		return errors.New("result error")
 	}
 
 	return nil
