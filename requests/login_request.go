@@ -16,6 +16,11 @@ type CaptchaData struct {
 	Payload  map[string]interface{}             `json:"payload"`
 }
 
+// Condition
+type Condition struct {
+	Type string `json:"type"`
+}
+
 // LoginRequest LoginRequest
 type LoginRequest struct {
 	BaseRequest
@@ -27,4 +32,5 @@ type LoginRequest struct {
 	Email       string                  `json:"email"`
 	Password    string                  `json:"password"`
 	Captcha     *map[string]interface{} `json:"captcha"`
+	Condition   *Condition              `json:"condition"`
 }

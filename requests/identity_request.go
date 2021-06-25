@@ -27,8 +27,8 @@ type IdentityCreateRequest struct {
 	Nickname    string                     `json:"nickname"`
 	Type        uiammodel.IdentityTypeEnum `json:"_"`
 	BizType     string                     `json:"biz_type"`
-	PhoneCode   string                     `json:"phone_code" binding:"required,min=1"`
-	PhoneNumber string                     `json:"phone_number" binding:"required,min=1"`
+	PhoneCode   string                     `json:"phone_code"`
+	PhoneNumber string                     `json:"phone_number"`
 	Email       string                     `json:"email"`
 	Password    string                     `json:"password"`
 	AvatarURL   string                     `json:"avatar_url"`
